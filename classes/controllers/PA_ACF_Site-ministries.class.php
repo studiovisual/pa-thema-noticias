@@ -43,6 +43,7 @@ class PaAcfSiteMinistries {
                         'depto-mordomia' => 'Mordomia',
                         'depto-mulher' => 'Mulher',
                         'depto-musica' => 'Música',
+                        'depto-noticias' => 'Notícias',
                         'depto-publicacoes' => 'Publicações',
                         'depto-salt' => 'SALT',
                         'depto-saude' => 'Saúde',
