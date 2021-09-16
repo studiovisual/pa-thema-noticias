@@ -24,6 +24,9 @@ require_once(dirname(__FILE__) . '/classes/controllers/PA_Page_Lideres.php');
 require_once(dirname(__FILE__) . '/classes/controllers/PA_Util.class.php');
 require_once(dirname(__FILE__) . '/classes/PA_Helpers.php');
 
+// CORE INSTALL
+require_once (dirname(__FILE__) . '/core/PA_Theme_Noticias_Install.php');
+
 /**
 * Remove unused taxonomies
 */

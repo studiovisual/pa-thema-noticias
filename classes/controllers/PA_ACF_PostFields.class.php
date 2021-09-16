@@ -7,7 +7,7 @@ use WordPlate\Acf\Location;
 class PaAcfPostFields {
 
     public function __construct() {
-        add_action('init', [$this, 'createACFFields']);
+        // add_action('init', [$this, 'createACFFields']);
     }
 
     function createACFFields() {

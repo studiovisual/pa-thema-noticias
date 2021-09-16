@@ -19,6 +19,35 @@ function videoLength(int $post_id = 0): string {
 }
 
 /**
+ * getVideoLength Get video length and save data
+ *
+ * @param  int    $post_id The post ID
+ * @param  string $video_host The video host
+ * @param  string $video_id The video ID
+ * @return void
+ */
+function getVideoLength(int $post_id, string $video_host, string $video_id): void {
+    $json = file_get_contents("https://api.feliz7play.com/v4/{$video_host}info?video_id={$video_id}");
+    $obj = json_decode($json);
+
+    if(!empty($obj))
+        update_field('video_length', $obj->time, $post_id);
+}
+
+/**
+ * Get the post format
+ *
+ * @param string $post_id The post ID
+ * @return mixed
+ */
+function getPostFormat($post_id) {
+    if($term = get_the_terms($post_id, 'xtt-pa-format'))
+        return $term[0];
+
+    return null;
+}
+
+/**
  * Search the first priority seat of the post
  *
  * @param string $post_id The post ID
@@ -29,19 +58,6 @@ function getPrioritySeat($post_id): string {
         return $term[0]->name;
 
     return 'Não há nenhuma sede proprietária vinculada a este post.';
-}
-
-/**
- * Search the first department of the post
- *
- * @param string $post_id The post ID
- * @return mixed
- */
-function getDepartment($post_id) {
-    if($term = get_the_terms($post_id, 'xtt-pa-departamentos'))
-        return $term[0];
-
-    return null;
 }
 
 /**
@@ -113,17 +129,14 @@ function getHeaderTitle($post_id = NULL) {
 }
 
 /**
- * getVideoLength Get video length and save data
+ * Search the first department of the post
  *
- * @param  int    $post_id The post ID
- * @param  string $video_host The video host
- * @param  string $video_id The video ID
- * @return void
+ * @param string $post_id The post ID
+ * @return mixed
  */
-function getVideoLength(int $post_id, string $video_host, string $video_id): void {
-    $json = file_get_contents("https://api.feliz7play.com/v4/{$video_host}info?video_id={$video_id}");
-    $obj = json_decode($json);
+function getDepartment($post_id) {
+    if($term = get_the_terms($post_id, 'xtt-pa-departamentos'))
+        return $term[0];
 
-    if(!empty($obj))
-        update_field('video_length', $obj->time, $post_id);
+    return null;
 }
