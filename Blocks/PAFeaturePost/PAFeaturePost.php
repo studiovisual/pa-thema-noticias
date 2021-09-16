@@ -3,6 +3,8 @@
 namespace Blocks\PAFeaturePost;
 
 use Blocks\Block;
+use WordPlate\Acf\ConditionalLogic;
+use WordPlate\Acf\Fields\ButtonGroup;
 use WordPlate\Acf\Fields\Relationship;
 
 /**
@@ -33,19 +35,38 @@ class PAFeaturePost extends Block {
 	 */
 	protected function setFields(): array {
 		return [
-            Relationship::make('Post em Destaque', 'items')
-                ->instructions('Selecione até 3 posts de destaque')
-                ->postTypes(['post'])
-                ->filters([
-                    'search',
-                    'taxonomy'
-                ])
-                ->elements(['featured_image'])
-				->min(1)
-                ->max(3)
-                ->returnFormat('id') // id or object (default)
-                ->required(),
+			ButtonGroup::make('Modelo', 'layout')
+				->choices([
+					1 => '1 post',
+					2 => '2 posts',
+					3 => '3 posts',
+				])
+				->defaultValue(1),
+			$this->relationshipField(1),
+			$this->relationshipField(2),
+			$this->relationshipField(3),
 		];
+	}
+
+	protected function relationshipField($count = 1) {
+		$count = !empty($count) ? $count : 1;
+
+		return 
+			Relationship::make('Posts em destaque', "items_{$count}")
+				->instructions("Selecione até {$count} post" . ($count > 1 ? 's' : '') ." de destaque")
+				->postTypes(['post'])
+				->filters([
+					'search',
+					'taxonomy'
+				])
+				->elements(['featured_image'])
+				->min(1)
+				->max($count)
+				->returnFormat('id')
+				->required()
+				->conditionalLogic([
+					ConditionalLogic::if('layout')->equals($count)
+				]);
 	}
 
 	/**
@@ -54,8 +75,12 @@ class PAFeaturePost extends Block {
 	 * @return array
 	 */
 	public function with(): array {
+		$count = get_field('layout');
+		$count = !empty($count) ? $count : 1;
+
 		return [
-			'items' => get_field('items'),
+			'items' => get_field("items_{$count}"),
 		];
 	}
+
 }
