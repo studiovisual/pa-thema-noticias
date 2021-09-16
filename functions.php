@@ -57,3 +57,35 @@ add_filter('template_include', function ($template) {
 
     return $template;
 });
+
+/**
+* Filter save post to get video length
+*/
+add_action('acf/save_post', function($post_id) {
+    if(get_post_type($post_id) != 'post')
+        return;
+
+    $url = parse_url(get_field('video_url', $post_id, false));
+    $host = '';
+    $id = '';
+
+    if(empty($url))
+        return;
+
+    if(str_contains($url['host'], 'youtube') || str_contains($url['host'], 'youtu.be')):
+        $host = 'youtube';
+
+        if(array_key_exists('query', $url)):
+            parse_str($url['query'], $params);
+            $id = $params['v'];
+        else:
+            $id = str_replace('/', '', $url['path']);
+        endif;
+    elseif(str_contains($url['host'], 'vimeo')):
+        $host = 'vimeo';
+        $id = str_replace('/', '', $url['path']);
+    endif;
+
+    if(!empty($host) && !empty($id))
+        getVideoLength($post_id, $host, $id);
+});
