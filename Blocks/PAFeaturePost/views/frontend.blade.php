@@ -21,7 +21,9 @@
                                         <img src="{{ check_immg($item, 'full') }}" class="figure-img img-fluid m-0 rounded w-100 h-100 object-cover" alt="{{ get_the_title($item) }}" />
 
                                         <figcaption class="figure-caption position-absolute w-100 p-3 rounded-bottom">
-                                            <span class="pa-tag rounded-1 text-uppercase mb-2 d-none d-md-table-cell px-2">Artigo</span>
+                                            @notempty(getPostFormat($item))
+                                                <span class="pa-tag rounded-1 text-uppercase mb-2 d-none d-md-table-cell px-2">{{ getPostFormat($item)->name }}</span>
+                                            @endnotempty
                                             
                                             <h3 class="h5 pt-2 pa-truncate-2">{!! get_the_title($item) !!}</h3>
                                         </figcaption>
