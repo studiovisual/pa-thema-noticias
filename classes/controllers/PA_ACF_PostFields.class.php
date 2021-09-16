@@ -7,7 +7,7 @@ use WordPlate\Acf\Location;
 class PaAcfPostFields {
 
     public function __construct() {
-        // add_action('init', [$this, 'createACFFields']);
+        add_action('init', [$this, 'createACFFields']);
     }
 
     function createACFFields() {
@@ -22,7 +22,7 @@ class PaAcfPostFields {
                     ->readOnly(),
             ],
             'location' => [
-                Location::if('post_type', 'post'),
+                Location::if('post_taxonomy', 'xtt-pa-format:video'),
             ]
         ]);
     }
