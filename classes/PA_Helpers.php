@@ -48,6 +48,19 @@ function getPostFormat($post_id) {
 }
 
 /**
+ * Get the post editorial
+ *
+ * @param string $post_id The post ID
+ * @return mixed
+ */
+function getPostEditorial($post_id) {
+    if($term = get_the_terms($post_id, 'xtt-pa-editorias'))
+        return $term[0];
+
+    return null;
+}
+
+/**
  * Search the first priority seat of the post
  *
  * @param string $post_id The post ID
