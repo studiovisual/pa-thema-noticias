@@ -3,6 +3,8 @@
     $count = !empty($count) ? $count : 1;
 
     $items = get_field("featured_items_{$count}");
+    global $exclude;
+    $exclude = $items;
 @endphp
 
 @notempty($items)
