@@ -5,7 +5,7 @@
 
     <div class="row justify-content-center">
         <div class="col-auto">
-            <a href="#" class="btn btn-outline-primary btn-block mt-4">Carregar mais</a>
+            <a id="load-more-trigger" href="#" class="btn btn-outline-primary btn-block mt-4">Carregar mais</a>
         </div>
     </div>
 @endnotempty

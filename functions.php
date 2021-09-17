@@ -89,3 +89,9 @@ add_action('acf/save_post', function($post_id) {
     if(!empty($host) && !empty($id))
         getVideoLength($post_id, $host, $id);
 });
+
+function loadMore() {
+    die(var_dump(123));
+}
+add_action('wp_ajax_load_more', 'loadMore');
+add_action('wp_ajax_nopriv_load_more', 'loadMore');
