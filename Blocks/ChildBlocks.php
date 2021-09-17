@@ -2,8 +2,6 @@
 
 namespace Blocks;
 
-use Blocks\PAFeaturePost\PAFeaturePost;
-
 class ChildBlocks {
 
     public function __construct() {
@@ -15,7 +13,6 @@ class ChildBlocks {
      */
     public function registerChildBlocks(array $blocks): array {
         $newBlocks = [
-            PAFeaturePost::class,
         ];
 
         return array_merge($blocks, $newBlocks);
