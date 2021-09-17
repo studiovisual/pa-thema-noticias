@@ -1,7 +1,9 @@
 @notempty($args)
     @php $query = new WP_Query($args); @endphp
 
-    @each('template-parts.card-post', $query->posts, 'post')
+    <div id="load-more-results" {!! acf_esc_attrs($args) !!}>
+        @each('template-parts.card-post', $query->posts, 'post')
+    </div>
 
     <div class="row justify-content-center">
         <div class="col-auto">
