@@ -1,6 +1,11 @@
 function paLoadMore() {
-	var page = 1;
 	var btn = document.getElementById('load-more-trigger');
+	var results = document.getElementById('load-more-results');
+	var args = {};
+
+	for(var i = 0; i < results.attributes.length; i++)
+		if(results.attributes[i].name != 'id')
+			args[results.attributes[i].name] = results.attributes[i].nodeValue.startsWith('[') ? JSON.parse(results.attributes[i].nodeValue) : results.attributes[i].nodeValue;
 
 	// $(window).scroll(function() {
 
@@ -17,14 +22,16 @@ function paLoadMore() {
 	btn.addEventListener('click', function(event) {
 		event.preventDefault();
 		
-		loadMoreData(page);
+		args.paged++;
+		loadMoreData(args);
 	});
 }
 
-function loadMoreData(page) {
+function loadMoreData(args) {
 	var request = new XMLHttpRequest();
 	var params = {
 		action: 'load_more',
+		args: args,
 	};
 
 	request.open('POST', pa.ajaxurl, true);
@@ -48,13 +55,15 @@ function loadMoreData(page) {
 	request.send(serializeObject(params));
 }
 
-function serializeObject(obj) {
-    var serialized = [];
+function serializeObject(element, key, list) {
+	var list = list || [];
 
-    for(var key in obj) {
-        if(obj.hasOwnProperty(key))
-            serialized.push(encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]));
-    }
-
-    return serialized.join('&');
-};
+	if(typeof(element) == 'object') {
+	  for(var idx in element)
+	  	serializeObject(element[idx], key ? key + '[' + idx + ']' : idx, list);
+	}
+	else
+	  list.push(key + '=' + encodeURIComponent(element));
+	
+	return list.join('&');
+}
