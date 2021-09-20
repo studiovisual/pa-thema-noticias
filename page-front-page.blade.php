@@ -11,7 +11,7 @@
         @include('template-parts.featured-posts')
 
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-12{{ is_active_sidebar('front-page') ? ' col-md-8' : '' }}">
                 @php global $exclude; @endphp
                 @include('template-parts.load-more', [
                     'template' => 'template-parts.card-post',
@@ -23,6 +23,12 @@
                     ),
                 ])
             </div>
+
+            @if(is_active_sidebar('front-page'))
+                <aside class="col-md-4 d-none d-xl-block">
+                    @php(dynamic_sidebar('front-page'))
+                </aside>
+            @endif
         </div>
     </div>
 </div>
