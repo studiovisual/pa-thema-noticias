@@ -2,6 +2,8 @@
 
 namespace Blocks;
 
+use Blocks\PAListPosts\PAListPosts;
+
 class ChildBlocks {
 
     public function __construct() {
@@ -13,6 +15,7 @@ class ChildBlocks {
      */
     public function registerChildBlocks(array $blocks): array {
         $newBlocks = [
+            PAListPosts::class,
         ];
 
         return array_merge($blocks, $newBlocks);
