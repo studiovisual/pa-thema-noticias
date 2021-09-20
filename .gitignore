@@ -3,3 +3,4 @@ style.css
 node_modules
 vendor
 composer.lock
+assets/js
