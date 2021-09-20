@@ -1,13 +1,9 @@
 @notempty($args)
     @php $query = new WP_Query($args); @endphp
 
-    <div id="load-more-results" {!! acf_esc_attrs($args) !!}>
-        @each('template-parts.card-post', $query->posts, 'post')
-    </div>
+    <div id="load-more-results" class="position-relative" template="{{ $template }}" {!! acf_esc_attrs($args) !!}>
+        @each($template, $query->posts, 'item')
 
-    <div class="row justify-content-center">
-        <div class="col-auto">
-            <a id="load-more-trigger" href="#" class="btn btn-outline-primary btn-block mt-4">Carregar mais</a>
-        </div>
+        <div id="load-more-trigger" class="position-absolute w-100"></div>
     </div>
 @endnotempty

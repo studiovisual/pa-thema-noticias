@@ -90,8 +90,22 @@ add_action('acf/save_post', function($post_id) {
         getVideoLength($post_id, $host, $id);
 });
 
+/**
+ * loadMore Run query to load more posts
+ *
+ * @return void
+ */
 function loadMore() {
-    die(var_dump($_POST));
+    $query = new WP_Query($_POST['args']);
+    $data = [
+        'results'    => '',
+        'more_pages' => (($query->max_num_pages - $_POST['args']['paged']) > 0) ? true : false,
+    ];
+
+    foreach($query->posts as &$item)
+        $data['results'] .= blade($_POST['args']['template'], ['item' => $item], false);
+
+    wp_send_json($data);
 }
 add_action('wp_ajax_load_more', 'loadMore');
 add_action('wp_ajax_nopriv_load_more', 'loadMore');

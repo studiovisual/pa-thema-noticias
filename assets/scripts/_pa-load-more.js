@@ -1,33 +1,27 @@
 function paLoadMore() {
-	var btn = document.getElementById('load-more-trigger');
 	var results = document.getElementById('load-more-results');
 	var args = {};
 
 	for(var i = 0; i < results.attributes.length; i++)
-		if(results.attributes[i].name != 'id')
-			args[results.attributes[i].name] = results.attributes[i].nodeValue.startsWith('[') ? JSON.parse(results.attributes[i].nodeValue) : results.attributes[i].nodeValue;
-
-	// $(window).scroll(function() {
-
-	//     if($(window).scrollTop() + $(window).height() >= $(document).height()) {
-
-	//         page++;
-
-	//         loadMoreData(page);
-
-	//     }
-
-	// });
-
-	btn.addEventListener('click', function(event) {
-		event.preventDefault();
-		
-		args.paged++;
-		loadMoreData(args);
-	});
+		args[results.attributes[i].name] = results.attributes[i].nodeValue.startsWith('[') ? JSON.parse(results.attributes[i].nodeValue) : results.attributes[i].nodeValue;
+	
+	observer(args, results);
 }
 
-function loadMoreData(args) {
+function observer(args, results) {
+	new IntersectionObserver(
+		function(entries) {
+			if(entries[0].isIntersecting === true) {
+				console.log(123);
+				args.paged++;
+				loadMoreData(args, results);
+			}
+		}, 
+		{ threshold: [0] }
+	).observe(document.getElementById('load-more-trigger'));
+}
+
+function loadMoreData(args, results) {
 	var request = new XMLHttpRequest();
 	var params = {
 		action: 'load_more',
@@ -35,21 +29,16 @@ function loadMoreData(args) {
 	};
 
 	request.open('POST', pa.ajaxurl, true);
+	request.responseType = 'json';
 	request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
 
 	request.onload = function() {
 		if(this.status >= 200 && this.status < 400) {
-			console.log('success');
-		} 
-		else {
-			// Response error
-			console.log('error');
-		}
-	};
+			results.innerHTML += this.response.results;
 
-	request.onerror = function() {
-		// Connection error
-		console.log('error');
+			if(this.response.more_pages)
+				observer(args, results);
+		}
 	};
 
 	request.send(serializeObject(params));
