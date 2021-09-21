@@ -1,9 +1,27 @@
 @php
+    global $exclude;
     $count = get_field('featured_layout');
     $count = !empty($count) ? $count : 1;
-
     $items = get_field("featured_items_{$count}");
-    global $exclude;
+
+    if(empty($items))
+        $items = array();
+
+    if($count - count($items) > 0):
+        $query = new WP_Query(
+            array(
+                'post_status'	      => 'publish',
+                'ignore_sticky_posts' => 1,
+                'post__not_in'        => $items,
+                'posts_per_page'      => $count - count($items),
+                'fields'              => 'ids'
+            )
+        );
+
+        if(!empty($query->found_posts))
+            $items = array_merge($items, $query->posts);
+    endif;
+    
     $exclude = $items;
 @endphp
 
@@ -22,7 +40,7 @@
                 <div class="pa-blog-itens mb-3 {{ count($items) == 3 && $loop->index == 1 ? 'mb-md-3' : 'pb-md-3 mb-md-4' }}">    
                     <div class="pa-blog-feature">
                         <a href="{{ get_the_permalink($item) }}" title="{{ get_the_title($item) }}">
-                            <div class="ratio ratio-16x9">
+                            <div class="ratio {{ count($items) == 1 ? 'ratio-591x244' : 'ratio-16x9' }}">
                                 <figure class="figure m-xl-0 w-100">
                                     <img src="{{ check_immg($item, 'full') }}" class="figure-img img-fluid m-0 rounded w-100 h-100 object-cover" alt="{{ get_the_title($item) }}" />
 
