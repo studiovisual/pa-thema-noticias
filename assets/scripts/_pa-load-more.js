@@ -1,34 +1,36 @@
 function paLoadMore() {
 	var results = document.getElementById('load-more-results');
-	var args = {};
 
-	for(var i = 0; i < results.attributes.length; i++)
-		args[results.attributes[i].name] = results.attributes[i].nodeValue.startsWith('[') ? JSON.parse(results.attributes[i].nodeValue) : results.attributes[i].nodeValue;
-	
-	observer(args, results);
+	if(!results)
+		return;
+
+	var args = results.dataset.args;
+
+	if(args.length == 0)
+		return;
+
+	var url = new URL('http://localhost/wp-json/wp/v2/' + args);
+
+	observer(url, results);
 }
 
-function observer(args, results) {
+function observer(url, results) {
 	new IntersectionObserver(
 		function(entries) {
 			if(entries[0].isIntersecting === true) {
-				console.log(123);
-				args.paged++;
-				loadMoreData(args, results);
+				url.searchParams.set('page', url.searchParams.has('page') ? url.searchParams.get('page') + 1 : 2);
+	
+				loadMoreData(url, results);
 			}
 		}, 
 		{ threshold: [0] }
 	).observe(document.getElementById('load-more-trigger'));
 }
 
-function loadMoreData(args, results) {
+function loadMoreData(url, results) {
 	var request = new XMLHttpRequest();
-	var params = {
-		action: 'load_more',
-		args: args,
-	};
 
-	request.open('POST', pa.ajaxurl, true);
+	request.open('GET', url.href, true);
 	request.responseType = 'json';
 	request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
 
@@ -37,22 +39,9 @@ function loadMoreData(args, results) {
 			results.innerHTML += this.response.results;
 
 			if(this.response.more_pages)
-				observer(args, results);
+				observer(url, results);
 		}
 	};
 
-	request.send(serializeObject(params));
-}
-
-function serializeObject(element, key, list) {
-	var list = list || [];
-
-	if(typeof(element) == 'object') {
-	  for(var idx in element)
-	  	serializeObject(element[idx], key ? key + '[' + idx + ']' : idx, list);
-	}
-	else
-	  list.push(key + '=' + encodeURIComponent(element));
-	
-	return list.join('&');
+	request.send();
 }
