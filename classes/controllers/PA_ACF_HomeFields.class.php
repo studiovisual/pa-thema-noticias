@@ -45,10 +45,8 @@ class PaAcfHomeFields {
 					'taxonomy'
 				])
 				->elements(['featured_image'])
-				->min(1)
 				->max($count)
 				->returnFormat('id')
-				->required()
 				->conditionalLogic([
 					ConditionalLogic::if('featured_layout')->equals($count)
 				]);

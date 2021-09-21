@@ -1,9 +1,27 @@
 @php
+    global $exclude;
     $count = get_field('featured_layout');
     $count = !empty($count) ? $count : 1;
-
     $items = get_field("featured_items_{$count}");
-    global $exclude;
+
+    if(empty($items))
+        $items = array();
+
+    if($count - count($items) > 0):
+        $query = new WP_Query(
+            array(
+                'post_status'	      => 'publish',
+                'ignore_sticky_posts' => 1,
+                'post__not_in'        => $items,
+                'posts_per_page'      => $count - count($items),
+                'fields'              => 'ids'
+            )
+        );
+
+        if(!empty($query->found_posts))
+            $items = array_merge($items, $query->posts);
+    endif;
+    
     $exclude = $items;
 @endphp
 
