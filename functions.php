@@ -109,3 +109,15 @@ function loadMore() {
 }
 add_action('wp_ajax_load_more', 'loadMore');
 add_action('wp_ajax_nopriv_load_more', 'loadMore');
+
+// Make JavaScript Asynchronous in Wordpress
+add_filter('script_loader_tag', function ($tag, $handle) {
+    $include = array('pa-child-script');
+
+    if(is_admin() || !in_array($handle, $include))
+        return $tag;
+
+    $tag = str_replace(' src', ' defer src', $tag);
+
+    return $tag;
+}, 10, 2);
