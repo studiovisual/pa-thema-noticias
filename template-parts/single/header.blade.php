@@ -11,7 +11,7 @@
         @endif
         
         @if($region = getPostRegion(get_the_ID()))
-            | {{ $region->name }}
+            | <span><i class="fas fa-map-marker-alt" aria-hidden="true"></i> {{ $region->name }}</span>
         @endif
     </div>
 
