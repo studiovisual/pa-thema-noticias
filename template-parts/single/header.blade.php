@@ -9,9 +9,12 @@
         @else
             {!! get_the_author() !!}
         @endif
-        | São Paulo
+        
+        @if($region = getPostRegion(get_the_ID()))
+            | {{ $region->name }}
+        @endif
     </div>
-    
+
     <div class="pa-post-meta">{!! the_date() !!}</div>
 
     <hr class="my-45">
@@ -23,8 +26,8 @@
 
         <div class="">
             <ul class="pa-accessibility list-inline">
-                <li class="pa-text-dec list-inline-item"><a href="#" class="rounded p-2" onclick="pa_diminui_texto(event)" >-A</a></li>
-                <li class="pa-text-inc list-inline-item"><a href="#" class="rounded p-2" onclick="pa_aumenta_texto(event)" >+A</a></li>
+                <li class="pa-text-dec list-inline-item"><a href="#" class="rounded p-2" onclick="pa_diminui_texto(event)">-A</a></li>
+                <li class="pa-text-inc list-inline-item"><a href="#" class="rounded p-2" onclick="pa_aumenta_texto(event)">+A</a></li>
 
                 @if(get_post_meta(get_the_ID(), 'amazon_polly_enable', true))
                     <li class="pa-text-listen list-inline-item">

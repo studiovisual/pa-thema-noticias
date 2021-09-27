@@ -3,7 +3,7 @@
 
     function customizeTaxonomySelector(OriginalComponent) {
         return function(props) {
-            if(props.slug === 'xtt-pa-format')
+            if(props.slug === 'xtt-pa-format' || props.slug === 'xtt-pa-regiao')
                 return el(window.DropdownTermSelector, { ...props });
 
             return el(OriginalComponent, { ...props });
