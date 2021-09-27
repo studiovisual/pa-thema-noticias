@@ -11,6 +11,8 @@ class LoadMore extends window.Slim {
     this.url = new URL(`http://localhost/wp-json/wp/v2/${this.args}`);
 
     this.removeAttribute('args');
+
+    this.loadMoreData();
   }
 
   onBeforeCreated() {
@@ -25,7 +27,7 @@ class LoadMore extends window.Slim {
     this.constructor.template += '<div class="load-more-trigger position-absolute bottom-0 w-100" style="height: 320px;"></div></div>';
   }
 
-  onRender() {
+  registerObserver() {
     this.trigger = this.querySelector('.load-more-trigger');
 
     this.observer = new IntersectionObserver(
@@ -52,13 +54,15 @@ class LoadMore extends window.Slim {
     request.onreadystatechange = () => { 
       if(request.readyState !== 4 || request.status !== 200)
         return;
-      
+
+      request.response.forEach(post => this.posts = [...this.posts, post]);
+
       if(this.totalPages == 0)
         this.totalPages = parseInt(request.getResponseHeader('X-WP-TotalPages'));
+      if(!this.observer)
+        this.registerObserver();
       if(this.totalPages == parseInt(this.url.searchParams.get('page')))
         this.observer.unobserve(this.trigger);
-
-      request.response.forEach(post =>this.posts = [...this.posts, post]);
     };
   
     request.send();
@@ -67,5 +71,4 @@ class LoadMore extends window.Slim {
 }
 LoadMore.useShadow = false;
 
-  
 customElements.define('load-more', LoadMore);

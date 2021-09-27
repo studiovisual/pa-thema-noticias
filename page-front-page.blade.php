@@ -14,7 +14,7 @@
             <div class="col-12{{ is_active_sidebar('front-page') ? ' col-md-8' : '' }}">
                 @php global $exclude; @endphp
 
-                <load-more template="card-post" args="{{ 'posts?_fields=featured_media,title,excerpt,link,xtt-pa-format,xtt-pa-editorias,_links,_embedded&_embed&exclude=' . implode(',', $exclude) }}">
+                <load-more template="card-post" args="{{ 'posts?_fields=featured_media_url.pa-block-render,title,excerpt,link,terms&exclude=' . implode(',', $exclude) }}">
                     <template id="card-post">
                         <card-post *foreach="@{{this.posts}}" .post="@{{item}}"></card-post>
                     </template>
