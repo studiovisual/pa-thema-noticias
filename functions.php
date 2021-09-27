@@ -90,22 +90,112 @@ add_action('acf/save_post', function($post_id) {
         getVideoLength($post_id, $host, $id);
 });
 
-/**
- * loadMore Run query to load more posts
- *
- * @return void
- */
-function loadMore() {
-    $query = new WP_Query($_POST['args']);
-    $data = [
-        'results'    => '',
-        'more_pages' => (($query->max_num_pages - $_POST['args']['paged']) > 0) ? true : false,
-    ];
+// Make JavaScript Asynchronous in Wordpress
+add_filter('script_loader_tag', function($tag, $handle) {
+    $include = array('pa-child-script');
 
-    foreach($query->posts as &$item)
-        $data['results'] .= blade($_POST['args']['template'], ['item' => $item], false);
+    if(is_admin() || !in_array($handle, $include))
+        return $tag;
 
-    wp_send_json($data);
+    $tag = str_replace(' src', ' defer src', $tag);
+
+    return $tag;
+}, 10, 2);
+
+
+add_action('rest_api_init', function() {
+	register_rest_field('post', 'featured_media_url', array(
+			'get_callback'    => 'featured_media_url_callback',
+			'update_callback' => null,
+			'schema'          => null,
+		)
+	);
+
+    register_rest_field('post', 'terms', array(
+            'get_callback'    => 'terms_callback',
+            'update_callback' => null,
+            'schema'          => null,
+        )
+    );
+});
+
+function featured_media_url_callback($post) {
+	$img_id = get_post_thumbnail_id($post['id']);
+
+	$img_scr = Array(
+		'full'             => !empty($full    = wp_get_attachment_image_src($img_id, ''))             ? $full[0]    : '',
+		'medium'           => !empty($medium  = wp_get_attachment_image_src($img_id, 'medium_large')) ? $medium[0]  : '',
+		'small'            => !empty($small   = wp_get_attachment_image_src($img_id, 'thumbnail'))    ? $small[0]   : '',
+		'pa-block-preview' => !empty($preview = wp_get_attachment_image_src($img_id, 'medium_large')) ? $preview[0] : '',
+		'pa-block-render'  => !empty($render  = wp_get_attachment_image_src($img_id, 'medium_large')) ? $render[0]  : '',
+	);
+
+    return $img_scr;
 }
-add_action('wp_ajax_load_more', 'loadMore');
-add_action('wp_ajax_nopriv_load_more', 'loadMore');
+
+function terms_callback($post) {
+    return [
+        'editorial' => !empty($editorial = getPostEditorial($post['id'])) ? $editorial->name : '',
+        'format'    => !empty($format    = getPostFormat($post['id']))    ? $format->name    : '',
+    ];
+}
+
+function filter_rest_post_query( $args, $request ) { 
+    $params = $request->get_params(); 
+
+    if(isset($params['pa-owner'])){
+        $args['tax_query'][] = array(
+            array(
+                'taxonomy' => 'xtt-pa-owner',
+                'field' => 'slug',
+                'terms' => explode(',', $params['pa-owner']),
+                'include_children' => false
+            )
+        );
+    }
+    
+	if(isset($params['pa-departamento'])){
+        $args['tax_query'][] = array(
+            array(
+                'taxonomy' => 'xtt-pa-departamentos',
+                'field' => 'slug',
+                'terms' => explode(',', $params['pa-departamento'])
+            )
+        );
+    }
+    
+	if(isset($params['pa-projeto'])){
+        $args['tax_query'][] = array(
+            array(
+                'taxonomy' => 'xtt-pa-projetos',
+                'field' => 'slug',
+                'terms' => explode(',', $params['pa-projeto'])
+            )
+        );
+    }
+
+	if(isset($params['pa-sede'])){
+        $args['tax_query'][] = array(
+            array(
+                'taxonomy' => 'xtt-pa-sedes',
+                'field' => 'slug',
+                'terms' => explode(',', $params['pa-sede']),
+                'include_children' => false
+            )
+        );
+    }
+
+	if(isset($params['pa-editoria'])){
+        $args['tax_query'][] = array(
+            array(
+                'taxonomy' => 'xtt-pa-editorias',
+                'field' => 'slug',
+                'terms' => explode(',', $params['pa-editoria'])
+            )
+        );
+    }
+
+    return $args; 
+}   
+// add the filter 
+add_filter( "rest_post_query", "filter_rest_post_query", 10, 2 );
