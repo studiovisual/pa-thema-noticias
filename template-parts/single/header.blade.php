@@ -3,7 +3,15 @@
 
     <h2 class="mb-3">{!! the_excerpt() !!}</h3>
 
-    <div class="pa-post-meta">Por {!! the_author() !!} | São Paulo</div>
+    <div class="pa-post-meta">Por 
+        @if($custom_author = get_field('custom_author'))
+            {!! $custom_author !!}
+        @else
+            {!! get_the_author() !!}
+        @endif
+        | São Paulo
+    </div>
+    
     <div class="pa-post-meta">{!! the_date() !!}</div>
 
     <hr class="my-45">
