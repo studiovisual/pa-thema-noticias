@@ -37,7 +37,18 @@
             @endif
             
             <div class="col-md-{{ count($items) == 1 || count($items) == 3 ? '12' : '6' }}">
-                <div class="pa-blog-itens mb-3 {{ count($items) == 3 && $loop->index == 1 ? 'mb-md-3' : 'pb-md-3 mb-md-4' }}">    
+                @php
+                    $class = '';
+
+                    if((count($items) == 3 && $loop->index == 1) || count($items) == 1)
+                        $class = ' mb-3';
+                    elseif(count($items) > 1)
+                        $class = ' mb-3 mb-md-0';
+                    else
+                        $class = ' mb-3 pb-md-3 mb-md-4';
+                @endphp
+
+                <div class="pa-blog-itens{{ $class }}">    
                     <div class="pa-blog-feature">
                         <a href="{{ get_the_permalink($item) }}" title="{{ get_the_title($item) }}">
                             <div class="ratio {{ count($items) == 1 ? 'ratio-591x244' : 'ratio-16x9' }}">
