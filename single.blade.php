@@ -12,12 +12,14 @@
                     @include('template-parts.single.header')
 
                     {{-- Conteúdo do post --}}
-                    {!! the_content() !!}
+                    <div class="pa-content">
+                        {!! the_content() !!}
+                    </div>
 
-                    <hr class="separator">
+                    <div class="pa-break d-block my-5 py-2"></div>
 
-                    {{-- Post relacionados --}}
-                    @include('template-parts.single.related-posts')
+                    {{-- Post footer --}}
+                    @include('template-parts.single.footer')
                 </article>
             </div>
         </div>
