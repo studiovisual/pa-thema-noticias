@@ -13,7 +13,8 @@ class PA_Enqueue_Files {
 			'pa-child-script',
 			'pa',
 			array(
-				'ajaxurl' => admin_url('admin-ajax.php')
+				'url'   => get_rest_url(null, 'wp/v2/'),
+				'nonce' => wp_create_nonce('wp_rest'),
 			)
 		);
 	}

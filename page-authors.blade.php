@@ -10,7 +10,7 @@
 	<div class="container">
         <div class="row">
             <div class="col-12{{ is_active_sidebar('front-page') ? ' col-md-8' : '' }}">
-                <load-more template="card-post" args="{{ 'users' }}">
+                <load-more template="card-post" args="{{ 'users?_fields=name,link' }}">
                     <template id="card-post">
                         <card-post *foreach="@{{this.posts}}" .post="@{{item}}"></card-post>
                     </template>

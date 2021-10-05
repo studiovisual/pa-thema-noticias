@@ -8,7 +8,7 @@ class LoadMore extends window.Slim {
     this.posts = [];
     this.totalPages = 0;
     this.args = this.attributes.getNamedItem('args').nodeValue;
-    this.url = new URL(`http://localhost/wp-json/wp/v2/${this.args}`);
+    this.url = new URL(`${window.pa.url}${this.args}`);
 
     this.removeAttribute('args');
 
@@ -32,11 +32,8 @@ class LoadMore extends window.Slim {
 
     this.observer = new IntersectionObserver(
       (entries) => {
-        if(entries[0].isIntersecting === true) {
-          this.url.searchParams.set('page', this.url.searchParams.has('page') ? parseInt(this.url.searchParams.get('page')) + 1 : 1);
-    
+        if(entries[0].isIntersecting === true)
           this.loadMoreData();
-        }
       }, 
       { threshold: [0] }
     );
@@ -47,9 +44,11 @@ class LoadMore extends window.Slim {
   loadMoreData() {
     const request = new XMLHttpRequest();
   
+    this.url.searchParams.set('page', this.url.searchParams.has('page') ? parseInt(this.url.searchParams.get('page')) + 1 : 1);
     request.open('GET', this.url.href, true);
     request.responseType = 'json';
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+    request.setRequestHeader('X-WP-Nonce', window.pa.nonce);
 
     request.onreadystatechange = () => { 
       if(request.readyState !== 4 || request.status !== 200)
