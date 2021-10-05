@@ -26,6 +26,10 @@ mix
         },
     });
 
+mix.options({
+    processCssUrls: false,
+});
+
 mix
     .sourceMaps(false, 'source-map')
     .version();

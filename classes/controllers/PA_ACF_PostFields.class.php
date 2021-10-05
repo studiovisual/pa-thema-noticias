@@ -2,6 +2,7 @@
 
 use WordPlate\Acf\Fields\Number;
 use WordPlate\Acf\Fields\Oembed;
+use WordPlate\Acf\Fields\Text;
 use WordPlate\Acf\Location;
 
 class PaAcfPostFields {
@@ -23,6 +24,18 @@ class PaAcfPostFields {
             ],
             'location' => [
                 Location::if('post_taxonomy', 'xtt-pa-format:video'),
+            ]
+        ]);
+
+        register_extended_field_group([
+            'title'      => 'Informações de autor',
+            'style'      => 'default',
+            'position'   => 'side',
+            'fields'     => [
+                Text::make('Autor', 'custom_author'),
+            ],
+            'location'   => [
+                Location::if('post_type', 'post'),
             ]
         ]);
     }
