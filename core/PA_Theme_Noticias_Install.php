@@ -8,51 +8,85 @@
 
 class PAThemeNoticiasInstall {
 
-  public function __construct() {
-    add_action('after_setup_theme', array($this, 'installRoutines'));
-    add_action('admin_enqueue_scripts', array($this, 'enqueueAssets'));
-    add_action('after_setup_theme', array($this, 'removePostFormats'), 100);
-    add_action('init', array($this, 'addCustomRoles'));
-  }
+	public function __construct() {
+		add_action('after_setup_theme', array($this, 'installRoutines'));
+		add_action('admin_enqueue_scripts', array($this, 'enqueueAssets'));
+		add_action('after_setup_theme', array($this, 'removePostFormats'), 100);
+		add_action('init', array($this, 'addCustomRoles'));
+	}
 
-  function installRoutines() {
-    /**
-     * 
-     * FORMATO DE POST
-     * 
-     */
+	function installRoutines() {
+		/**
+		 * 
+		 * FORMATO DE POST
+		 * 
+		 */
 
-    $labels = array(
-      'name'              => __('Formatos de post'),
-      'singular_name'     => __('Formato de post'),
-      'search_items'      => __('Procurar formatos de post'),
-      'all_items'         => __('Todas os formatos'),
-      'edit_item'         => __('Editar formato de post'),
-      'update_item'       => __('Atualizar formato de post'),
-      'add_new_item'      => __('Adicionar novo formato de post'),
-      'new_item_name'     => __('Novo formato de post'),
-      'menu_name'         => __('Formatos de post'),
-    );
-    
-    $args   = array(
-      'hierarchical'       => true, // make it hierarchical (like categories)
-      'labels'             => $labels,
-      'show_ui'            => true,
-      'show_admin_column'  => true,
-      'show_in_quick_edit' => false,
-      'query_var'          => true,
-      'show_in_rest'       => true, // add support for Gutenberg editor
-      'rewrite'            => ['slug' => 'xtt-pa-format'],
-      'capabilities' 		  => array(
-        'edit_terms' 	  => false,
-        'delete_terms'    => false,
-      ),
-    );
+		$labels = array(
+		'name'              => __('Formatos de post'),
+		'singular_name'     => __('Formato de post'),
+		'search_items'      => __('Procurar formatos de post'),
+		'all_items'         => __('Todas os formatos'),
+		'edit_item'         => __('Editar formato de post'),
+		'update_item'       => __('Atualizar formato de post'),
+		'add_new_item'      => __('Adicionar novo formato de post'),
+		'new_item_name'     => __('Novo formato de post'),
+		'menu_name'         => __('Formatos de post'),
+		);
+		$args   = array(
+			'hierarchical'       => true, // make it hierarchical (like categories)
+			'labels'             => $labels,
+			'show_ui'            => true,
+			'show_admin_column'  => true,
+			'show_in_quick_edit' => false,
+			'query_var'          => true,
+			'show_in_rest'       => true, // add support for Gutenberg editor
+			'rewrite'            => ['slug' => 'xtt-pa-format'],
+			'capabilities' 		  => array(
+				'edit_terms' 	  => false,
+				'delete_terms'    => false,
+			),
+		);
 
-    register_taxonomy('xtt-pa-format', ['post'], $args);
-  }
+		register_taxonomy('xtt-pa-format', ['post'], $args);
 
-  function enqueueAssets() {
+		/**
+		 * 
+		 * REGIÃO
+		 * 
+		 */
+
+		$labels = array(
+			'name'          => __('Região'),
+			'singular_name' => __('Região'),
+			'search_items'  => __('Procurar regiões'),
+			'all_items'     => __('Todas as região'),
+			'edit_item'     => __('Editar região'),
+			'update_item'   => __('Atualizar região'),
+			'add_new_item'  => __('Adicionar nova região'),
+			'new_item_name' => __('Nova região'),
+			'menu_name'     => __('Regiões'),
+		);
+
+		$args   = array(
+			'hierarchical'       => true, // make it hierarchical (like categories)
+			'labels'             => $labels,
+			'show_ui'            => true,
+			'show_admin_column'  => true,
+			'show_in_quick_edit' => false,
+			'query_var'          => true,
+			'show_in_rest'       => true, // add support for Gutenberg editor
+			'rewrite'            => ['slug' => 'xtt-pa-regiao'],
+			// 'capabilities' 		 => array(
+			// 	'edit_terms' 	 => false,
+			// 	'delete_terms'   => false,
+			// ),
+		);
+	
+		register_taxonomy('xtt-pa-regiao', ['post'], $args);
+	}
+
+  	function enqueueAssets() {
 		global $current_screen;
 
 		if($current_screen->id != 'post' && $current_screen->id != 'edit-post')
@@ -67,24 +101,24 @@ class PAThemeNoticiasInstall {
 		);
 	}
 
-  function removePostFormats() {
-	  remove_theme_support('post-formats');
-  }
+	function removePostFormats() {
+		remove_theme_support('post-formats');
+	}
 
-  function addCustomRoles() {
-    if($GLOBALS['wp_roles']->is_role('columnist'))
-      return;
+	function addCustomRoles() {
+		if($GLOBALS['wp_roles']->is_role('columnist'))
+			return;
 
-    add_role(
-      'columnist', 
-      __('Colunista'), 
-      array(
-        'read'         => true, // true allows this capability
-        'edit_posts'   => true,
-        'delete_posts' => true, // Use false to explicitly deny
-      )
-    );
-  }
+		add_role(
+			'columnist', 
+			__('Colunista'), 
+			array(
+				'read'         => true, // true allows this capability
+				'edit_posts'   => true,
+				'delete_posts' => true, // Use false to explicitly deny
+			)
+		);
+	}
 
 }
 

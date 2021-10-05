@@ -35,7 +35,7 @@ function getVideoLength(int $post_id, string $video_host, string $video_id): voi
 }
 
 /**
- * Get the post format
+ * getPostFormat Get the post format
  *
  * @param string $post_id The post ID
  * @return mixed
@@ -48,13 +48,26 @@ function getPostFormat($post_id) {
 }
 
 /**
- * Get the post editorial
+ * getPostEditorial Get the post editorial
  *
  * @param string $post_id The post ID
  * @return mixed
  */
 function getPostEditorial($post_id) {
     if($term = get_the_terms($post_id, 'xtt-pa-editorias'))
+        return $term[0];
+
+    return null;
+}
+
+/**
+ * getPostRegion Get the post region
+ *
+ * @param string $post_id The post ID
+ * @return mixed
+ */
+function getPostRegion($post_id) {
+    if($term = get_the_terms($post_id, 'xtt-pa-regiao'))
         return $term[0];
 
     return null;
@@ -98,38 +111,6 @@ function getRelatedPosts($post_id, $limit = 6): array {
     endif;
 
     return array();
-}
-
-/**
- * Create a share link
- *
- * @param string $post_id The post ID
- * @param string $social A Social Network [Twitter, Facebook or Whatsapp].
- * @return void
- */
-function linkToShare($post_id, $social): void {
-    $texto = get_the_excerpt($post_id);
-    $url = get_permalink($post_id);
-    $titulo = get_the_title($post_id);
-    $site = get_bloginfo('name');
-    $via = "IASD";
-    
-    switch($social):
-        case('twitter'):
-            echo "https://twitter.com/intent/tweet?text=" . urlencode(wp_html_excerpt($texto, (247 - strlen($via)), '...')) . "&via=" . $via . "&url=" . urlencode($url);
-
-            break;
-        case('facebook'):
-            echo "https://www.facebook.com/sharer/sharer.php?u=" . urlencode($url);
-
-            break;
-        case('whatsapp'):
-            echo "https://api.whatsapp.com/send?text=" . urlencode($titulo) . "%20-%20" . $site . "%20-%20" . urlencode($url);
-
-            break;
-        default:
-            die();
-    endswitch;
 }
 
 function getHeaderTitle($post_id = NULL) {
