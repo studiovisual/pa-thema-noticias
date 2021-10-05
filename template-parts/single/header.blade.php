@@ -1,14 +1,16 @@
 <header class="mb-4">
     <h1 class="fw-bold mb-3">{!! single_post_title() !!}</h1>
 
-    <h2 class="mb-3">{!! the_excerpt() !!}</h3>
+    <h2 class="mb-3">{!! \Illuminate\Support\Str::of(get_the_excerpt())->limit(250) !!}</h3>
 
     <div class="pa-post-meta">Por 
-        @if($custom_author = get_field('custom_author'))
-            {!! $custom_author !!}
-        @else
-            {!! get_the_author() !!}
-        @endif
+        <span>
+            @if($custom_author = get_field('custom_author'))
+                {!! $custom_author !!}
+            @else
+                {!! get_the_author() !!}
+            @endif
+        </span>
         
         @if($region = getPostRegion(get_the_ID()))
             | <span><i class="fas fa-map-marker-alt" aria-hidden="true"></i> {{ $region->name }}</span>
@@ -26,8 +28,8 @@
 
         <div class="">
             <ul class="pa-accessibility list-inline">
-                <li class="pa-text-dec list-inline-item"><a href="#" class="rounded p-2" onclick="pa_diminui_texto(event)">-A</a></li>
-                <li class="pa-text-inc list-inline-item"><a href="#" class="rounded p-2" onclick="pa_aumenta_texto(event)">+A</a></li>
+                <li class="pa-text-dec list-inline-item"><a href="#" class="rounded p-2" onclick="window.TextSize.pa_diminui_texto(event)">-A</a></li>
+                <li class="pa-text-inc list-inline-item"><a href="#" class="rounded p-2" onclick="window.TextSize.pa_aumenta_texto(event)">+A</a></li>
 
                 @if(get_post_meta(get_the_ID(), 'amazon_polly_enable', true))
                     <li class="pa-text-listen list-inline-item">
