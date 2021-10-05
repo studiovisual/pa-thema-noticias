@@ -10,8 +10,9 @@ class PAThemeNoticiasInstall {
 
   public function __construct() {
     add_action('after_setup_theme', array($this, 'installRoutines'));
-	add_action('admin_enqueue_scripts', array($this, 'enqueueAssets'));
-	add_action('after_setup_theme', array($this, 'removePostFormats'), 100);
+    add_action('admin_enqueue_scripts', array($this, 'enqueueAssets'));
+    add_action('after_setup_theme', array($this, 'removePostFormats'), 100);
+    add_action('init', array($this, 'addCustomRoles'));
   }
 
   function installRoutines() {
@@ -32,25 +33,26 @@ class PAThemeNoticiasInstall {
       'new_item_name'     => __('Novo formato de post'),
       'menu_name'         => __('Formatos de post'),
     );
+    
     $args   = array(
-		'hierarchical'       => true, // make it hierarchical (like categories)
-		'labels'             => $labels,
-		'show_ui'            => true,
-		'show_admin_column'  => true,
-		'show_in_quick_edit' => false,
-		'query_var'          => true,
-		'show_in_rest'       => true, // add support for Gutenberg editor
-		'rewrite'            => ['slug' => 'xtt-pa-format'],
-		'capabilities' 		  => array(
-			'edit_terms' 	  => false,
-			'delete_terms'    => false,
-		),
+      'hierarchical'       => true, // make it hierarchical (like categories)
+      'labels'             => $labels,
+      'show_ui'            => true,
+      'show_admin_column'  => true,
+      'show_in_quick_edit' => false,
+      'query_var'          => true,
+      'show_in_rest'       => true, // add support for Gutenberg editor
+      'rewrite'            => ['slug' => 'xtt-pa-format'],
+      'capabilities' 		  => array(
+        'edit_terms' 	  => false,
+        'delete_terms'    => false,
+      ),
     );
 
     register_taxonomy('xtt-pa-format', ['post'], $args);
   }
 
-  	function enqueueAssets() {
+  function enqueueAssets() {
 		global $current_screen;
 
 		if($current_screen->id != 'post' && $current_screen->id != 'edit-post')
@@ -66,7 +68,22 @@ class PAThemeNoticiasInstall {
 	}
 
   function removePostFormats() {
-	remove_theme_support('post-formats');
+	  remove_theme_support('post-formats');
+  }
+
+  function addCustomRoles() {
+    if($GLOBALS['wp_roles']->is_role('columnist'))
+      return;
+
+    add_role(
+      'columnist', 
+      __('Colunista'), 
+      array(
+        'read'         => true, // true allows this capability
+        'edit_posts'   => true,
+        'delete_posts' => true, // Use false to explicitly deny
+      )
+    );
   }
 
 }
