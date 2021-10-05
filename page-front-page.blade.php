@@ -16,7 +16,7 @@
 
                 <load-more template="card-post" args="{{ 'posts?_fields=featured_media_url.pa-block-render,title,excerpt,link,terms&exclude=' . implode(',', $exclude) }}">
                     <template id="card-post">
-                        <card-post *foreach="@{{this.posts}}" .post="@{{item}}"></card-post>
+                        <card-post *foreach="@{{this.items}}" .post="@{{item}}"></card-post>
                     </template>
                 </load-more>
             </div>

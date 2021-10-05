@@ -30,7 +30,7 @@ class PaAcfUserFields {
             'fields' => [
                 Text::make('Nome', 'column_name')
                     ->required(),
-                Textarea::make('Resumo', 'excerpt')
+                Textarea::make('Resumo', 'column_excerpt')
                     ->required(),
             ],
             'location' => [

@@ -1,3 +1,4 @@
+import './card-author';
 import './card-post';
 
 class LoadMore extends window.Slim {
@@ -5,7 +6,7 @@ class LoadMore extends window.Slim {
   constructor() {
     super();
     
-    this.posts = [];
+    this.items = [];
     this.totalPages = 0;
     this.args = this.attributes.getNamedItem('args').nodeValue;
     this.url = new URL(`${window.pa.url}${this.args}`);
@@ -54,7 +55,7 @@ class LoadMore extends window.Slim {
       if(request.readyState !== 4 || request.status !== 200)
         return;
 
-      request.response.forEach(post => this.posts = [...this.posts, post]);
+      request.response.forEach(item => this.items = [...this.items, item]);
 
       if(this.totalPages == 0)
         this.totalPages = parseInt(request.getResponseHeader('X-WP-TotalPages'));

@@ -118,6 +118,20 @@ add_action('rest_api_init', function() {
             'schema'          => null,
         )
     );
+
+    register_rest_field('user', 'avatar', array(
+            'get_callback'    => 'avatar_callback',
+            'update_callback' => null,
+            'schema'          => null,
+        )
+    );
+
+    register_rest_field('user', 'column', array(
+            'get_callback'    => 'column_callback',
+            'update_callback' => null,
+            'schema'          => null,
+        )
+    );
 });
 
 function featured_media_url_callback($post) {
@@ -139,6 +153,17 @@ function terms_callback($post) {
         'editorial' => !empty($editorial = getPostEditorial($post['id'])) ? $editorial->name : '',
         'format'    => !empty($format    = getPostFormat($post['id']))    ? $format->name    : '',
     ];
+}
+
+function avatar_callback($user) {
+    return get_field('user_avatar', 'user_' . $user['id']);
+}
+
+function column_callback($user) {
+    return [
+        'name'    => !empty($name    = get_field('column_name',    'user_' . $user['id'])) ? $name    : '',
+        'excerpt' => !empty($excerpt = get_field('column_excerpt', 'user_' . $user['id'])) ? $excerpt : '',
+    ]; 
 }
 
 function filter_rest_post_query( $args, $request ) { 
