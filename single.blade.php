@@ -3,7 +3,7 @@
 @php setup_postdata(get_post()); @endphp
 
 @section('content')
-    <div class="pa-content-container py-5">
+    <div class="pa-content-container pt-5 mt-3">
         <div class="container">
             <div class="row justify-content-center">
                 {{-- Main --}}
