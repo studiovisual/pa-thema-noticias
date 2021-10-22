@@ -8,8 +8,8 @@
 
 <div class="pa-content py-5">
 	<div class="container">
-        <div class="row">
-            <div class="col-12{{ is_active_sidebar('front-page') ? ' col-md-8' : '' }}">
+        <div class="row justify-content-{{ is_active_sidebar('front-page') ? 'between' : 'center' }}">
+            <div class="col-12 col-xl-7{{ is_active_sidebar('front-page') ? ' pe-xl-4' : '' }}">
                 <load-more template="card-post" args="{{ 'users?_fields=name,link,column,avatar.sizes.medium' }}">
                     <template id="card-post">
                         <card-author *foreach="@{{this.items}}" .author="@{{item}}"></card-author>

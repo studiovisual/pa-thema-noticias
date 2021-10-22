@@ -25,7 +25,7 @@ class LoadMore extends window.Slim {
     if(this.template)
       this.constructor.template += this.template.innerHTML;
 
-    this.constructor.template += '<div class="load-more-trigger position-absolute bottom-0 w-100" style="height: 320px;"></div></div>';
+    this.constructor.template += '<div class="load-more-trigger position-absolute bottom-0 w-100" style="height: 320px; z-index: -1;"></div></div>';
   }
 
   registerObserver() {

@@ -1,43 +1,45 @@
 class CardAuthor extends window.Slim {
 
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-    if(!this.author)
-        return;
+        if(!this.author)
+            return;
 
-    this.parseAvatar();
-  }
+        this.parseAvatar();
+    }
 
-  parseAvatar() {
-    if(!this.author.hasOwnProperty('avatar') || 
-        !this.author.avatar.hasOwnProperty('sizes') || 
-        !this.author.avatar.sizes.hasOwnProperty('medium'))
-        return;
+    parseAvatar() {
+        if(!this.author.avatar ||
+            !this.author.avatar.hasOwnProperty('sizes') || 
+            !this.author.avatar.sizes.hasOwnProperty('medium'))
+            return;
 
-    this.author.avatar = this.author.avatar.sizes.medium;
-  }
+        this.author.avatar = this.author.avatar.sizes.medium;
+    }
 
 }
   
 CardAuthor.useShadow = false;
 CardAuthor.template = /*html*/ `
-    <div class="pa-author-item mb-3">
+    <div class="pa-author-item pa-blog-item">
         <a href="{{ this.author.link }}" title="{{ this.author.name }}">
-            <div class="row">
-                <div class="{{ this.author.avatar ? 'col-auto' : 'd-none' }}">
+            <div class="row align-items-start align-items-sm-start">
+                <div class="col-auto pe-3">
                     <div class="ratio ratio-1x1">
-                        <figure class="figure m-xl-0">
-                            <img *if="{{ this.author.avatar }}" src="{{ this.author.avatar }}" class="figure-img img-fluid rounded m-0 h-100 w-100" alt="{{ this.author.name }}" />
+                        <figure class="figure m-0">
+                            <img src="{{ this.author.avatar ? this.author.avatar : 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjkwMCIgdmlld0JveD0iMCAwIDE2MDAgOTAwIj4KICA8cmVjdCBpZD0iUmV0w6JuZ3Vsb18xIiBkYXRhLW5hbWU9IlJldMOibmd1bG8gMSIgd2lkdGg9IjE2MDAiIGhlaWdodD0iOTAwIiBmaWxsPSIjOTA5MDkwIi8+Cjwvc3ZnPg==' }}" class="figure-img rounded-circle m-0 h-100 w-100" alt="{{ this.author.name }}" />
                         </figure>	
                     </div>
                 </div>
 
-                <div class="col">
+                <div class="col pe-sm-0 ps-0 ps-sm-3">
                     <div class="{{ this.author.featured_media_url['pa-block-render'] ? 'card-body p-0' : 'card-body ps-4 pe-0 py-4 border-start border-5 pa-border' }}">
-                        <h3 class="fw-bold h6 mt-xl-2">{{ this.author.name }}</h3>
+                        <span *if="{{ this.author.column.name }}" class="pa-tag text-uppercase d-inline-block rounded">{{ this.author.column.name }}</span>
 
-                        <p class="d-none d-xl-block m-0 pa-truncate-3">{{ this.author.excerpt.rendered }}</p>
+                        <h3 class="fw-bold h5">{{ this.author.name }}</h3>
+
+                        <p *if="{{ this.author.column.excerpt }}" class="m-0 pa-truncate-3">{{ this.author.column.excerpt }}</p>
                     </div>
                 </div>
             </div>

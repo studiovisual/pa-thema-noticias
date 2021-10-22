@@ -3,7 +3,7 @@
 namespace Blocks\PAListPosts;
 
 use Blocks\Block;
-use Blocks\Fields\MoreContent;
+use Fields\MoreContent;
 use WordPlate\Acf\Fields\Relationship;
 use WordPlate\Acf\Fields\Text;
 
