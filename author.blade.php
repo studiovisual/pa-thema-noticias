@@ -4,6 +4,12 @@
 
 <div class="pa-content py-5">
 	<div class="container">
+        <div class="row mb-4 mb-sm-5">
+            <div class="col-12">
+                @include('components.cards.card-author', ['id' => get_queried_object()->ID])
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-12{{ is_active_sidebar('front-page') ? ' col-md-8' : '' }}">
                 <load-more 
