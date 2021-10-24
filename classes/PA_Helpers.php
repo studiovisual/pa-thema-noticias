@@ -114,7 +114,9 @@ function getRelatedPosts($post_id, $limit = 6): array {
 }
 
 function getHeaderTitle($post_id = NULL) {
-    if(is_archive()) //is archive
+    if(is_author())
+        return get_queried_object()->display_name;
+    elseif(is_archive()) //is archive
         return get_taxonomy(get_queried_object()->taxonomy)->label . ' | ' . get_queried_object()->name;
     elseif(is_single()) //is single
         return get_taxonomy('xtt-pa-departamentos')->label . ' | ' . getDepartment($post_id)->name;
