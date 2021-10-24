@@ -5,15 +5,21 @@ class LoadMore extends window.Slim {
 
   constructor() {
     super();
+
+    this.url = this.attributes.getNamedItem('url')?.nodeValue;
+
+    if(!this.isUrl(this.url))
+      return;
     
     this.items = [];
     this.totalPages = 0;
-    this.args = this.attributes.getNamedItem('args').nodeValue;
-    this.url = new URL(`${window.pa.url}${this.args}`);
+    this.args = (this.args = this.attributes.getNamedItem('args')?.nodeValue).startsWith('?') ? this.args : `?${this.args}`;
+    this.method = this.method = this.attributes.getNamedItem('method')?.nodeValue ? this.method.toUpperCase() : 'GET';
+    this.nonce = this.attributes.getNamedItem('nonce')?.nodeValue;
+    this.url = new URL(`${this.url}${this.args}`);
 
-    this.removeAttribute('args');
-
-    this.loadMoreData();
+    if(this.args)
+      this.loadMoreData();
   }
 
   onBeforeCreated() {
@@ -46,13 +52,18 @@ class LoadMore extends window.Slim {
     const request = new XMLHttpRequest();
   
     this.url.searchParams.set('page', this.url.searchParams.has('page') ? parseInt(this.url.searchParams.get('page')) + 1 : 1);
-    request.open('GET', this.url.href, true);
+
     request.responseType = 'json';
+    request.open(this.method, this.method == 'GET' ? this.url.href : `${this.url.origin}${this.url.pathname}`, true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-    request.setRequestHeader('X-WP-Nonce', window.pa.nonce);
+
+    if(this.nonce)
+      request.setRequestHeader('X-WP-Nonce', this.nonce);
 
     request.onreadystatechange = () => { 
-      if(request.readyState !== 4 || request.status !== 200)
+      if(request.readyState !== 4 || 
+        request.status !== 200 ||
+        !Array.isArray(request.response))
         return;
 
       request.response.forEach(item => this.items = [...this.items, item]);
@@ -65,7 +76,12 @@ class LoadMore extends window.Slim {
         this.observer.unobserve(this.trigger);
     };
   
-    request.send();
+    request.send(this.method != 'GET' ? this.url.search.substring(1) : '');
+  }
+
+  isUrl() {
+    try { return Boolean(new URL(this.url)); }
+    catch(e){ return false; }
   }
 
 }
