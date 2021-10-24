@@ -4,6 +4,7 @@ use WordPlate\Acf\Location;
 use WordPlate\Acf\Fields\Image;
 use WordPlate\Acf\Fields\Text;
 use WordPlate\Acf\Fields\Textarea;
+use WordPlate\Acf\Fields\Url;
 
 class PaAcfUserFields {
 
@@ -18,6 +19,9 @@ class PaAcfUserFields {
             'fields' => [
                 Image::make('Avatar', 'user_avatar')
                     ->required(),
+                Url::make('Facebook', 'facebook'),
+                Url::make('Twitter', 'twitter'),
+                Url::make('Instagram', 'instagram'),
             ],
             'location' => [
                 Location::if('user_form', 'edit'),

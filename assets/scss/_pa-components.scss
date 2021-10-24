@@ -77,3 +77,74 @@
     }
   }
 }
+
+.pa-card-author {
+  border-radius: 8px;
+  background-color: var(--pa-color-gray06);
+  color: var(--pa-color-gray03);
+  padding: 24px 32px;
+
+  @media (min-width: 992px) {
+    padding: 40px;
+  }
+
+  .ratio {
+    height: 106px;
+    width: 106px;
+
+    @media (min-width: 992px) {
+      height: 144px;
+      width: 144px;
+    }
+  }
+
+  .figure-img {
+    object-fit: cover;
+  }
+
+  &__data {
+    @media (min-width: 992px) {
+      padding-left: 56px;
+    }
+  }
+
+  &__title {
+    color: var(--pa-color-gray01);
+    font-size: 1.125rem; // 18px
+  }
+
+  &__column-name {
+    color: var(--pa-color-default);
+    font-size: 1.125rem; // 18px
+
+    @media (min-width: 992px) {
+      font-size: 1.625rem; // 26px
+    }
+  }
+
+  &__column-excerpt {
+    font-weight: 600;
+  }
+
+  &__column-excerpt,
+  &__description {
+    @media (max-width: 992px) {
+      font-size: 0.875rem; // 14px
+    }
+  }
+
+  &__social a,
+  &__social a:hover {
+    color: var(--pa-color-default);
+    font-size: 1.125rem; // 18px
+    margin-right: 1.75rem; // 28px
+
+    &:last-child {
+      margin: 0;
+    }
+
+    @media (min-width: 992px) {
+      margin-right: 2rem; // 32px
+    }
+  }
+}
