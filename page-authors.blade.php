@@ -1,5 +1,5 @@
 {{-- 
-    Template name: Page - Front Page 
+    Template name: Page - Authors
 --}}
 
 @extends('layouts.app')
@@ -8,20 +8,16 @@
 
 <div class="pa-content py-5">
 	<div class="container">
-        @include('template-parts.featured-posts')
-
-        <div class="row">
-            <div class="col-12{{ is_active_sidebar('front-page') ? ' col-md-8' : '' }}">
-                @php global $exclude; @endphp
-
+        <div class="row justify-content-{{ is_active_sidebar('front-page') ? 'between' : 'center' }}">
+            <div class="col-12 col-xl-7{{ is_active_sidebar('front-page') ? ' pe-xl-4' : '' }}">
                 <load-more 
                     template="card-post" 
-                    url="{{ get_rest_url(null, 'wp/v2/posts') }}"
-                    args="{{ '_fields=featured_media_url.pa-block-render,title,excerpt,link,terms&exclude=' . implode(',', $exclude) }}"
+                    url="{{ get_rest_url(null, 'wp/v2/users') }}"
+                    args="{{ '_fields=name,link,column,avatar.sizes.medium&roles=columnist&per_page=10&orderby=id' }}"
                     nonce="{{ wp_create_nonce('wp_rest') }}"
                 >
                     <template id="card-post">
-                        <card-post *foreach="@{{this.items}}" .post="@{{item}}"></card-post>
+                        <card-author *foreach="@{{this.items}}" .author="@{{item}}"></card-author>
                     </template>
                 </load-more>
             </div>

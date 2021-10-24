@@ -15,6 +15,7 @@ new \Blocks\ChildBlocks;
 require_once(dirname(__FILE__) . '/classes/controllers/PA_ACF_Leaders.class.php');
 require_once(dirname(__FILE__) . '/classes/controllers/PA_ACF_HomeFields.class.php');
 require_once(dirname(__FILE__) . '/classes/controllers/PA_ACF_PostFields.class.php');
+require_once(dirname(__FILE__) . '/classes/controllers/PA_ACF_UserFields.class.php');
 require_once(dirname(__FILE__) . '/classes/controllers/PA_ACF_Site-ministries.class.php');
 require_once(dirname(__FILE__) . '/classes/controllers/PA_CPT_Projects.class.php');
 require_once(dirname(__FILE__) . '/classes/controllers/PA_CPT_Leaders.class.php');
@@ -117,6 +118,20 @@ add_action('rest_api_init', function() {
             'schema'          => null,
         )
     );
+
+    register_rest_field('user', 'avatar', array(
+            'get_callback'    => 'avatar_callback',
+            'update_callback' => null,
+            'schema'          => null,
+        )
+    );
+
+    register_rest_field('user', 'column', array(
+            'get_callback'    => 'column_callback',
+            'update_callback' => null,
+            'schema'          => null,
+        )
+    );
 });
 
 function featured_media_url_callback($post) {
@@ -138,6 +153,17 @@ function terms_callback($post) {
         'editorial' => !empty($editorial = getPostEditorial($post['id'])) ? $editorial->name : '',
         'format'    => !empty($format    = getPostFormat($post['id']))    ? $format->name    : '',
     ];
+}
+
+function avatar_callback($user) {
+    return get_field('user_avatar', 'user_' . $user['id']);
+}
+
+function column_callback($user) {
+    return [
+        'name'    => !empty($name    = get_field('column_name',    'user_' . $user['id'])) ? $name    : '',
+        'excerpt' => !empty($excerpt = get_field('column_excerpt', 'user_' . $user['id'])) ? $excerpt : '',
+    ]; 
 }
 
 function filter_rest_post_query( $args, $request ) { 
@@ -198,4 +224,62 @@ function filter_rest_post_query( $args, $request ) {
     return $args; 
 }   
 // add the filter 
-add_filter( "rest_post_query", "filter_rest_post_query", 10, 2 );
+add_filter('rest_post_query', 'filter_rest_post_query', 10, 2 );
+
+add_action( 'rest_api_init', function() {
+    $controller = new WP_REST_Users_Controller();
+
+    register_rest_route('wp/v2', '/users', array(
+        'methods'             => WP_REST_Server::READABLE,
+        'callback'            => array($controller, 'get_items'),
+        'permission_callback' => 'get_items_permissions_check',
+        'show_in_rest' => true
+    ));
+});
+
+/**
+ * Permissions check for getting all users.
+ *
+ * @since 4.7.0
+ *
+ * @param WP_REST_Request $request Full details about the request.
+ * @return true|WP_Error True if the request has read access, otherwise WP_Error object.
+ */
+function get_items_permissions_check( $request ) {
+    if ( 'edit' === $request['context'] && ! current_user_can( 'list_users' ) ) {
+        return new WP_Error(
+            'rest_forbidden_context',
+            __( 'Sorry, you are not allowed to list users.' ),
+            array( 'status' => rest_authorization_required_code() )
+        );
+    }
+
+    if ( in_array( $request['orderby'], array( 'email', 'registered_date' ), true ) && ! current_user_can( 'list_users' ) ) {
+        return new WP_Error(
+            'rest_forbidden_orderby',
+            __( 'Sorry, you are not allowed to order users by this parameter.' ),
+            array( 'status' => rest_authorization_required_code() )
+        );
+    }
+
+    if ( 'authors' === $request['who'] ) {
+        $types = get_post_types( array( 'show_in_rest' => true ), 'objects' );
+
+        foreach ( $types as $type ) {
+            if ( post_type_supports( $type->name, 'author' )
+                && current_user_can( $type->cap->edit_posts ) ) {
+                return true;
+            }
+        }
+
+        return new WP_Error(
+            'rest_forbidden_who',
+            __( 'Sorry, you are not allowed to query users by this parameter.' ),
+            array( 'status' => rest_authorization_required_code() )
+        );
+    }
+
+    return true;
+}
+
+add_filter('option_show_avatars', '__return_false');

@@ -1,18 +1,25 @@
+import './card-author';
 import './card-post';
 
 class LoadMore extends window.Slim {
 
   constructor() {
     super();
+
+    this.url = this.attributes.getNamedItem('url')?.nodeValue;
+
+    if(!this.isUrl(this.url))
+      return;
     
-    this.posts = [];
+    this.items = [];
     this.totalPages = 0;
-    this.args = this.attributes.getNamedItem('args').nodeValue;
-    this.url = new URL(`http://localhost/wp-json/wp/v2/${this.args}`);
+    this.args = (this.args = this.attributes.getNamedItem('args')?.nodeValue).startsWith('?') ? this.args : `?${this.args}`;
+    this.method = this.method = this.attributes.getNamedItem('method')?.nodeValue ? this.method.toUpperCase() : 'GET';
+    this.nonce = this.attributes.getNamedItem('nonce')?.nodeValue;
+    this.url = new URL(`${this.url}${this.args}`);
 
-    this.removeAttribute('args');
-
-    this.loadMoreData();
+    if(this.args)
+      this.loadMoreData();
   }
 
   onBeforeCreated() {
@@ -24,7 +31,7 @@ class LoadMore extends window.Slim {
     if(this.template)
       this.constructor.template += this.template.innerHTML;
 
-    this.constructor.template += '<div class="load-more-trigger position-absolute bottom-0 w-100" style="height: 320px;"></div></div>';
+    this.constructor.template += '<div class="load-more-trigger position-absolute bottom-0 w-100" style="height: 320px; z-index: -1;"></div></div>';
   }
 
   registerObserver() {
@@ -32,11 +39,8 @@ class LoadMore extends window.Slim {
 
     this.observer = new IntersectionObserver(
       (entries) => {
-        if(entries[0].isIntersecting === true) {
-          this.url.searchParams.set('page', this.url.searchParams.has('page') ? parseInt(this.url.searchParams.get('page')) + 1 : 1);
-    
+        if(entries[0].isIntersecting === true)
           this.loadMoreData();
-        }
       }, 
       { threshold: [0] }
     );
@@ -47,15 +51,22 @@ class LoadMore extends window.Slim {
   loadMoreData() {
     const request = new XMLHttpRequest();
   
-    request.open('GET', this.url.href, true);
+    this.url.searchParams.set('page', this.url.searchParams.has('page') ? parseInt(this.url.searchParams.get('page')) + 1 : 1);
+
     request.responseType = 'json';
+    request.open(this.method, this.method == 'GET' ? this.url.href : `${this.url.origin}${this.url.pathname}`, true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
 
+    if(this.nonce)
+      request.setRequestHeader('X-WP-Nonce', this.nonce);
+
     request.onreadystatechange = () => { 
-      if(request.readyState !== 4 || request.status !== 200)
+      if(request.readyState !== 4 || 
+        request.status !== 200 ||
+        !Array.isArray(request.response))
         return;
 
-      request.response.forEach(post => this.posts = [...this.posts, post]);
+      request.response.forEach(item => this.items = [...this.items, item]);
 
       if(this.totalPages == 0)
         this.totalPages = parseInt(request.getResponseHeader('X-WP-TotalPages'));
@@ -65,7 +76,12 @@ class LoadMore extends window.Slim {
         this.observer.unobserve(this.trigger);
     };
   
-    request.send();
+    request.send(this.method != 'GET' ? this.url.search.substring(1) : '');
+  }
+
+  isUrl() {
+    try { return Boolean(new URL(this.url)); }
+    catch(e){ return false; }
   }
 
 }

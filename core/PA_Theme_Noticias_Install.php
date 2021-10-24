@@ -12,6 +12,7 @@ class PAThemeNoticiasInstall {
 		add_action('after_setup_theme', array($this, 'installRoutines'));
 		add_action('admin_enqueue_scripts', array($this, 'enqueueAssets'));
 		add_action('after_setup_theme', array($this, 'removePostFormats'), 100);
+		add_action('init', array($this, 'addCustomRoles'));
 	}
 
 	function installRoutines() {
@@ -83,7 +84,6 @@ class PAThemeNoticiasInstall {
 		);
 	
 		register_taxonomy('xtt-pa-regiao', ['post'], $args);
-		
 	}
 
   	function enqueueAssets() {
@@ -103,6 +103,21 @@ class PAThemeNoticiasInstall {
 
 	function removePostFormats() {
 		remove_theme_support('post-formats');
+	}
+
+	function addCustomRoles() {
+		if($GLOBALS['wp_roles']->is_role('columnist'))
+			return;
+
+		add_role(
+			'columnist', 
+			__('Colunista'), 
+			array(
+				'read'         => true, // true allows this capability
+				'edit_posts'   => true,
+				'delete_posts' => true, // Use false to explicitly deny
+			)
+		);
 	}
 
 }

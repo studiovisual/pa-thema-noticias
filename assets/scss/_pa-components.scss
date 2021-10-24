@@ -38,3 +38,42 @@
   color: var(--pa-color-default-light) !important;
   opacity: 0.2;
 }
+
+.pa-author-item {
+  margin-bottom: 1.5rem; // 24px
+
+  @media (min-width: 576px) {
+    margin-bottom: 3.75rem; // 60px
+  }
+
+  .ratio {
+    height: 93px;
+    width: 93px;
+
+    @media (min-width: 576px) {
+      height: 170px;
+      width: 170px;
+    }
+  }
+
+  .figure-img {
+    object-fit: cover;
+  }
+
+  .pa-tag {
+    margin-bottom: 0.5rem; // 8px
+
+    @media (min-width: 576px) {
+      margin-bottom: 0.75rem; // 12px
+    }
+  }
+
+  p {
+    color: #717171;
+    font-size: 0.875rem; // 14px
+
+    @media (min-width: 576px) {
+      font-size: 1rem; // 16px
+    }
+  }
+}
