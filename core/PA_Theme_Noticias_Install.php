@@ -13,6 +13,7 @@ class PAThemeNoticiasInstall {
 		add_action('admin_enqueue_scripts', array($this, 'enqueueAssets'));
 		add_action('after_setup_theme', array($this, 'removePostFormats'), 100);
 		add_action('init', array($this, 'addCustomRoles'));
+		add_action('widgets_init', array($this, 'addWidgets'));
 	}
 
 	function installRoutines() {
@@ -118,6 +119,15 @@ class PAThemeNoticiasInstall {
 				'delete_posts' => true, // Use false to explicitly deny
 			)
 		);
+	}
+
+	function addWidgets() {
+		register_sidebar( array(
+			'name'          => __('Columnist', 'iasd'),
+			'id'            => 'author',
+			'before_widget' => '<div>',
+			'after_widget'  => '</div>',
+		) );
 	}
 
 }
