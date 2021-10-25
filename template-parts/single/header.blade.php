@@ -3,9 +3,11 @@
 
     <h2 class="mb-3 pb-3">{!! \Illuminate\Support\Str::of(get_the_excerpt())->limit(250) !!}</h3>
 
-    <div class="pa-post-meta mb-1">Por 
-        <span>{!! !empty($custom_author = get_field('custom_author')) ? $custom_author : get_the_author() !!}</span>@if($region = getPostRegion(get_the_ID()))<em class="pa-pipe">|</em><span class="ms-2"><i class="fas fa-map-marker-alt me-2" aria-hidden="true"></i> {{ $region->name }}</span>@endif
-    </div>
+    @if(!empty($format = getPostFormat(get_the_ID())) && $format->slug != 'artigo')        
+        <div class="pa-post-meta mb-1">Por 
+            <span>{!! !empty($custom_author = get_field('custom_author')) ? $custom_author : get_the_author() !!}</span>@if($region = getPostRegion(get_the_ID()))<em class="pa-pipe">|</em><span class="ms-2"><i class="fas fa-map-marker-alt me-2" aria-hidden="true"></i> {{ $region->name }}</span>@endif
+        </div>
+    @endif
 
     <div class="pa-post-meta">{!! the_date() !!}</div>
 

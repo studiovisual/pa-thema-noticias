@@ -148,3 +148,16 @@
     }
   }
 }
+
+.pa-post-link {
+  color: var(--pa-color-default);
+  font-size: 0.875rem; // 14px
+
+  &:hover {
+    color: var(--pa-color-default-light);
+  }
+}
+
+.pa-share-footer .list-inline {
+  margin: 0 !important;
+}
