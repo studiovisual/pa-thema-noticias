@@ -106,14 +106,18 @@ add_filter('script_loader_tag', function($tag, $handle) {
 
 
 add_action('rest_api_init', function() {
-	register_rest_field('post', 'featured_media_url', array(
+	register_rest_field(
+        array('post', 'press'), 
+        'featured_media_url', array(
 			'get_callback'    => 'featured_media_url_callback',
 			'update_callback' => null,
 			'schema'          => null,
 		)
 	);
 
-    register_rest_field('post', 'terms', array(
+    register_rest_field(
+        array('post', 'press'),
+        'terms', array(
             'get_callback'    => 'terms_callback',
             'update_callback' => null,
             'schema'          => null,

@@ -40,7 +40,7 @@ CardPost.template = /*html*/ `
 
                         <h3 class="fw-bold h6 mt-xl-2 pa-truncate-4">{{ this.post.title.rendered }}</h3>
 
-                        <p class="d-none d-xl-block m-0 pa-truncate-3">{{ this.post.excerpt.rendered }}</p>
+                        <p *if="{{ this.post.excerpt.rendered }}" class="d-none d-xl-block m-0 pa-truncate-3">{{ this.post.excerpt.rendered }}</p>
                     </div>
                 </div>
             </div>
