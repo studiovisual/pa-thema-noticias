@@ -2,6 +2,7 @@
 
 namespace Blocks;
 
+use Blocks\PAListColumnists\PAListColumnists;
 use Blocks\PAListPosts\PAListPosts;
 
 class ChildBlocks {
@@ -15,6 +16,7 @@ class ChildBlocks {
      */
     public function registerChildBlocks(array $blocks): array {
         $newBlocks = [
+            PAListColumnists::class,
             PAListPosts::class,
         ];
 
