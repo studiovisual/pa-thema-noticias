@@ -11,7 +11,7 @@
         </div>
 
         <div class="row">
-            <div class="col-12{{ is_active_sidebar('front-page') ? ' col-md-8' : '' }}">
+            <div class="col-12{{ is_active_sidebar('author') ? ' col-md-8' : '' }}">
                 <load-more 
                     template="card-post" 
                     url="{{ get_rest_url(null, 'wp/v2/posts') }}"
@@ -24,9 +24,9 @@
                 </load-more>
             </div>
 
-            @if(is_active_sidebar('front-page'))
+            @if(is_active_sidebar('author'))
                 <aside class="col-md-4 d-none d-xl-block">
-                    @php(dynamic_sidebar('front-page'))
+                    @php(dynamic_sidebar('author'))
                 </aside>
             @endif
         </div>
