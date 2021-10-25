@@ -12,11 +12,52 @@ class PAThemeNoticiasInstall {
 		add_action('after_setup_theme', array($this, 'installRoutines'));
 		add_action('admin_enqueue_scripts', array($this, 'enqueueAssets'));
 		add_action('after_setup_theme', array($this, 'removePostFormats'), 100);
+		add_filter('manage_edit-press_columns', array($this, 'removeFakeColumn'));
 		add_action('init', array($this, 'addCustomRoles'));
 		add_action('widgets_init', array($this, 'addWidgets'));
 	}
 
 	function installRoutines() {
+		/**
+		 * 
+		 * SALA DE IMPRENSA
+		 * 
+		 */
+		$labels = array(
+			'name'                  => __( 'Press', 'iasd' ),
+			'singular_name'         => __( 'Press', 'iasd' ),
+			'menu_name'             => __( 'Press', 'Admin Menu text', 'iasd' ),
+			'name_admin_bar'        => __( 'Add press', 'iasd' ),
+			'add_new'               => __( 'Add New', 'iasd' ),
+			'add_new_item'          => __( 'Add New press', 'iasd' ),
+			'new_item'              => __( 'New press', 'iasd' ),
+			'edit_item'             => __( 'Edit press', 'iasd' ),
+			'view_item'             => __( 'View press', 'iasd' ),
+			'all_items'             => __( 'All press', 'iasd' ),
+			'search_items'          => __( 'Search press', 'iasd' ),
+			'not_found'             => __( 'No press found.', 'iasd' ),
+			'not_found_in_trash'    => __( 'No press found in Trash.', 'iasd' ),
+		); 
+			
+		$args = array(
+			'labels'             => $labels,
+			'public'             => true,
+			'publicly_queryable' => true,
+			'show_ui'            => true,
+			'show_in_menu'       => true,
+			'query_var'          => true,
+			'rewrite'            => array('slug' => 'press'),
+			'capability_type'    => 'post',
+			'has_archive'        => true,
+			'hierarchical'       => false,
+			'menu_position'      => 4,
+			// 'supports'           => array( 'title', 'editor', 'author', 'thumbnail' ),
+			// 'taxonomies'         => array( 'category', 'post_tag' ),
+			'show_in_rest'       => true,
+		);
+			
+		register_post_type(__('Press', 'iasd'), $args );
+
 		/**
 		 * 
 		 * FORMATO DE POST
@@ -49,7 +90,41 @@ class PAThemeNoticiasInstall {
 			),
 		);
 
-		register_taxonomy('xtt-pa-format', ['post'], $args);
+		register_taxonomy('xtt-pa-format', ['post', 'press'], $args);
+
+		/**
+		 * 
+		 * FORMATO DE POST
+		 * 
+		 */
+
+		$labels = array(
+			'name'              => __('Press type'),
+			'singular_name'     => __('Press type'),
+			'search_items'      => __('Search items'),
+			'all_items'         => __('All items'),
+			'edit_item'         => __('Edit items'),
+			'update_item'       => __('Update item'),
+			'add_new_item'      => __('Add new item'),
+			'new_item_name'     => __('New item'),
+			'menu_name'         => __('Press type'),
+		);
+		$args = array(
+			'hierarchical'       => true, // make it hierarchical (like categories)
+			'labels'             => $labels,
+			'show_ui'            => true,
+			'show_admin_column'  => true,
+			'show_in_quick_edit' => false,
+			'query_var'          => true,
+			'show_in_rest'       => true, // add support for Gutenberg editor
+			'rewrite'            => ['slug' => 'xtt-pa-press-type'],
+			'capabilities' 		  => array(
+				'edit_terms' 	  => false,
+				'delete_terms'    => false,
+			),
+		);
+	
+		register_taxonomy('xtt-pa-press-type', ['press'], $args);
 
 		/**
 		 * 
@@ -85,6 +160,8 @@ class PAThemeNoticiasInstall {
 		);
 	
 		register_taxonomy('xtt-pa-regiao', ['post'], $args);
+
+		register_taxonomy_for_object_type('xtt-pa-editoria', 'press-room');
 	}
 
   	function enqueueAssets() {
@@ -114,9 +191,7 @@ class PAThemeNoticiasInstall {
 			'columnist', 
 			__('Colunista'), 
 			array(
-				'read'         => true, // true allows this capability
-				'edit_posts'   => true,
-				'delete_posts' => true, // Use false to explicitly deny
+				'read' => true, // true allows this capability
 			)
 		);
 	}
@@ -128,6 +203,12 @@ class PAThemeNoticiasInstall {
 			'before_widget' => '<div>',
 			'after_widget'  => '</div>',
 		) );
+	}
+
+	function removeFakeColumn($posts_columns) {
+		unset($posts_columns['fake']);
+
+		return $posts_columns;
 	}
 
 }
