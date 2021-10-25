@@ -6,33 +6,6 @@
 
 @section('content')
 
-<div class="pa-content py-5">
-	<div class="container">
-        @include('template-parts.featured-posts')
-
-        <div class="row">
-            <div class="col-12{{ is_active_sidebar('front-page') ? ' col-md-8' : '' }}">
-                @php global $exclude; @endphp
-
-                <load-more 
-                    template="card-post" 
-                    url="{{ get_rest_url(null, 'wp/v2/posts') }}"
-                    args="{{ '_fields=featured_media_url.pa-block-render,title,excerpt,link,terms&exclude=' . implode(',', $exclude) }}"
-                    nonce="{{ wp_create_nonce('wp_rest') }}"
-                >
-                    <template id="card-post">
-                        <card-post *foreach="@{{this.items}}" .post="@{{item}}"></card-post>
-                    </template>
-                </load-more>
-            </div>
-
-            @if(is_active_sidebar('front-page'))
-                <aside class="col-md-4 d-none d-xl-block">
-                    @php(dynamic_sidebar('front-page'))
-                </aside>
-            @endif
-        </div>
-    </div>
-</div>
+@include('template-parts.home')
 
 @endsection

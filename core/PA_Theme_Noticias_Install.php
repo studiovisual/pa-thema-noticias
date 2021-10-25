@@ -9,7 +9,7 @@
 class PAThemeNoticiasInstall {
 
 	public function __construct() {
-		add_action('after_setup_theme', array($this, 'installRoutines'));
+		add_action('after_setup_theme', array($this, 'installRoutines'), 11);
 		add_action('admin_enqueue_scripts', array($this, 'enqueueAssets'));
 		add_action('after_setup_theme', array($this, 'removePostFormats'), 100);
 		add_filter('manage_edit-press_columns', array($this, 'removeFakeColumn'));
@@ -51,7 +51,7 @@ class PAThemeNoticiasInstall {
 			'has_archive'        => true,
 			'hierarchical'       => false,
 			'menu_position'      => 4,
-			// 'supports'           => array( 'title', 'editor', 'author', 'thumbnail' ),
+			'supports'           => array( 'title', 'editor', 'author', 'thumbnail' ),
 			// 'taxonomies'         => array( 'category', 'post_tag' ),
 			'show_in_rest'       => true,
 		);
@@ -161,7 +161,7 @@ class PAThemeNoticiasInstall {
 	
 		register_taxonomy('xtt-pa-regiao', ['post'], $args);
 
-		register_taxonomy_for_object_type('xtt-pa-editoria', 'press-room');
+		register_taxonomy_for_object_type('xtt-pa-editorias', 'press');
 	}
 
   	function enqueueAssets() {

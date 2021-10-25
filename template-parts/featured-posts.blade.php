@@ -14,7 +14,8 @@
                 'ignore_sticky_posts' => 1,
                 'post__not_in'        => $items,
                 'posts_per_page'      => $count - count($items),
-                'fields'              => 'ids'
+                'fields'              => 'ids',
+                'post_type'           => isset($post_type) && !empty($post_type) ? $post_type : 'post',
             )
         );
 
