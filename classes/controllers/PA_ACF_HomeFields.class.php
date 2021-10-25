@@ -8,12 +8,18 @@ use WordPlate\Acf\Fields\Relationship;
 class PaAcfHomeFields {
 
     public function __construct() {
-        add_action('init', [$this, 'createACFFields']);
+        add_action('init', [$this, 'init']);
     }
 
-    function createACFFields() {
+    function init() {
+        $this->createACFFields('page-front-page.blade.php', 'post');
+        $this->createACFFields('page-press-room.blade.php', 'press');
+    }
+
+    function createACFFields($template, $postType) {
         register_extended_field_group([
             'title' => 'Destaques',
+            'key'   => "featured_{$postType}",
             'style' => 'default',
             'fields' => [
                 ButtonGroup::make('Modelo', 'featured_layout')
@@ -23,23 +29,23 @@ class PaAcfHomeFields {
                         3 => '3 posts',
                     ])
                     ->defaultValue(1),
-                $this->relationshipField(1),
-                $this->relationshipField(2),
-                $this->relationshipField(3),
+                $this->relationshipField(1, $postType),
+                $this->relationshipField(2, $postType),
+                $this->relationshipField(3, $postType),
             ],
             'location' => [
-                Location::if('page_template', 'page-front-page.blade.php'),
+                Location::if('page_template', $template),
             ]
         ]);
     }
 
-    protected function relationshipField($count = 1) {
+    protected function relationshipField($count = 1, $postType) {
 		$count = !empty($count) ? $count : 1;
 
 		return 
 			Relationship::make('Posts em destaque', "featured_items_{$count}")
 				->instructions("Selecione até {$count} post" . ($count > 1 ? 's' : '') ." de destaque")
-				->postTypes(['post'])
+				->postTypes([$postType])
 				->filters([
 					'search',
 					'taxonomy'
