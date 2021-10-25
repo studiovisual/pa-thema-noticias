@@ -14,7 +14,7 @@
 
                 <load-more 
                     template="card-post" 
-                    url="{{ get_rest_url(null, 'wp/v2/posts') }}"
+                    url="{{ isset($api_url) && !empty($api_url) ? $api_url : get_rest_url(null, 'wp/v2/posts') }}"
                     args="{{ '_fields=featured_media_url.pa-block-render,title,excerpt,link,terms&exclude=' . implode(',', $exclude) }}"
                     nonce="{{ wp_create_nonce('wp_rest') }}"
                 >
