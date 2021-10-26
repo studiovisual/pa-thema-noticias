@@ -1,5 +1,5 @@
 @if(is_admin())
-	<img class="img-preview" src="{{ get_stylesheet_directory_uri() }}/Blocks/PAListPosts/preview.png"/>
+	<img class="img-preview" src="{{ get_stylesheet_directory_uri() }}/Blocks/PAListPosts/preview-{{ $block['slug'] }}.png"/>
 @else
 	<div class="pa-widget pa-w-list-posts col mb-5 col-md-4">
 		@notempty($title)
