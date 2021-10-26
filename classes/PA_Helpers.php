@@ -114,14 +114,14 @@ function getRelatedPosts($post_id, $limit = 6): array {
 }
 
 function getHeaderTitle($post_id = NULL) {
-    if(is_author())
-        return get_queried_object()->display_name;
+    if(is_author() || is_singular('post') && !empty($format = getPostFormat($post_id)) && $format->slug == 'artigo')
+        return 'Coluna | ' . (is_author() ? get_queried_object()->display_name : get_the_author_meta('display_name'));
     elseif(is_archive()) //is archive
         return get_taxonomy(get_queried_object()->taxonomy)->label . ' | ' . get_queried_object()->name;
-    elseif(is_single() && !empty($format = getPostFormat($post_id)) && $format->slug == 'artigo') //is single
-        return 'Coluna | ' . $format->name;
-    elseif(is_single()) //is single
-        return get_taxonomy('xtt-pa-departamentos')->label . ' | ' . getDepartment($post_id)->name;
+    elseif(is_singular('post')) //is single
+        return getPostEditorial($post_id)->name;
+    elseif(is_singular('press')) //is single
+        return __('Press room', 'iasd');
     
     return the_title(); //default
 }
