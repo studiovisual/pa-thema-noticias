@@ -1,5 +1,5 @@
 <footer class="mb-5">
-    @if(!empty($format = getPostFormat(get_the_ID())) && $format->slug == 'artigo')
+    @if(!empty($format = getPostFormat(get_the_ID())) && $format->slug == 'artigo' && is_singular('post'))
         @php
             $previous = get_previous_post(true, '', 'xtt-pa-format');   
             $next = get_next_post(true, '', 'xtt-pa-format');
