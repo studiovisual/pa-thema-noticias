@@ -39,7 +39,7 @@ class PAContact extends Block {
 
 			Email::make(__('Email', 'iasd'), 'email'),
 
-			PhoneNumber::make(__('Phone', 'iasd'))
+			PhoneNumber::make(__('Phone', 'iasd'), 'phone')
 		];
 	}
 	    
@@ -50,10 +50,10 @@ class PAContact extends Block {
      */
     public function with(): array {
         return [
-            'title'  	   => get_field('title'),
-			'items' 	   => get_field('items'),
-			'enable_link'  => get_field('enable_link'),
-			'link'    	   => get_field('link'),
+            'title'  	  => get_field('title'),
+			'description' => get_field('description'),
+			'email' 	  => get_field('email'),
+			'phone'    	  => get_field('phone'),
         ];
     }
 
