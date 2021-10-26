@@ -2,10 +2,12 @@
     global $exclude;
     $count = get_field('featured_layout');
     $count = !empty($count) ? $count : 1;
-    $items = get_field("featured_items_{$count}");
+    $items = get_field("featured_items_{$count}")['data'];
 
     if(empty($items))
         $items = array();
+    else 
+        $items = array_column($items, 'id');
 
     if($count - count($items) > 0):
         $query = new WP_Query(

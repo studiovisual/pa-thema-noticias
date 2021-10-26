@@ -1,9 +1,9 @@
 <?php
 
+use Extended\LocalData;
 use WordPlate\Acf\Location;
 use WordPlate\Acf\ConditionalLogic;
 use WordPlate\Acf\Fields\ButtonGroup;
-use WordPlate\Acf\Fields\Relationship;
 
 class PaAcfHomeFields {
 
@@ -12,11 +12,11 @@ class PaAcfHomeFields {
     }
 
     function init() {
-        $this->createACFFields('page-front-page.blade.php', 'post');
-        $this->createACFFields('page-press-room.blade.php', 'press');
+        $this->createACFFields('page-front-page.blade.php', 'post', ['xtt-pa-sedes', 'xtt-pa-editorias', 'xtt-pa-projetos']);
+        $this->createACFFields('page-press-room.blade.php', 'press', ['xtt-pa-press-type']);
     }
 
-    function createACFFields($template, $postType) {
+    function createACFFields($template, $postType, $taxonomies) {
         register_extended_field_group([
             'title' => 'Destaques',
             'key'   => "featured_{$postType}",
@@ -29,9 +29,9 @@ class PaAcfHomeFields {
                         3 => '3 posts',
                     ])
                     ->defaultValue(1),
-                $this->relationshipField(1, $postType),
-                $this->relationshipField(2, $postType),
-                $this->relationshipField(3, $postType),
+                $this->relationshipField(1, $postType, $taxonomies),
+                $this->relationshipField(2, $postType, $taxonomies),
+                $this->relationshipField(3, $postType, $taxonomies),
             ],
             'location' => [
                 Location::if('page_template', $template),
@@ -39,21 +39,17 @@ class PaAcfHomeFields {
         ]);
     }
 
-    protected function relationshipField($count = 1, $postType) {
+    protected function relationshipField($count = 1, $postType, $taxonomies) {
 		$count = !empty($count) ? $count : 1;
 
-		return 
-			Relationship::make('Posts em destaque', "featured_items_{$count}")
-				->instructions("Selecione até {$count} post" . ($count > 1 ? 's' : '') ." de destaque")
-				->postTypes([$postType])
-				->filters([
-					'search',
-					'taxonomy'
-				])
-				->elements(['featured_image'])
-				->max($count)
-				->returnFormat('id')
-				->conditionalLogic([
+		return
+            LocalData::make(__('Featured posts', 'iasd'), "featured_items_{$count}")
+                ->instructions("Selecione até {$count} post" . ($count > 1 ? 's' : '') ." de destaque")
+                ->postTypes([$postType])
+                ->initialLimit($count)
+                ->filterTaxonomies($taxonomies)
+                ->limitFilter(false)
+                ->conditionalLogic([
 					ConditionalLogic::if('featured_layout')->equals($count)
 				]);
 	}
