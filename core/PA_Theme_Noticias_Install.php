@@ -1,5 +1,7 @@
 <?php
 
+use Log1x\AcfPhoneNumber\PhoneNumberField;
+
 /**
  * 
  * Bootloader Install
@@ -10,6 +12,7 @@ class PAThemeNoticiasInstall {
 
 	public function __construct() {
 		add_action('after_setup_theme', array($this, 'installRoutines'), 11);
+		add_action('after_setup_theme', array($this, 'phoneNumberField'), 11);
 		add_action('admin_enqueue_scripts', array($this, 'enqueueAssets'));
 		add_action('after_setup_theme', array($this, 'removePostFormats'), 100);
 		add_filter('manage_edit-press_columns', array($this, 'removeFakeColumn'));
@@ -216,6 +219,19 @@ class PAThemeNoticiasInstall {
 		unset($posts_columns['fake']);
 
 		return $posts_columns;
+	}
+
+	function phoneNumberField() {
+		foreach (['acf/include_field_types', 'acf/register_fields'] as $hook) {
+			remove_all_filters($hook);
+			
+            add_filter($hook, function() {
+                return new PhoneNumberField(
+                    get_stylesheet_directory_uri() . '/vendor/log1x/acf-phone-number/public',
+                    get_stylesheet_directory() . '/vendor/log1x/acf-phone-number/public'
+                );
+            });
+        }
 	}
 
 }

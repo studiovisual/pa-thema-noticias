@@ -9,7 +9,14 @@
 	],
     "autoload": {
         "psr-4": {
+            "Extended\\": "Extended/",
             "Blocks\\": "Blocks/"
-        }
+        },
+        "files": [
+            "vendor/log1x/acf-phone-number/plugin.php"
+        ]
+    },
+    "require": {
+        "log1x/acf-phone-number": "^1.1"
     }
 }
