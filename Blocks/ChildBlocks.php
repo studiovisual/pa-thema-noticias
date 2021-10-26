@@ -5,6 +5,7 @@ namespace Blocks;
 use Blocks\PAContact\PAContact;
 use Blocks\PAListColumnists\PAListColumnists;
 use Blocks\PAListPosts\PAListPosts;
+use Blocks\PAListPosts\PAListPress;
 
 class ChildBlocks {
 
@@ -20,6 +21,7 @@ class ChildBlocks {
             PAContact::class,
             PAListColumnists::class,
             PAListPosts::class,
+            PAListPress::class,
         ];
 
         return array_merge($blocks, $newBlocks);
