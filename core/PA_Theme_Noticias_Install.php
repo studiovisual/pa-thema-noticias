@@ -197,12 +197,19 @@ class PAThemeNoticiasInstall {
 	}
 
 	function addWidgets() {
-		register_sidebar( array(
+		register_sidebar(array(
 			'name'          => __('Columnist', 'iasd'),
 			'id'            => 'author',
 			'before_widget' => '<div>',
 			'after_widget'  => '</div>',
-		) );
+		));
+
+		register_sidebar(array(
+			'name'          => __('Front press', 'iasd'),
+			'id'            => 'front-press',
+			'before_widget' => '<div>',
+			'after_widget'  => '</div>',
+		));
 	}
 
 	function removeFakeColumn($posts_columns) {
