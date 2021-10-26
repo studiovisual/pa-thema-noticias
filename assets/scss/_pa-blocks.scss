@@ -12,3 +12,28 @@
         font-size: 1.125rem; // 18px
     }
 }
+
+.pa-w-contact {
+    background-color: var(--pa-color-gray06);
+
+    &__icon {
+        color: var(--pa-color-default) !important;
+        font-size: 2rem; // 32px
+    }
+
+    &__title {
+        font-size: 1.125rem; // 18px
+    }
+
+    a {
+        color: var(--pa-color-default) !important;
+      
+        &:hover {
+          color: var(--pa-color-default-light);
+        }
+
+        i {
+            margin-right: 12px;
+        }
+    }
+}

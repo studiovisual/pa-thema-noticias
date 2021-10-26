@@ -2,6 +2,7 @@
 
 namespace Blocks;
 
+use Blocks\PAContact\PAContact;
 use Blocks\PAListColumnists\PAListColumnists;
 use Blocks\PAListPosts\PAListPosts;
 
@@ -16,6 +17,7 @@ class ChildBlocks {
      */
     public function registerChildBlocks(array $blocks): array {
         $newBlocks = [
+            PAContact::class,
             PAListColumnists::class,
             PAListPosts::class,
         ];
