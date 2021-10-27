@@ -3,8 +3,8 @@
 namespace Blocks\PAListPosts;
 
 use Blocks\Block;
+use Extended\LocalData;
 use Fields\MoreContent;
-use WordPlate\Acf\Fields\Relationship;
 use WordPlate\Acf\Fields\Text;
 
 /**
@@ -35,16 +35,11 @@ class PAListPress extends Block {
 				Text::make(__('Title', 'title'))
 					->defaultValue(__('IASD - List press', 'iasd')),
 
-				Relationship::make('Posts', 'items')
+				LocalData::make('Posts', 'items')
 					->postTypes(['press'])
-					->filters([
-						'search',
-						'taxonomy'
-					])
-					->elements(['featured_image'])
-					->min(1)
-					->returnFormat('id')
-					->required()
+					->manualItems(false)
+					->initialLimit(4)
+					->filterTaxonomies(['xtt-pa-press-type'])
 			],
 			MoreContent::make()
 		);
@@ -58,7 +53,7 @@ class PAListPress extends Block {
     public function with(): array {
         return [
             'title'  	   => get_field('title'),
-			'items' 	   => get_field('items'),
+			'items' 	   => array_column(get_field('items')['data'], 'id'),
 			'enable_link'  => get_field('enable_link'),
 			'link'    	   => get_field('link'),
         ];
