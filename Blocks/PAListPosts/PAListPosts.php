@@ -3,8 +3,8 @@
 namespace Blocks\PAListPosts;
 
 use Blocks\Block;
+use Extended\LocalData;
 use Fields\MoreContent;
-use WordPlate\Acf\Fields\Relationship;
 use WordPlate\Acf\Fields\Text;
 
 /**
@@ -16,8 +16,8 @@ class PAListPosts extends Block {
     public function __construct() {
 		// Set block settings
         parent::__construct([
-            'title' 	  => 'IASD - Lista posts',
-            'description' => 'Lista de posts',
+            'title' 	  => __('IASD - Posts list', 'iasd'),
+            'description' => __('Posts list', 'iasd'),
             'category' 	  => 'pa-adventista',
 			'keywords' 	  => ['list', 'posts'],
 			'icon' 		  => 'megaphone',
@@ -32,19 +32,14 @@ class PAListPosts extends Block {
 	protected function setFields(): array {
 		return array_merge(
 			[
-				Text::make('Título', 'title')
+				Text::make(__('Title', 'iasd'), 'title')
 					->defaultValue('IASD - Lista posts'),
 
-				Relationship::make('Posts', 'items')
+				LocalData::make('Posts', 'items')
 					->postTypes(['post'])
-					->filters([
-						'search',
-						'taxonomy'
-					])
-					->elements(['featured_image'])
-					->min(1)
-					->returnFormat('id')
-					->required()
+					->manualItems(false)
+					->initialLimit(4)
+					->filterTaxonomies(['xtt-pa-sedes', 'xtt-pa-editorias', 'xtt-pa-projetos'])
 			],
 			MoreContent::make()
 		);
@@ -58,7 +53,7 @@ class PAListPosts extends Block {
     public function with(): array {
         return [
             'title'  	   => get_field('title'),
-			'items' 	   => get_field('items'),
+			'items' 	   => array_column(get_field('items')['data'], 'id'),
 			'enable_link'  => get_field('enable_link'),
 			'link'    	   => get_field('link'),
         ];
