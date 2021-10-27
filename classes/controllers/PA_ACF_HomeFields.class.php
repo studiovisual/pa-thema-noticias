@@ -13,7 +13,7 @@ class PaAcfHomeFields {
 
     function init() {
         $this->createACFFields('page-front-page.blade.php', 'post', ['xtt-pa-sedes', 'xtt-pa-editorias', 'xtt-pa-projetos']);
-        $this->createACFFields('page-press-room.blade.php', 'press', ['xtt-pa-press-type']);
+        $this->createACFFields('page-press-room.blade.php', 'press', []);
     }
 
     function createACFFields($template, $postType, $taxonomies) {
@@ -48,6 +48,7 @@ class PaAcfHomeFields {
                 ->postTypes([$postType])
                 ->initialLimit($count)
                 ->filterTaxonomies($taxonomies)
+                ->manualItems(false)
                 ->limitFilter(false)
                 ->conditionalLogic([
 					ConditionalLogic::if('featured_layout')->equals($count)
