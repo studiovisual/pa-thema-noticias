@@ -29,7 +29,7 @@
 								@endif
 								
 								<div class="col-12{{ has_post_thumbnail($item) ? ' col-md-7' : '' }}">
-									<div class="card-body p-0">
+									<div class="card-body{{ has_post_thumbnail($item) ? ' p-0' : ' ps-4 pe-0 border-start border-5 pa-border' }}">
 										@notempty($format)
 											<span class="pa-tag text-uppercase d-none d-xl-table-cell rounded">{{ $format->name }}</span>
 										@endnotempty
