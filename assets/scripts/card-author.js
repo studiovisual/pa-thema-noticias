@@ -11,11 +11,10 @@ class CardAuthor extends window.Slim {
 
     parseAvatar() {
         if(!this.author.avatar ||
-            !this.author.avatar.hasOwnProperty('sizes') || 
-            !this.author.avatar.sizes.hasOwnProperty('medium'))
+            !this.author.avatar.hasOwnProperty('medium'))
             return;
 
-        this.author.avatar = this.author.avatar.sizes.medium;
+        this.author.avatar = this.author.avatar.medium;
     }
 
 }

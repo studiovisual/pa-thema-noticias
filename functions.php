@@ -161,7 +161,17 @@ function terms_callback($post) {
 }
 
 function avatar_callback($user) {
-    return get_field('user_avatar', 'user_' . $user['id']);
+    $img_id = get_field('user_avatar', 'user_' . $user['id']);
+
+    $img_scr = Array(
+		'full'             => !empty($full    = wp_get_attachment_image_src($img_id, ''))             ? $full[0]    : '',
+		'medium'           => !empty($medium  = wp_get_attachment_image_src($img_id, 'medium_large')) ? $medium[0]  : '',
+		'small'            => !empty($small   = wp_get_attachment_image_src($img_id, 'thumbnail'))    ? $small[0]   : '',
+		'pa-block-preview' => !empty($preview = wp_get_attachment_image_src($img_id, 'medium_large')) ? $preview[0] : '',
+		'pa-block-render'  => !empty($render  = wp_get_attachment_image_src($img_id, 'medium_large')) ? $render[0]  : '',
+	);
+
+    return $img_scr;
 }
 
 function column_callback($user) {

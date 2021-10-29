@@ -53,7 +53,7 @@ class PAThemeNoticiasInstall {
 			'has_archive'        => true,
 			'hierarchical'       => false,
 			'menu_position'      => 4,
-			'supports'           => array( 'title', 'editor', 'author', 'thumbnail' ),
+			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt' ),
 			// 'taxonomies'         => array( 'category', 'post_tag' ),
 			'show_in_rest'       => true,
 		);
@@ -208,6 +208,13 @@ class PAThemeNoticiasInstall {
 	}
 
 	function setWidgets() {
+		register_sidebar(array(
+			'name'          => __('Archive columnists', 'iasd'),
+			'id'            => 'archive-authors',
+			'before_widget' => '<div>',
+			'after_widget'  => '</div>',
+		));
+
 		register_sidebar(array(
 			'name'          => __('Columnist', 'iasd'),
 			'id'            => 'author',

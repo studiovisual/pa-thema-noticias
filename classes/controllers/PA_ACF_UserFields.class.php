@@ -18,6 +18,7 @@ class PaAcfUserFields {
             'style'  => 'default',
             'fields' => [
                 Image::make('Avatar', 'user_avatar')
+                    ->returnFormat('id')
                     ->required(),
                 Url::make('Facebook', 'facebook'),
                 Url::make('Twitter', 'twitter'),

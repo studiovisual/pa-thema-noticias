@@ -9,13 +9,16 @@
         $column_name    = get_field('column_name', $key);
         $column_excerpt = get_field('column_excerpt', $key);
         $data           = get_userdata($id);
+
+        if(!empty($avatar))
+            $avatar = !empty($small = wp_get_attachment_image_src($avatar, 'thumbnail')) ? $small[0]   : '';
     @endphp
 
     <div class="pa-card-author d-flex flex-column flex-lg-row">
         <div class="col-auto align-items-center d-flex flex-column mb-4 mb-lg-0">
             <div class="ratio ratio-1x1">
                 <figure class="figure m-0">
-                    <img src="{{ is_array($avatar) && array_key_exists('sizes', $avatar) ? $avatar['sizes']['thumbnail'] : 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjkwMCIgdmlld0JveD0iMCAwIDE2MDAgOTAwIj4KICA8cmVjdCBpZD0iUmV0w6JuZ3Vsb18xIiBkYXRhLW5hbWU9IlJldMOibmd1bG8gMSIgd2lkdGg9IjE2MDAiIGhlaWdodD0iOTAwIiBmaWxsPSIjOTA5MDkwIi8+Cjwvc3ZnPg==' }}" class="figure-img rounded-circle m-0 h-100 w-100" alt="{{ $data->display_name }}" />
+                    <img src="{{ !empty($avatar) ? $avatar : 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjkwMCIgdmlld0JveD0iMCAwIDE2MDAgOTAwIj4KICA8cmVjdCBpZD0iUmV0w6JuZ3Vsb18xIiBkYXRhLW5hbWU9IlJldMOibmd1bG8gMSIgd2lkdGg9IjE2MDAiIGhlaWdodD0iOTAwIiBmaWxsPSIjOTA5MDkwIi8+Cjwvc3ZnPg==' }}" class="figure-img rounded-circle m-0 h-100 w-100" alt="{{ $data->display_name }}" />
                 </figure>	
             </div>
 

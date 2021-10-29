@@ -1,5 +1,5 @@
 @if(is_admin())
-	<img class="img-preview" src="{{ get_stylesheet_directory_uri() }}/Blocks/PAListPosts/preview.png"/>
+	<img class="img-preview" src="{{ get_stylesheet_directory_uri() }}/Blocks/PAListColumnists/preview.png"/>
 @else
 	<div class="pa-widget pa-w-list-columns col mb-5 col-md-4">
 		@notempty($title)
@@ -14,6 +14,9 @@
 						$avatar      = get_field('user_avatar', $key);
 						$column_name = get_field('column_name', $key);
 						$data        = get_userdata($item);
+
+						if(!empty($avatar))
+            				$avatar = !empty($small = wp_get_attachment_image_src($avatar, 'thumbnail')) ? $small[0]   : '';
 					@endphp
 
 					<div class="pa-author-item pa-blog-item">
@@ -22,7 +25,7 @@
 								<div class="col-auto pe-3">
 									<div class="ratio ratio-1x1">
 										<figure class="figure m-0">
-											<img src="{{ !empty($avatar) ? $avatar['sizes']['medium'] : 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjkwMCIgdmlld0JveD0iMCAwIDE2MDAgOTAwIj4KICA8cmVjdCBpZD0iUmV0w6JuZ3Vsb18xIiBkYXRhLW5hbWU9IlJldMOibmd1bG8gMSIgd2lkdGg9IjE2MDAiIGhlaWdodD0iOTAwIiBmaWxsPSIjOTA5MDkwIi8+Cjwvc3ZnPg==' }}" class="figure-img rounded-circle m-0 h-100 w-100" alt="{{ $data->display_name }}" />
+											<img src="{{ !empty($avatar) ? $avatar : 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjkwMCIgdmlld0JveD0iMCAwIDE2MDAgOTAwIj4KICA8cmVjdCBpZD0iUmV0w6JuZ3Vsb18xIiBkYXRhLW5hbWU9IlJldMOibmd1bG8gMSIgd2lkdGg9IjE2MDAiIGhlaWdodD0iOTAwIiBmaWxsPSIjOTA5MDkwIi8+Cjwvc3ZnPg==' }}" class="figure-img rounded-circle m-0 h-100 w-100" alt="{{ $data->display_name }}" />
 										</figure>	
 									</div>
 								</div>
