@@ -16,7 +16,7 @@ class PAThemeNoticiasInstall {
 		add_action('after_setup_theme', array($this, 'removePostFormats'), 100);
 		add_filter('manage_edit-press_columns', array($this, 'removeFakeColumn'));
 		add_action('init', array($this, 'addCustomRoles'));
-		add_action('widgets_init', array($this, 'addWidgets'));
+		add_action('widgets_init', array($this, 'setWidgets'), 11);
 	}
 
 	function installRoutines() {
@@ -207,7 +207,7 @@ class PAThemeNoticiasInstall {
 		);
 	}
 
-	function addWidgets() {
+	function setWidgets() {
 		register_sidebar(array(
 			'name'          => __('Columnist', 'iasd'),
 			'id'            => 'author',
@@ -221,6 +221,9 @@ class PAThemeNoticiasInstall {
 			'before_widget' => '<div>',
 			'after_widget'  => '</div>',
 		));
+
+		unregister_sidebar('index');
+		unregister_sidebar('single');
 	}
 
 	function removeFakeColumn($posts_columns) {
