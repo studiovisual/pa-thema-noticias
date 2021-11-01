@@ -32,12 +32,12 @@
 
 								<div class="col ps-1">
 									<div class="card-body p-0">
-										@notempty($column_name)
-											<span class="pa-tag text-uppercase d-inline-block rounded">{!! $column_name !!}</span>
-										@endnotempty
-
 										@notempty($data->display_name)
 											<h3 class="fw-bold m-0">{!! $data->display_name !!}</h3>
+										@endnotempty
+
+										@notempty($column_name)
+											<p class="pa-truncate-2 m-0">{!! $column_name !!}</p>
 										@endnotempty
 									</div>
 								</div>

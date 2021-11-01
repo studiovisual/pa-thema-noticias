@@ -33,10 +33,10 @@ CardAuthor.template = /*html*/ `
                 </div>
 
                 <div class="col pe-sm-0 ps-0 ps-sm-3">
-                    <div class="{{ this.author.featured_media_url['pa-block-render'] ? 'card-body p-0' : 'card-body ps-4 pe-0 py-4 border-start border-5 pa-border' }}">
-                        <span *if="{{ this.author.column.name }}" class="pa-tag text-uppercase d-inline-block rounded">{{ this.author.column.name }}</span>
-
+                    <div class="{{ this.author.featured_media_url['pa-block-render'] ? 'card-body p-0' : 'card-body ps-4 pe-0 py-4 border-start border-5 pa-border' }}">                        
                         <h3 class="fw-bold h5">{{ this.author.name }}</h3>
+
+                        <span *if="{{ this.author.column.name }}" class="h5 mb-2 pa-truncate-3">{{ this.author.column.name }}</span>
 
                         <p *if="{{ this.author.column.excerpt }}" class="m-0 pa-truncate-3">{{ this.author.column.excerpt }}</p>
                     </div>
