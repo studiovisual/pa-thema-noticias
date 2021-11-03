@@ -1,7 +1,7 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=igrejaadventista_pa-theme-downloads&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=igrejaadventista_pa-theme-downloads)
 
 # Portal Aventista - [noticias.adventistas.org](https://noticias.adventistas.org)
-Esse tema foi desenvolvido para ser a base do portal de [notícias](https://downloads.adventistas.org). Ele depende to tema [PA-Theme-Sedes](https://github.com/igrejaadventista/pa-theme-sedes) (Por favor, instale-o junto).
+Esse tema foi desenvolvido para ser a base do portal de [notícias](https://noticias.adventistas.org). Ele depende to tema [PA-Theme-Sedes](https://github.com/igrejaadventista/pa-theme-sedes) (Por favor, instale-o junto).
 
 ### Instalando dependências globais
 Siga as intruções antes começar a desenvolver no tema:
