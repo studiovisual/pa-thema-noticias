@@ -54,16 +54,19 @@ class PAListColumnists extends Block {
 				$query->query_orderby = str_replace('user_login', 'RAND()', $query->query_orderby);
 		});
 
-		$query = new \WP_User_Query(
-			array(
-				'id'				  => 'pa-list-columnists',
-				'role' 				  => 'columnist',
-				'number' 			  => get_field('count'),
-				'has_published_posts' => ['post'],
-				'orderby'        	  => 'rand',
-				'fields' 			  => 'ID',
-			) 
-		);
+		$args = [
+			'id'				  => 'pa-list-columnists',
+			'role' 				  => 'columnist',
+			'number' 			  => get_field('count'),
+			'has_published_posts' => ['post'],
+			'orderby'        	  => 'rand',
+			'fields' 			  => 'ID',
+		];
+
+		$query = new \WP_User_Query($args);
+
+		if(is_a(get_queried_object(), 'WP_User'))
+			$args['exclude'] = [get_queried_object()->ID];
 
         return [
             'title'  	   => get_field('title'),
