@@ -7,8 +7,8 @@
 
 	<div class="pa-content py-5">
 		<div class="container">
-			<div class="row row-cols-auto">
-				<section class="col-12{{ is_active_sidebar('archive') ? ' col-md-8' : '' }}">
+			<div class="row justify-content-center">
+				<section class="col-12 col-md-8">
 					@includeWhen(get_query_var('paged') < 1 && $queryFeatured->found_posts > 0, 'template-parts.global.feature', [
 						'post'   => $queryFeatured->posts[0],
 						'format' => !empty($format = getPostFormat($queryFeatured->posts[0]->ID)) ? $format->name : '',
