@@ -12,7 +12,7 @@
 					@php $format = getPostFormat($item); @endphp
 
 					<div class="card mb-5 mb-xl-4 border-0">
-						<a href="{{ get_permalink($item) }}">
+						<a href="{{ get_permalink($item) }}" title="{!! wp_strip_all_tags(get_the_title($item)) !!}">
 							<div class="row">
 								@if(has_post_thumbnail($item))
 									<div class="col-12 col-md-5">
@@ -34,7 +34,7 @@
 											<span class="pa-tag text-uppercase d-none d-xl-table-cell rounded">{{ $format->name }}</span>
 										@endnotempty
 
-										<h3 class="card-title mt-xl-2 h6 fw-bold">{{ get_the_title($item) }}</h3>
+										<h3 class="card-title mt-xl-2 mb-0 h6 fw-bold pa-truncate-2">{!! wp_strip_all_tags(get_the_title($item)) !!}</h3>
 									</div>
 								</div>
 							</div>
