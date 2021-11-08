@@ -4,8 +4,8 @@
 
 <div class="pa-content py-5">
 	<div class="container">
-        <div class="row mb-4 mb-sm-5">
-            <div class="col-12">
+        <div class="row mb-4 mb-xl-5 pb-xl-3">
+            <div class="col-12 mb-xl-3">
                 @include('components.cards.card-author', ['id' => get_queried_object()->ID])
             </div>
         </div>

@@ -164,6 +164,14 @@
 
 card-post {
   .pa-blog-item {
+    .img-container {
+      width: 45.6%;
+
+      @media (min-width: 1200px) {
+        width: 35.8%;
+      }
+    }
+
     h3 {
       @media (max-width: 1199px) {
         font-size: 0.938rem; // 15px
