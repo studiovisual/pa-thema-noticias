@@ -161,3 +161,22 @@
 .pa-share-footer .list-inline {
   margin: 0 !important;
 }
+
+card-post {
+  .pa-blog-item {
+    h3 {
+      @media (max-width: 1199px) {
+        font-size: 0.938rem; // 15px
+      }
+    }
+
+    p {
+      display: none !important;
+      font-size: 0.875rem; // 14px
+  
+      @media (min-width: 1200px) {
+        display: -webkit-box !important;
+      }
+    }
+  }
+}

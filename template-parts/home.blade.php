@@ -2,7 +2,7 @@
     $sidebar = isset($sidebar) && !empty($sidebar) ? $sidebar : 'front-page';
 @endphp
 
-<div class="pa-content py-5">
+<div class="pa-content py-3 mt-1 mt-md-4">
 	<div class="container">
         @include('template-parts.featured-posts', [
             'post_type' => isset($post_type) && !empty($post_type) ? $post_type : 'post',

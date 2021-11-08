@@ -29,11 +29,11 @@
 @endphp
 
 @notempty($items)
-    <div class="row pa-widget pa-w-featured-post position-relative mb-5">
+    <div class="row pa-widget pa-w-featured-post position-relative pb-0 mb-md-5 pb-md-2">
         @foreach($items as $item)
             @if(count($items) == 3)
                 @if($loop->index == 0)
-                    <div class="col-md-8">
+                    <div class="col-md-8 pe-md-2">
                 @elseif($loop->index == 1)
                     <div class="col-md-4">
                 @endif
@@ -44,9 +44,9 @@
                     $class = '';
 
                     if((count($items) == 3 && $loop->index == 1) || count($items) == 1)
-                        $class = ' mb-3';
+                        $class = ' mb-3 pb-1 pb-md-0';
                     elseif(count($items) > 1)
-                        $class = ' mb-3 mb-md-0';
+                        $class = ' mb-3 mb-md-0 pb-1 pb-md-0';
                     else
                         $class = ' mb-3 pb-md-3 mb-md-4';
                 @endphp
@@ -60,7 +60,7 @@
 
                                     <figcaption class="figure-caption position-absolute w-100 p-3 rounded-bottom">
                                         @notempty(getPostFormat($item))
-                                            <span class="pa-tag rounded-1 text-uppercase mb-2 d-none d-md-table-cell px-2">{{ getPostFormat($item)->name }}</span>
+                                            <span class="pa-tag rounded-1 text-uppercase mb-2 d-table-cell px-2">{{ getPostFormat($item)->name }}</span>
                                         @endnotempty
                                         
                                         <h3 class="h5 pt-2 pa-truncate-2">{!! get_the_title($item) !!}</h3>
