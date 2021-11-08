@@ -172,6 +172,10 @@ card-post {
       }
     }
 
+    .pa-img-tag {
+      max-width: 82%;
+    }
+
     h3 {
       @media (max-width: 1199px) {
         font-size: 0.938rem; // 15px
