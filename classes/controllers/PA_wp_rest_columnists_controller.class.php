@@ -134,7 +134,7 @@ class PaWpRestColumnistsController extends WP_REST_Controller {
 		 */
 		$prepared_args = apply_filters( 'rest_columnist_query', $prepared_args, $request );
 
-		$prepared_args['role__in'] = 'columnist';
+		$prepared_args['role__in'] = 'colunista';
 
 		$query = new WP_User_Query( $prepared_args );
 

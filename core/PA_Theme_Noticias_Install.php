@@ -195,14 +195,12 @@ class PAThemeNoticiasInstall {
 	}
 
 	function addCustomRoles() {
-		if($GLOBALS['wp_roles']->is_role('columnist'))
-			return;
-
 		add_role(
-			'columnist', 
+			'colunista', 
 			__('Colunista'), 
 			array(
-				'read' => true, // true allows this capability
+				'level_1' => true,
+				'read' => true,
 			)
 		);
 	}
