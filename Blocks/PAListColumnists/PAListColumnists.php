@@ -56,17 +56,17 @@ class PAListColumnists extends Block {
 
 		$args = [
 			'id'				  => 'pa-list-columnists',
-			'role' 				  => 'columnist',
+			'role' 				  => 'colunista',
 			'number' 			  => get_field('count'),
 			'has_published_posts' => ['post'],
 			'orderby'        	  => 'rand',
 			'fields' 			  => 'ID',
 		];
 
-		$query = new \WP_User_Query($args);
-
 		if(is_a(get_queried_object(), 'WP_User'))
 			$args['exclude'] = [get_queried_object()->ID];
+
+		$query = new \WP_User_Query($args);
 
         return [
             'title'  	   => get_field('title'),
