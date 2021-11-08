@@ -15,8 +15,8 @@
 						<a href="{{ get_permalink($item) }}" title="{!! wp_strip_all_tags(get_the_title($item)) !!}">
 							<div class="row">
 								@if(has_post_thumbnail($item))
-									<div class="col-12 col-md-5">
-										<div class="ratio ratio-16x9">
+									<div class="img-container">
+										<div class="ratio ratio-21x13">
 											<figure class="figure m-xl-0">
 												<img 
 													class="figure-img img-fluid rounded m-0"
@@ -28,7 +28,7 @@
 									</div>
 								@endif
 								
-								<div class="col-12{{ has_post_thumbnail($item) ? ' col-md-7' : '' }}">
+								<div class="col">
 									<div class="card-body{{ has_post_thumbnail($item) ? ' p-0' : ' ps-4 pe-0 border-start border-5 pa-border' }}">
 										@notempty($format)
 											<span class="pa-tag text-uppercase d-none d-xl-table-cell rounded">{{ $format->name }}</span>
