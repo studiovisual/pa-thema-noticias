@@ -203,6 +203,18 @@ class PAThemeNoticiasInstall {
 				'read' => true,
 			)
 		);
+
+		// TODO: remover após deploy
+		$blogusers = get_users( 'role=columnist' );
+		foreach ( $blogusers as $user ) {
+
+			$user->remove_role( 'columnist' );
+
+			// Add role
+			$user->add_role( 'colunista' );
+		}
+
+		remove_role('columnist');
 	}
 
 	function setWidgets() {
