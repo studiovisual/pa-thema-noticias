@@ -24,7 +24,7 @@ CardPost.template = /*html*/ `
     <div class="pa-blog-item mb-3 border-0">
         <a href="{{ this.post.link }}" title="{{ this.post.title.rendered }}">
             <div class="row align-items-center">
-                <div class="{{ this.post.featured_media_url['pa-block-render'] ? 'col-5 col-md-4' : 'd-none' }}">
+                <div class="{{ this.post.featured_media_url['pa-block-render'] ? 'img-container' : 'd-none' }}">
                     <div class="ratio ratio-16x9">
                         <figure class="figure m-xl-0">
                             <img *if="{{ this.post.featured_media_url['pa-block-render'] }}" src="{{ this.post.featured_media_url['pa-block-render'] }}" class="figure-img img-fluid rounded m-0 h-100 w-100" alt="{{ this.post.title.rendered }}" />
