@@ -22,7 +22,7 @@
 
 				@notempty($phone)
 					<div class="mt-2">
-						<a class="d-inline-flex align-items-center" href="tel:{{ $phone }}"><i class="fas fa-phone-alt" aria-hidden="true"></i>{{ $phone }}</a>
+						<a class="d-inline-flex align-items-center" href="{{ $phone->uri() }}"><i class="fas fa-phone-alt" aria-hidden="true"></i>{{ $phone->international() }}</a>
 					</div>
 				@endnotempty
 			</div>
