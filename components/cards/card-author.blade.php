@@ -11,7 +11,7 @@
         $data           = get_userdata($id);
 
         if(!empty($avatar))
-            $avatar = !empty($small = wp_get_attachment_image_src($avatar, 'thumbnail')) ? $small[0]   : '';
+            $avatar = !empty($small = wp_get_attachment_image_src($avatar, 'full')) ? $small[0]   : '';
     @endphp
 
     <div class="pa-card-author d-flex flex-column flex-lg-row">

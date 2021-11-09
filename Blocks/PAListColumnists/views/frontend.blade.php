@@ -16,7 +16,7 @@
 						$data        = get_userdata($item);
 
 						if(!empty($avatar))
-            				$avatar = !empty($small = wp_get_attachment_image_src($avatar, 'thumbnail')) ? $small[0]   : '';
+            				$avatar = !empty($small = wp_get_attachment_image_src($avatar, 'full')) ? $small[0]   : '';
 					@endphp
 
 					<div class="pa-author-item pa-blog-item">
