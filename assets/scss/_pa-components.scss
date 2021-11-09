@@ -172,6 +172,12 @@ card-post {
       }
     }
 
+    .ratio {
+      @media (max-width: 1199px) {
+        --bs-aspect-ratio: calc(86 / 147 * 100%) !important;
+      }
+    }
+
     .pa-img-tag {
       max-width: 82%;
     }
