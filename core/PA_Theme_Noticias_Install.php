@@ -178,6 +178,9 @@ class PAThemeNoticiasInstall {
   	function enqueueAssets() {
 		global $current_screen;
 
+		if($current_screen->id == 'user-edit')
+			wp_enqueue_media();
+
 		if($current_screen->id != 'post' && $current_screen->id != 'edit-post')
 			return;
 
