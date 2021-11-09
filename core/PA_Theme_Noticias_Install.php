@@ -242,4 +242,4 @@ class PAThemeNoticiasInstall {
 
 }
 
-new PAThemeNoticiasInstall();
+$PAThemeNoticiasInstall = new PAThemeNoticiasInstall();

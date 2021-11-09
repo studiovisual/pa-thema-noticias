@@ -86,78 +86,13 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./assets/scripts/card-post.js":
-/*!*************************************!*\
-  !*** ./assets/scripts/card-post.js ***!
-  \*************************************/
+/***/ "./assets/scripts/card-author.js":
+/*!***************************************!*\
+  !*** ./assets/scripts/card-author.js ***!
+  \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// import 'slim-js';
-// import 'slim-js/dist/directives/all';
-window.Slim.element('card-post',
-/*html*/
-"\n        <div class=\"pa-blog-item mb-3 border-0\">\n            <a href=\"{{ this.post.link }}\" title=\"{{ this.post.title.rendered }}\">\n                <div class=\"row\">\n                    <div class=\"col\">\n                        <div class=\"card-body ps-4 pe-0 py-4 border-start border-5 pa-border\">\n\n                            <h3 *if=\"{{this.post.render}}\" class=\"fw-bold h6 mt-xl-2 pa-truncate-4\">{{ this.post.title.rendered }}</h3>\n\n                            <p class=\"d-none d-xl-block m-0 pa-truncate-3\">{{ this.post.excerpt.rendered }}</p>\n                        </div>\n                    </div>\n                </div>\n            </a>\n        </div>\n    "); // class CardPost extends window.Slim {
-//   constructor() {
-//     super();
-//     this.args = this.attributes.getNamedItem('args').nodeValue;
-//    this.posts = [
-//       {
-//         name: 'teste 123',
-//       },
-//       {
-//         name: 'teste 456',
-//       },
-//     ];
-//     this.template = document.getElementById('test').outerHTML;
-//   }
-// }
-// CardPost.template = /*html*/ `
-//     <div class="pa-blog-item mb-3 border-0">
-//         <a href="{{ this.post.link }}" title="{{ this.post.title.rendered }}">
-//             <div class="row">
-//                 @if(has_post_thumbnail($id))
-//                     <div class="col-5 col-md-4">
-//                         <div class="ratio ratio-16x9">
-//                             <figure class="figure m-xl-0">
-//                                 <img src="{{ check_immg($id, 'full') }}" class="figure-img img-fluid rounded m-0 h-100 w-100" alt="{{ get_the_title($id) }}">
-//                                 @notempty($editorial)
-//                                     <figcaption class="pa-img-tag figure-caption text-uppercase rounded-right d-none d-md-table-cell">{!! $editorial->name !!}</figcaption>
-//                                 @endnotempty
-//                             </figure>	
-//                         </div>
-//                     </div>
-//                 @endif
-//                 <div class="col">
-//                     <div class="card-body{{ has_post_thumbnail($id) ? ' p-0' : ' ps-4 pe-0 py-4 border-start border-5 pa-border' }}">
-//                         @notempty($format)
-//                             <span class="pa-tag text-uppercase d-none d-xl-table-cell rounded">{{ $format->name }}</span>
-//                         @endnotempty
-//                         <h3 class="fw-bold h6 mt-xl-2 pa-truncate-4">{{ this.post.title.rendered }}</h3>
-//                         <p class="d-none d-xl-block m-0 pa-truncate-3">{{ this.post.excerpt.rendered }}</p>
-//                     </div>
-//                 </div>
-//             </div>
-//         </a>
-//     </div>
-// `;
-// customElements.define('load-more', CardPost);
-
-/***/ }),
-
-/***/ "./assets/scripts/load-more.js":
-/*!*************************************!*\
-  !*** ./assets/scripts/load-more.js ***!
-  \*************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var slim_js_dist_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! slim-js/dist/index */ "./node_modules/slim-js/dist/index.js");
-/* harmony import */ var slim_js_dist_directives_all__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! slim-js/dist/directives/all */ "./node_modules/slim-js/dist/directives/all.js");
-/* harmony import */ var _card_post__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./card-post */ "./assets/scripts/card-post.js");
-/* harmony import */ var _card_post__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_card_post__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -277,6 +212,373 @@ function _getPrototypeOf(o) {
   return _getPrototypeOf(o);
 }
 
+var CardAuthor = /*#__PURE__*/function (_window$Slim) {
+  _inherits(CardAuthor, _window$Slim);
+
+  var _super = _createSuper(CardAuthor);
+
+  function CardAuthor() {
+    var _this;
+
+    _classCallCheck(this, CardAuthor);
+
+    _this = _super.call(this);
+    if (!_this.author) return _possibleConstructorReturn(_this);
+
+    _this.parseAvatar();
+
+    return _this;
+  }
+
+  _createClass(CardAuthor, [{
+    key: "parseAvatar",
+    value: function parseAvatar() {
+      if (!this.author.avatar || !this.author.avatar.hasOwnProperty('full')) return;
+      this.author.avatar = this.author.avatar.full;
+    }
+  }]);
+
+  return CardAuthor;
+}(window.Slim);
+
+CardAuthor.useShadow = false;
+CardAuthor.template =
+/*html*/
+"\n    <div class=\"pa-author-item pa-blog-item\">\n        <a href=\"{{ this.author.link }}\" title=\"{{ this.author.name }}\">\n            <div class=\"row align-items-start align-items-sm-start\">\n                <div class=\"col-auto pe-3\">\n                    <div class=\"ratio ratio-1x1\">\n                        <figure class=\"figure m-0\">\n                            <img src=\"{{ this.author.avatar ? this.author.avatar : 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjkwMCIgdmlld0JveD0iMCAwIDE2MDAgOTAwIj4KICA8cmVjdCBpZD0iUmV0w6JuZ3Vsb18xIiBkYXRhLW5hbWU9IlJldMOibmd1bG8gMSIgd2lkdGg9IjE2MDAiIGhlaWdodD0iOTAwIiBmaWxsPSIjOTA5MDkwIi8+Cjwvc3ZnPg==' }}\" class=\"figure-img rounded-circle m-0 h-100 w-100\" alt=\"{{ this.author.name }}\" />\n                        </figure>\t\n                    </div>\n                </div>\n\n                <div class=\"col pe-sm-0 ps-0 ps-sm-3\">\n                    <div class=\"{{ this.author.featured_media_url['pa-block-render'] ? 'card-body p-0' : 'card-body ps-4 pe-0 py-4 border-start border-5 pa-border' }}\">                        \n                        <h3 class=\"fw-bold h5\">{{ this.author.name }}</h3>\n\n                        <span *if=\"{{ this.author.column.name }}\" class=\"h5 mb-2 pa-truncate-3\">{{ this.author.column.name }}</span>\n\n                        <p *if=\"{{ this.author.column.excerpt }}\" class=\"m-0 pa-truncate-3\">{{ this.author.column.excerpt }}</p>\n                    </div>\n                </div>\n            </div>\n        </a>\n    </div>\n";
+customElements.define('card-author', CardAuthor);
+
+/***/ }),
+
+/***/ "./assets/scripts/card-post.js":
+/*!*************************************!*\
+  !*** ./assets/scripts/card-post.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+function _createSuper(Derived) {
+  var hasNativeReflectConstruct = _isNativeReflectConstruct();
+
+  return function _createSuperInternal() {
+    var Super = _getPrototypeOf(Derived),
+        result;
+
+    if (hasNativeReflectConstruct) {
+      var NewTarget = _getPrototypeOf(this).constructor;
+
+      result = Reflect.construct(Super, arguments, NewTarget);
+    } else {
+      result = Super.apply(this, arguments);
+    }
+
+    return _possibleConstructorReturn(this, result);
+  };
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  } else if (call !== void 0) {
+    throw new TypeError("Derived constructors may only return object or undefined");
+  }
+
+  return _assertThisInitialized(self);
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+function _isNativeReflectConstruct() {
+  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+  if (Reflect.construct.sham) return false;
+  if (typeof Proxy === "function") return true;
+
+  try {
+    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+var CardPost = /*#__PURE__*/function (_window$Slim) {
+  _inherits(CardPost, _window$Slim);
+
+  var _super = _createSuper(CardPost);
+
+  function CardPost() {
+    var _this;
+
+    _classCallCheck(this, CardPost);
+
+    _this = _super.call(this);
+    if (!_this.post) return _possibleConstructorReturn(_this);
+
+    _this.parseExcerpt();
+
+    return _this;
+  }
+
+  _createClass(CardPost, [{
+    key: "parseExcerpt",
+    value: function parseExcerpt() {
+      if (!this.post.hasOwnProperty('excerpt')) return;
+      this.post.excerpt.rendered = this.post.excerpt.rendered.replace(/(<([^>]+)>)/gi, '');
+      this.post.excerpt.rendered = this.post.excerpt.rendered.replace('[&hellip;]', '');
+    }
+  }]);
+
+  return CardPost;
+}(window.Slim);
+
+CardPost.useShadow = false;
+CardPost.template =
+/*html*/
+"\n    <div class=\"pa-blog-item mb-3 border-0\">\n        <a href=\"{{ this.post.link }}\" title=\"{{ this.post.title.rendered }}\">\n            <div class=\"row align-items-center\">\n                <div class=\"{{ this.post.featured_media_url['pa-block-render'] ? 'img-container' : 'd-none' }}\">\n                    <div class=\"ratio ratio-16x9\">\n                        <figure class=\"figure m-xl-0\">\n                            <img *if=\"{{ this.post.featured_media_url['pa-block-render'] }}\" src=\"{{ this.post.featured_media_url['pa-block-render'] }}\" class=\"figure-img img-fluid rounded m-0 h-100 w-100\" alt=\"{{ this.post.title.rendered }}\" />\n\n                            <figcaption *if=\"{{ this.post.terms.editorial }}\" class=\"pa-img-tag figure-caption text-uppercase d-table-cell\">{{ this.post.terms.editorial }}</figcaption>\n                        </figure>\t\n                    </div>\n                </div>\n\n                <div class=\"col\">\n                    <div class=\"{{ this.post.featured_media_url['pa-block-render'] ? 'card-body p-0' : 'card-body ps-4 pe-0 py-4 border-start border-5 pa-border' }}\">\n                        <span *if=\"{{ this.post.terms.format }}\" class=\"pa-tag text-uppercase d-table-cell rounded py-0\">{{ this.post.terms.format }}</span>\n\n                        <h3 class=\"fw-bold h6 mt-2 pa-truncate-4\">{{ this.post.title.rendered }}</h3>\n\n                        <p *if=\"{{ this.post.excerpt.rendered }}\" class=\"m-0 pa-truncate-3\">{{ this.post.excerpt.rendered }}</p>\n                    </div>\n                </div>\n            </div>\n        </a>\n    </div>\n";
+customElements.define('card-post', CardPost);
+
+/***/ }),
+
+/***/ "./assets/scripts/load-more.js":
+/*!*************************************!*\
+  !*** ./assets/scripts/load-more.js ***!
+  \*************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _card_author__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./card-author */ "./assets/scripts/card-author.js");
+/* harmony import */ var _card_author__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_card_author__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _card_post__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./card-post */ "./assets/scripts/card-post.js");
+/* harmony import */ var _card_post__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_card_post__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+
+function _iterableToArray(iter) {
+  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
+}
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+function _createSuper(Derived) {
+  var hasNativeReflectConstruct = _isNativeReflectConstruct();
+
+  return function _createSuperInternal() {
+    var Super = _getPrototypeOf(Derived),
+        result;
+
+    if (hasNativeReflectConstruct) {
+      var NewTarget = _getPrototypeOf(this).constructor;
+
+      result = Reflect.construct(Super, arguments, NewTarget);
+    } else {
+      result = Super.apply(this, arguments);
+    }
+
+    return _possibleConstructorReturn(this, result);
+  };
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  } else if (call !== void 0) {
+    throw new TypeError("Derived constructors may only return object or undefined");
+  }
+
+  return _assertThisInitialized(self);
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+function _isNativeReflectConstruct() {
+  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+  if (Reflect.construct.sham) return false;
+  if (typeof Proxy === "function") return true;
+
+  try {
+    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
 
 
 
@@ -287,31 +589,22 @@ var LoadMore = /*#__PURE__*/function (_window$Slim) {
   var _super = _createSuper(LoadMore);
 
   function LoadMore() {
+    var _this$attributes$getN, _this$attributes$getN2, _this$attributes$getN3, _this$attributes$getN4;
+
     var _this;
 
     _classCallCheck(this, LoadMore);
 
     _this = _super.call(this);
-    _this.args = _this.attributes.getNamedItem('args').nodeValue;
-    _this.posts = [{
-      link: 'http://google.com',
-      title: {
-        rendered: 'Post 1'
-      },
-      render: true,
-      excerpt: {
-        rendered: 'Conteúdo post 1'
-      }
-    }, {
-      link: 'http://google.com',
-      title: {
-        rendered: 'Post 2'
-      },
-      render: false,
-      excerpt: {
-        rendered: 'Conteúdo post 2'
-      }
-    }];
+    _this.url = (_this$attributes$getN = _this.attributes.getNamedItem('url')) === null || _this$attributes$getN === void 0 ? void 0 : _this$attributes$getN.nodeValue;
+    if (!_this.isUrl(_this.url)) return _possibleConstructorReturn(_this);
+    _this.items = [];
+    _this.totalPages = 0;
+    _this.args = (_this.args = (_this$attributes$getN2 = _this.attributes.getNamedItem('args')) === null || _this$attributes$getN2 === void 0 ? void 0 : _this$attributes$getN2.nodeValue).startsWith('?') ? _this.args : "?".concat(_this.args);
+    _this.method = _this.method = (_this$attributes$getN3 = _this.attributes.getNamedItem('method')) !== null && _this$attributes$getN3 !== void 0 && _this$attributes$getN3.nodeValue ? _this.method.toUpperCase() : 'GET';
+    _this.nonce = (_this$attributes$getN4 = _this.attributes.getNamedItem('nonce')) === null || _this$attributes$getN4 === void 0 ? void 0 : _this$attributes$getN4.nodeValue;
+    _this.url = new URL("".concat(_this.url).concat(_this.args));
+    if (_this.args) _this.loadMoreData();
     return _this;
   }
 
@@ -320,20 +613,62 @@ var LoadMore = /*#__PURE__*/function (_window$Slim) {
     value: function onBeforeCreated() {
       this.template = this.attributes.getNamedItem('template').nodeValue;
       this.template = document.getElementById(this.template);
-      if (this.template) this.constructor.template = this.template.innerHTML;
+      this.constructor.template = '<div class="position-relative">';
+      if (this.template) this.constructor.template += this.template.innerHTML;
+      this.constructor.template += '<div class="load-more-trigger position-absolute bottom-0 w-100" style="height: 320px; z-index: -1;"></div></div>';
+    }
+  }, {
+    key: "registerObserver",
+    value: function registerObserver() {
+      var _this2 = this;
+
+      this.trigger = this.querySelector('.load-more-trigger');
+      this.observer = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting === true) _this2.loadMoreData();
+      }, {
+        threshold: [0]
+      });
+      this.observer.observe(this.trigger);
+    }
+  }, {
+    key: "loadMoreData",
+    value: function loadMoreData() {
+      var _this3 = this;
+
+      var request = new XMLHttpRequest();
+      this.url.searchParams.set('page', this.url.searchParams.has('page') ? parseInt(this.url.searchParams.get('page')) + 1 : 1);
+      request.responseType = 'json';
+      request.open(this.method, this.method == 'GET' ? this.url.href : "".concat(this.url.origin).concat(this.url.pathname), true);
+      request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+      if (this.nonce) request.setRequestHeader('X-WP-Nonce', this.nonce);
+
+      request.onreadystatechange = function () {
+        if (request.readyState !== 4 || request.status !== 200 || !Array.isArray(request.response)) return;
+        request.response.forEach(function (item) {
+          return _this3.items = [].concat(_toConsumableArray(_this3.items), [item]);
+        });
+        if (_this3.totalPages == 0) _this3.totalPages = parseInt(request.getResponseHeader('X-WP-TotalPages'));
+        if (!_this3.observer) _this3.registerObserver();
+        if (_this3.totalPages == parseInt(_this3.url.searchParams.get('page'))) _this3.observer.unobserve(_this3.trigger);
+      };
+
+      request.send(this.method != 'GET' ? this.url.search.substring(1) : '');
+    }
+  }, {
+    key: "isUrl",
+    value: function isUrl() {
+      try {
+        return Boolean(new URL(this.url));
+      } catch (e) {
+        return false;
+      }
     }
   }]);
 
   return LoadMore;
 }(window.Slim);
 
-LoadMore.useShadow = false; // LoadMore.template = /*html*/ `
-//   <div id="load-more-results" class="position-relative">
-//     <card-post *foreach="{{this.posts}}" .post="{{item}}"></card-post>
-//     <div id="load-more-trigger" class="position-absolute w-100"></div>
-//   </div>
-// `;
-
+LoadMore.useShadow = false;
 customElements.define('load-more', LoadMore);
 
 /***/ }),
@@ -347,15 +682,12 @@ customElements.define('load-more', LoadMore);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _load_more__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./load-more */ "./assets/scripts/load-more.js");
+/* harmony import */ var slim_js_dist_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! slim-js/dist/index */ "./node_modules/slim-js/dist/index.js");
+/* harmony import */ var slim_js_dist_directives_all__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! slim-js/dist/directives/all */ "./node_modules/slim-js/dist/directives/all.js");
+/* harmony import */ var _load_more__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./load-more */ "./assets/scripts/load-more.js");
 
-/* Arquivo Root */
 
-function onload() {
-  console.log(123); // paLoadMore();
-}
 
-document.addEventListener('DOMContentLoaded', onload, false);
 
 /***/ }),
 
@@ -1259,8 +1591,8 @@ Window.prototype.Slim = u;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/lordealeister/webroot/adventistas-noticias/wp-content/themes/pa-thema-noticias/assets/scripts/script.js */"./assets/scripts/script.js");
-module.exports = __webpack_require__(/*! /home/lordealeister/webroot/adventistas-noticias/wp-content/themes/pa-thema-noticias/assets/scss/style.scss */"./assets/scss/style.scss");
+__webpack_require__(/*! /Users/eli/Dropbox (ComunicaDSA)/projects/deploy-noticias.adventistas.org/app/pt/wp-content/themes/pa-theme-noticias/assets/scripts/script.js */"./assets/scripts/script.js");
+module.exports = __webpack_require__(/*! /Users/eli/Dropbox (ComunicaDSA)/projects/deploy-noticias.adventistas.org/app/pt/wp-content/themes/pa-theme-noticias/assets/scss/style.scss */"./assets/scss/style.scss");
 
 
 /***/ })

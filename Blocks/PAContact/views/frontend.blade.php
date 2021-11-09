@@ -1,5 +1,5 @@
 @if(is_admin())
-	<img class="img-preview" src="{{ get_stylesheet_directory_uri() }}/Blocks/PAContact/preview.png"/>
+	<img class="img-preview" src="{{ get_stylesheet_directory_uri() }}/Blocks/PAContact/preview.png"  alt='{{ __('Illustrative image of the front end of the block.', 'iasd') }}'/>
 @else
 	<div class="pa-widget col mb-5 col-md-4">
 		<div class="pa-w-contact rounded px-3 py-4">

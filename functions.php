@@ -10,7 +10,7 @@ define('THEME_CSS', THEME_URI . 'assets/css/');
 define('THEME_JS', THEME_URI . 'assets/js/');
 define('THEME_IMGS', THEME_URI . 'assets/images/');
 
-new \Blocks\ChildBlocks;
+$ChildBlocks = new \Blocks\ChildBlocks;
 
 require_once(dirname(__FILE__) . '/classes/controllers/PA_ACF_Leaders.class.php');
 require_once(dirname(__FILE__) . '/classes/controllers/PA_ACF_HomeFields.class.php');
