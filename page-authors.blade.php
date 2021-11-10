@@ -13,7 +13,7 @@
                 <load-more 
                     template="card-post" 
                     url="{{ get_rest_url(null, 'wp/v2/columnists') }}"
-                    args="{{ '_fields=name,link,column,avatar.full&per_page=10&orderby=name' }}"
+                    args="{{ '_fields=name,link,column,avatar.full&per_page=70&orderby=name' }}"
                     nonce="{{ wp_create_nonce('wp_rest') }}"
                 >
                     <template id="card-post">
