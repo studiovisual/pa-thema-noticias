@@ -396,9 +396,9 @@ var CardPost = /*#__PURE__*/function (_window$Slim) {
   _createClass(CardPost, [{
     key: "parseExcerpt",
     value: function parseExcerpt() {
-      if (!this.post.hasOwnProperty('excerpt')) return;
-      this.post.excerpt.rendered = this.post.excerpt.rendered.replace(/(<([^>]+)>)/gi, '');
-      this.post.excerpt.rendered = this.post.excerpt.rendered.replace('[&hellip;]', '');
+      if (!this.post.hasOwnProperty("excerpt")) return;
+      this.post.excerpt.rendered = this.post.excerpt.rendered.replace(/(<([^>]+)>)/gi, "");
+      this.post.excerpt.rendered = this.post.excerpt.rendered.replace("[&hellip;]", "");
     }
   }]);
 
@@ -408,8 +408,8 @@ var CardPost = /*#__PURE__*/function (_window$Slim) {
 CardPost.useShadow = false;
 CardPost.template =
 /*html*/
-"\n    <div class=\"pa-blog-item mb-3 border-0\">\n        <a href=\"{{ this.post.link }}\" title=\"{{ this.post.title.rendered }}\">\n            <div class=\"row align-items-center\">\n                <div class=\"{{ this.post.featured_media_url['pa-block-render'] ? 'img-container' : 'd-none' }}\">\n                    <div class=\"ratio ratio-16x9\">\n                        <figure class=\"figure m-xl-0\">\n                            <img *if=\"{{ this.post.featured_media_url['pa-block-render'] }}\" src=\"{{ this.post.featured_media_url['pa-block-render'] }}\" class=\"figure-img img-fluid rounded m-0 h-100 w-100\" alt=\"{{ this.post.title.rendered }}\" />\n\n                            <figcaption *if=\"{{ this.post.terms.editorial }}\" class=\"pa-img-tag figure-caption text-uppercase d-table-cell\">{{ this.post.terms.editorial }}</figcaption>\n                        </figure>\t\n                    </div>\n                </div>\n\n                <div class=\"col\">\n                    <div class=\"{{ this.post.featured_media_url['pa-block-render'] ? 'card-body p-0' : 'card-body ps-4 pe-0 py-4 border-start border-5 pa-border' }}\">\n                        <span *if=\"{{ this.post.terms.format }}\" class=\"pa-tag text-uppercase d-table-cell rounded-1 px-2\">{{ this.post.terms.format }}</span>\n\n                        <h3 class=\"fw-bold h6 mt-2 pa-truncate-4\">{{ this.post.title.rendered }}</h3>\n\n                        <p *if=\"{{ this.post.excerpt.rendered }}\" class=\"m-0 pa-truncate-3\">{{ this.post.excerpt.rendered }}</p>\n                    </div>\n                </div>\n            </div>\n        </a>\n    </div>\n";
-customElements.define('card-post', CardPost);
+"\n    <div class=\"pa-blog-item mb-3 border-0\">\n        <a href=\"{{ this.post.link }}\" title=\"{{ this.post.title.rendered }}\">\n            <div class=\"row align-items-center\">\n                <div class=\"{{ this.post.featured_media_url['pa-block-render'] ? 'img-container' : 'd-none' }}\">\n                    <div class=\"ratio ratio-16x9\">\n                        <figure class=\"figure m-xl-0\">\n                            <img *if=\"{{ this.post.featured_media_url['pa-block-render'] }}\" src=\"{{ this.post.featured_media_url['pa-block-render'] }}\" class=\"figure-img img-fluid rounded object-cover m-0 h-100 w-100\" alt=\"{{ this.post.title.rendered }}\" />\n\n                            <figcaption *if=\"{{ this.post.terms.editorial }}\" class=\"pa-img-tag figure-caption text-uppercase d-table-cell\">{{ this.post.terms.editorial }}</figcaption>\n                        </figure>\t\n                    </div>\n                </div>\n\n                <div class=\"col\">\n                    <div class=\"{{ this.post.featured_media_url['pa-block-render'] ? 'card-body p-0' : 'card-body ps-4 pe-0 py-4 border-start border-5 pa-border' }}\">\n                        <span *if=\"{{ this.post.terms.format }}\" class=\"pa-tag text-uppercase d-table-cell rounded-1 px-2\">{{ this.post.terms.format }}</span>\n\n                        <h3 class=\"fw-bold h6 mt-2 pa-truncate-4\">{{ this.post.title.rendered }}</h3>\n\n                        <p *if=\"{{ this.post.excerpt.rendered }}\" class=\"m-0 pa-truncate-3\">{{ this.post.excerpt.rendered }}</p>\n                    </div>\n                </div>\n            </div>\n        </a>\n    </div>\n";
+customElements.define("card-post", CardPost);
 
 /***/ }),
 
