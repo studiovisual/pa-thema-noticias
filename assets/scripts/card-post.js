@@ -36,7 +36,7 @@ CardPost.template = /*html*/ `
 
                 <div class="col">
                     <div class="{{ this.post.featured_media_url['pa-block-render'] ? 'card-body p-0' : 'card-body ps-4 pe-0 py-4 border-start border-5 pa-border' }}">
-                        <span *if="{{ this.post.terms.format }}" class="pa-tag text-uppercase d-table-cell rounded py-0">{{ this.post.terms.format }}</span>
+                        <span *if="{{ this.post.terms.format }}" class="pa-tag text-uppercase d-table-cell rounded-1 px-2">{{ this.post.terms.format }}</span>
 
                         <h3 class="fw-bold h6 mt-2 pa-truncate-4">{{ this.post.title.rendered }}</h3>
 

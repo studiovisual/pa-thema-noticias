@@ -12,16 +12,10 @@ define('THEME_IMGS', THEME_URI . 'assets/images/');
 
 $ChildBlocks = new \Blocks\ChildBlocks;
 
-require_once(dirname(__FILE__) . '/classes/controllers/PA_ACF_Leaders.class.php');
 require_once(dirname(__FILE__) . '/classes/controllers/PA_ACF_HomeFields.class.php');
 require_once(dirname(__FILE__) . '/classes/controllers/PA_ACF_PostFields.class.php');
 require_once(dirname(__FILE__) . '/classes/controllers/PA_ACF_UserFields.class.php');
-require_once(dirname(__FILE__) . '/classes/controllers/PA_ACF_Site-ministries.class.php');
-require_once(dirname(__FILE__) . '/classes/controllers/PA_CPT_Projects.class.php');
-require_once(dirname(__FILE__) . '/classes/controllers/PA_CPT_Leaders.class.php');
-require_once(dirname(__FILE__) . '/classes/controllers/PA_CPT_SliderHome.class.php');
 require_once(dirname(__FILE__) . '/classes/controllers/PA_Enqueue_Files.class.php');
-require_once(dirname(__FILE__) . '/classes/controllers/PA_Page_Lideres.php');
 require_once(dirname(__FILE__) . '/classes/controllers/PA_Util.class.php');
 require_once(dirname(__FILE__) . '/classes/controllers/PA_wp_rest_columnists_controller.class.php');
 require_once(dirname(__FILE__) . '/classes/PA_Helpers.php');
@@ -242,3 +236,10 @@ function filter_rest_post_query( $args, $request ) {
 add_filter('rest_post_query', 'filter_rest_post_query', 10, 2 );
 
 add_filter('option_show_avatars', '__return_false');
+
+
+function mytheme_add_editor_styles() {
+    add_theme_support( 'editor-styles' );
+    add_editor_style( 'style-editor.css' );
+}
+add_action( 'admin_init', 'mytheme_add_editor_styles' );
