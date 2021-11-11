@@ -92,7 +92,7 @@ class PAThemeNoticiasInstall {
 			),
 		);
 
-		register_taxonomy('xtt-pa-format', ['post', 'press'], $args);
+		register_taxonomy('xtt-pa-format', ['post'], $args);
 
 		/**
 		 * 

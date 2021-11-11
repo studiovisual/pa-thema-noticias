@@ -16,6 +16,7 @@ require_once(dirname(__FILE__) . '/classes/controllers/PA_ACF_HomeFields.class.p
 require_once(dirname(__FILE__) . '/classes/controllers/PA_ACF_PostFields.class.php');
 require_once(dirname(__FILE__) . '/classes/controllers/PA_ACF_UserFields.class.php');
 require_once(dirname(__FILE__) . '/classes/controllers/PA_Enqueue_Files.class.php');
+require_once(dirname(__FILE__) . '/classes/controllers/PA_RewriteRules.class.php');
 require_once(dirname(__FILE__) . '/classes/controllers/PA_Util.class.php');
 require_once(dirname(__FILE__) . '/classes/controllers/PA_wp_rest_columnists_controller.class.php');
 require_once(dirname(__FILE__) . '/classes/PA_Helpers.php');
@@ -175,68 +176,8 @@ function column_callback($user) {
     ]; 
 }
 
-function filter_rest_post_query( $args, $request ) { 
-    $params = $request->get_params(); 
-
-    if(isset($params['pa-owner'])){
-        $args['tax_query'][] = array(
-            array(
-                'taxonomy' => 'xtt-pa-owner',
-                'field' => 'slug',
-                'terms' => explode(',', $params['pa-owner']),
-                'include_children' => false
-            )
-        );
-    }
-    
-	if(isset($params['pa-departamento'])){
-        $args['tax_query'][] = array(
-            array(
-                'taxonomy' => 'xtt-pa-departamentos',
-                'field' => 'slug',
-                'terms' => explode(',', $params['pa-departamento'])
-            )
-        );
-    }
-    
-	if(isset($params['pa-projeto'])){
-        $args['tax_query'][] = array(
-            array(
-                'taxonomy' => 'xtt-pa-projetos',
-                'field' => 'slug',
-                'terms' => explode(',', $params['pa-projeto'])
-            )
-        );
-    }
-
-	if(isset($params['pa-sede'])){
-        $args['tax_query'][] = array(
-            array(
-                'taxonomy' => 'xtt-pa-sedes',
-                'field' => 'slug',
-                'terms' => explode(',', $params['pa-sede']),
-                'include_children' => false
-            )
-        );
-    }
-
-	if(isset($params['pa-editoria'])){
-        $args['tax_query'][] = array(
-            array(
-                'taxonomy' => 'xtt-pa-editorias',
-                'field' => 'slug',
-                'terms' => explode(',', $params['pa-editoria'])
-            )
-        );
-    }
-
-    return $args; 
-}   
-// add the filter 
-add_filter('rest_post_query', 'filter_rest_post_query', 10, 2 );
 
 add_filter('option_show_avatars', '__return_false');
-
 
 function mytheme_add_editor_styles() {
     add_theme_support( 'editor-styles' );

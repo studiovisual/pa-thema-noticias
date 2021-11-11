@@ -31,7 +31,7 @@ CardPost.template = /*html*/ `
                         <figure class="figure m-xl-0">
                             <img *if="{{ this.post.featured_media_url['pa-block-render'] }}" src="{{ this.post.featured_media_url['pa-block-render'] }}" class="figure-img img-fluid rounded object-cover m-0 h-100 w-100" alt="{{ this.post.title.rendered }}" />
 
-                            <figcaption *if="{{ this.post.terms.editorial }}" class="pa-img-tag figure-caption text-uppercase d-table-cell">{{ this.post.terms.editorial }}</figcaption>
+                            <figcaption *if="{{ this.post.terms.editorial }}" class="pa-img-tag figure-caption text-uppercase d-table-cell rounded-end">{{ this.post.terms.editorial }}</figcaption>
                         </figure>	
                     </div>
                 </div>
