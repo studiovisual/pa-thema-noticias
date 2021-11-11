@@ -1,5 +1,6 @@
 @php
     $sidebar = isset($sidebar) && !empty($sidebar) ? $sidebar : 'front-page';
+    $sede = get_field('context');
 @endphp
 
 <div class="pa-content py-3 mt-1 mt-md-4">
@@ -10,18 +11,29 @@
 
         <div class="row">
             <div class="col-12{{ is_active_sidebar($sidebar) ? ' col-md-8' : '' }}">
-                @php global $exclude; @endphp
+                @php 
+                    global $exclude; 
+                    $args = '_fields=featured_media_url.pa-block-render,title,excerpt,link,terms&exclude=' . implode(',', $exclude);
+                    if (!empty($sede)){
+                        $args .= "&pa-sede=". $sede->slug;
+                    }
+                @endphp
 
                 <load-more 
                     template="card-post" 
                     url="{{ isset($api_url) && !empty($api_url) ? $api_url : get_rest_url(null, 'wp/v2/posts') }}"
-                    args="{{ '_fields=featured_media_url.pa-block-render,title,excerpt,link,terms&exclude=' . implode(',', $exclude) }}"
+                    args="{{ $args }}"
                     nonce="{{ wp_create_nonce('wp_rest') }}"
                 >
                     <template id="card-post">
                         <card-post *foreach="@{{this.items}}" .post="@{{item}}"></card-post>
                     </template>
                 </load-more>
+                <div class="d-flex justify-content-center mt-5">
+                    <div class="spinner-border text-success" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                  </div>
             </div>
 
             @if(is_active_sidebar($sidebar))

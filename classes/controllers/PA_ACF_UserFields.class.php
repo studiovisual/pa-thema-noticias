@@ -39,7 +39,7 @@ class PaAcfUserFields {
                     ->required(),
             ],
             'location' => [
-                Location::if('user_form', 'edit')->and('user_role', 'columnist')->and('user_role', '!=', 'administrator'),
+                Location::if('user_form', 'edit')->and('user_role', 'colunista')->and('user_role', '!=', 'administrator'),
             ]
         ]);
     }

@@ -1,0 +1,405 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2021-11-10 16:07-0300\n"
+"PO-Revision-Date: 2021-11-10 16:38-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-KeywordsList: __;_e;_x;esc_html__;esc_html_e;esc_html_x;esc_attr__;"
+"esc_attr_e;esc_attr_x\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: node_modules\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
+
+#: components/header/title.blade.php:5
+msgid "Adventist news"
+msgstr "Notícias Adventistas"
+
+#: Blocks/PAContact/PAContact.php:21 Blocks/PAContact/PAContact.php:38
+#: Blocks/PAContact/PAContact.php:41
+msgid "IASD - Contact"
+msgstr "IASD - Contato"
+
+#: Blocks/PAContact/PAContact.php:22
+msgid "Contact block"
+msgstr "Bloco de Contato"
+
+#: Blocks/PAContact/PAContact.php:37 Blocks/PAListPosts/PAListPosts.php:38
+#: Blocks/PAListPosts/PAListPress.php:38
+msgid "Title"
+msgstr "Título"
+
+#: Blocks/PAContact/PAContact.php:40
+msgid "Description"
+msgstr "Descrição"
+
+#: Blocks/PAContact/PAContact.php:43
+msgid "Email"
+msgstr "Email"
+
+#: Blocks/PAContact/PAContact.php:45
+msgid "Phone"
+msgstr "Telefone"
+
+#: Blocks/PAListColumnists/PAListColumnists.php:21
+#: Blocks/PAListColumnists/PAListColumnists.php:39
+msgid "IASD - List columnists"
+msgstr "IASD - Lista de colunistas"
+
+#: Blocks/PAListColumnists/PAListColumnists.php:22
+msgid "List columnists"
+msgstr "Lista de colunistas"
+
+#: Blocks/PAListColumnists/PAListColumnists.php:41
+msgid "Quantity"
+msgstr "Quantidade"
+
+#: Blocks/PAListPosts/PAListPosts.php:21
+msgid "IASD - Posts list"
+msgstr "IASD - Lista de posts"
+
+#: Blocks/PAListPosts/PAListPosts.php:22
+msgid "Posts list"
+msgstr "Lista de posts"
+
+#: Blocks/PAListPosts/PAListPress.php:21 Blocks/PAListPosts/PAListPress.php:39
+msgid "IASD - List press"
+msgstr "IASD - Lista de posts"
+
+#: Blocks/PAListPosts/PAListPress.php:22
+msgid "List press posts"
+msgstr "Lista de posts"
+
+#: classes/PA_Helpers.php:132
+msgid "Press room"
+msgstr "Sala de imprensa"
+
+#: classes/controllers/PA_ACF_HomeFields.class.php:51
+msgid "Featured posts"
+msgstr "Post destaque"
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:203
+msgid "Invalid user ID."
+msgstr "ID de usuário inválido"
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:246
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:252
+msgid "Sorry, you are not allowed to list users."
+msgstr "Desculpe, você não tem permissão para listar usuários."
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:430
+msgid ""
+"This username is invalid because it uses illegal characters. Please enter a "
+"valid username."
+msgstr ""
+"Este nome de usuário é inválido porque usa caracteres ilegais. Por favor, "
+"insira um nome de usuário válido."
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:441
+msgid "Sorry, that username is not allowed."
+msgstr "Desculpe, esse nome de usuário não é permitido."
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:467
+msgid "Passwords cannot be empty."
+msgstr "As senhas não podem estar vazias."
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:477
+#, php-format
+msgid "Passwords cannot contain the \"%s\" character."
+msgstr "As senhas não podem conter o caractere “%s”."
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:505
+msgid "Unique identifier for the user."
+msgstr "Identificador único para o usuário."
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:511
+msgid "Login name for the user."
+msgstr "Nome de login do usuário."
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:520
+msgid "Display name for the user."
+msgstr "Nome de exibição do usuário."
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:528
+msgid "First name for the user."
+msgstr "Primeiro nome do usuário."
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:536
+msgid "Last name for the user."
+msgstr "Último nome do usuário."
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:544
+msgid "The email address for the user."
+msgstr "O endereço de e-mail do usuário."
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:551
+msgid "URL of the user."
+msgstr "URL do usuário."
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:557
+msgid "Description of the user."
+msgstr "Descrição do usuário."
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:562
+msgid "Author URL of the user."
+msgstr "URL do autor."
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:569
+msgid "Locale for the user."
+msgstr "Local para o usuário."
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:575
+msgid "The nickname for the user."
+msgstr "Apelido do usuário."
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:583
+msgid "An alphanumeric identifier for the user."
+msgstr "Identificador alfanumérico do usuário."
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:591
+msgid "Registration date for the user."
+msgstr "Data de registro do usuário."
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:598
+msgid "Roles assigned to the user."
+msgstr "Funções atribuídas ao usuário."
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:606
+msgid "Password for the user (never included)."
+msgstr "Senha do usuário (nunca incluída)."
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:615
+msgid "All capabilities assigned to the user."
+msgstr "Todos os recursos atribuídos ao usuário."
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:621
+msgid "Any extra capabilities assigned to the user."
+msgstr "Any extra capabilities assigned to the user."
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:637
+#, php-format
+msgid "Avatar URL with image size of %d pixels."
+msgstr "URL do avatar com tamanho de imagem de %d pixels."
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:645
+msgid "Avatar URLs for the user."
+msgstr "Avatar URLs do usuário."
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:673
+msgid "Ensure result set excludes specific IDs."
+msgstr "Certifique-se de que o conjunto de resultados exclui IDs específicos."
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:682
+msgid "Limit result set to specific IDs."
+msgstr "Limite de resultados dos IDs específicados."
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:691
+msgid "Offset the result set by a specific number of items."
+msgstr ""
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:697
+msgid "Order sort attribute ascending or descending."
+msgstr ""
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:704
+msgid "Sort collection by user attribute."
+msgstr ""
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:719
+msgid "Limit result set to users with one or more specific slugs."
+msgstr ""
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:727
+msgid ""
+"Limit result set to users matching at least one specific role provided. "
+"Accepts csv list or single role."
+msgstr ""
+
+#: classes/controllers/PA_wp_rest_columnists_controller.class.php:735
+msgid "Limit result set to users who are considered authors."
+msgstr ""
+
+#: components/menu/header-logo.php:3
+msgid "Seventh-day Adventist Church"
+msgstr "Igreja Adventista do Sétimo Dia"
+
+#: core/PA_Theme_Noticias_Install.php:32 core/PA_Theme_Noticias_Install.php:33
+#: core/PA_Theme_Noticias_Install.php:34 core/PA_Theme_Noticias_Install.php:64
+msgid "Press"
+msgstr ""
+
+#: core/PA_Theme_Noticias_Install.php:35
+#, fuzzy
+msgid "Add press"
+msgstr "Adicionar novo"
+
+#: core/PA_Theme_Noticias_Install.php:36
+#, fuzzy
+msgid "Add New"
+msgstr "Adicionar novo"
+
+#: core/PA_Theme_Noticias_Install.php:37
+#, fuzzy
+msgid "Add New press"
+msgstr "Adicionar novo"
+
+#: core/PA_Theme_Noticias_Install.php:38
+#, fuzzy
+msgid "New press"
+msgstr "Adicionar novo"
+
+#: core/PA_Theme_Noticias_Install.php:39
+#, fuzzy
+msgid "Edit press"
+msgstr "Edição&nbsp;Rápida"
+
+#: core/PA_Theme_Noticias_Install.php:40
+msgid "View press"
+msgstr ""
+
+#: core/PA_Theme_Noticias_Install.php:41
+#, fuzzy
+msgid "All press"
+msgstr "Todos os itens"
+
+#: core/PA_Theme_Noticias_Install.php:42
+#, fuzzy
+msgid "Search press"
+msgstr "Buscar…"
+
+#: core/PA_Theme_Noticias_Install.php:43
+#, fuzzy
+msgid "No press found."
+msgstr "Nenhuma correspondência encontrada"
+
+#: core/PA_Theme_Noticias_Install.php:44
+#, fuzzy
+msgid "No press found in Trash."
+msgstr "Me desculpe! Conteúdo não encontrado! :("
+
+#: core/PA_Theme_Noticias_Install.php:73 core/PA_Theme_Noticias_Install.php:81
+#, fuzzy
+msgid "Formatos de post"
+msgstr "Filtrar por tipo de post"
+
+#: core/PA_Theme_Noticias_Install.php:74
+#, fuzzy
+msgid "Formato de post"
+msgstr "Filtrar por tipo de post"
+
+#: core/PA_Theme_Noticias_Install.php:75
+msgid "Procurar formatos de post"
+msgstr ""
+
+#: core/PA_Theme_Noticias_Install.php:76
+msgid "Todas os formatos"
+msgstr ""
+
+#: core/PA_Theme_Noticias_Install.php:77
+msgid "Editar formato de post"
+msgstr ""
+
+#: core/PA_Theme_Noticias_Install.php:78
+msgid "Atualizar formato de post"
+msgstr ""
+
+#: core/PA_Theme_Noticias_Install.php:79
+msgid "Adicionar novo formato de post"
+msgstr ""
+
+#: core/PA_Theme_Noticias_Install.php:80
+msgid "Novo formato de post"
+msgstr ""
+
+#: core/PA_Theme_Noticias_Install.php:107
+#: core/PA_Theme_Noticias_Install.php:108
+#: core/PA_Theme_Noticias_Install.php:115
+#, fuzzy
+msgid "Press type"
+msgstr "Filtrar por tipo de post"
+
+#: core/PA_Theme_Noticias_Install.php:109
+#, fuzzy
+msgid "Search items"
+msgstr "Buscar…"
+
+#: core/PA_Theme_Noticias_Install.php:110
+#, fuzzy
+msgid "All items"
+msgstr "Todos os itens"
+
+#: core/PA_Theme_Noticias_Install.php:111
+#, fuzzy
+msgid "Edit items"
+msgstr "Edição&nbsp;Rápida"
+
+#: core/PA_Theme_Noticias_Install.php:112
+#, fuzzy
+msgid "Update item"
+msgstr "Atualizar"
+
+#: core/PA_Theme_Noticias_Install.php:113
+#, fuzzy
+msgid "Add new item"
+msgstr "Adicionar novo"
+
+#: core/PA_Theme_Noticias_Install.php:114
+#, fuzzy
+msgid "New item"
+msgstr "Adicionar item"
+
+#: core/PA_Theme_Noticias_Install.php:141
+#: core/PA_Theme_Noticias_Install.php:142
+msgid "Região"
+msgstr ""
+
+#: core/PA_Theme_Noticias_Install.php:143
+msgid "Procurar regiões"
+msgstr ""
+
+#: core/PA_Theme_Noticias_Install.php:144
+msgid "Todas as região"
+msgstr ""
+
+#: core/PA_Theme_Noticias_Install.php:145
+msgid "Editar região"
+msgstr ""
+
+#: core/PA_Theme_Noticias_Install.php:146
+msgid "Atualizar região"
+msgstr ""
+
+#: core/PA_Theme_Noticias_Install.php:147
+msgid "Adicionar nova região"
+msgstr ""
+
+#: core/PA_Theme_Noticias_Install.php:148
+msgid "Nova região"
+msgstr ""
+
+#: core/PA_Theme_Noticias_Install.php:149
+msgid "Regiões"
+msgstr ""
+
+#: core/PA_Theme_Noticias_Install.php:209
+msgid "Colunista"
+msgstr ""
+
+#: core/PA_Theme_Noticias_Install.php:220
+msgid "Archive columnists"
+msgstr ""
+
+#: core/PA_Theme_Noticias_Install.php:227
+msgid "Columnist"
+msgstr ""
+
+#: core/PA_Theme_Noticias_Install.php:234
+msgid "Front press"
+msgstr ""
