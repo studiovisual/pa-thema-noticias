@@ -1,12 +1,29 @@
 {
     "name": "igrejaadventista/pa-thema-noticias",
     "type": "wordpress-theme",
-    "repositories":[
-		{
-			"type":"composer",
-			"url":"https://wpackagist.org"
-		}
-	],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "10up/convert-to-blocks",
+                "type": "wordpress-plugin",
+                "version": "dev-master",
+                "dist": {
+                    "url": "https://github.com/10up/convert-to-blocks/archive/refs/heads/develop.zip",
+                    "type": "zip"
+                },
+                "autoload": {
+                    "files": [
+                        "convert-to-blocks.php"
+                    ]
+                }
+            }
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Extended\\": "Extended/",
@@ -14,6 +31,7 @@
         }
     },
     "require": {
-        "log1x/acf-phone-number": "^1.1"
+        "log1x/acf-phone-number": "^1.1",
+        "10up/convert-to-blocks": "dev-master"
     }
 }

@@ -41,7 +41,11 @@ function getVideoLength(int $post_id, string $video_host, string $video_id): voi
  * @return mixed
  */
 function getPostFormat($post_id) {
-    if($term = get_the_terms($post_id, 'xtt-pa-format'))
+    if($term = get_the_terms($post_id, 'xtt-pa-format')){
+        return $term[0];
+    }
+
+    if($term = get_the_terms($post_id, 'xtt-pa-press-type'))
         return $term[0];
 
     return null;
