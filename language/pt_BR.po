@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2021-11-10 16:07-0300\n"
-"PO-Revision-Date: 2021-11-10 16:38-0300\n"
+"PO-Revision-Date: 2021-11-11 17:07-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -71,7 +71,7 @@ msgstr "Lista de posts"
 
 #: Blocks/PAListPosts/PAListPress.php:21 Blocks/PAListPosts/PAListPress.php:39
 msgid "IASD - List press"
-msgstr "IASD - Lista de posts"
+msgstr "IASD - Lista de imprensa"
 
 #: Blocks/PAListPosts/PAListPress.php:22
 msgid "List press posts"
@@ -202,29 +202,33 @@ msgstr "Limite de resultados dos IDs específicados."
 
 #: classes/controllers/PA_wp_rest_columnists_controller.class.php:691
 msgid "Offset the result set by a specific number of items."
-msgstr ""
+msgstr "Compense o resultado definido por um número específico de itens."
 
 #: classes/controllers/PA_wp_rest_columnists_controller.class.php:697
 msgid "Order sort attribute ascending or descending."
-msgstr ""
+msgstr "Atributo de classificação de ordem crescente ou decrescente."
 
 #: classes/controllers/PA_wp_rest_columnists_controller.class.php:704
 msgid "Sort collection by user attribute."
-msgstr ""
+msgstr "Classifique a coleção por atributo do usuário."
 
 #: classes/controllers/PA_wp_rest_columnists_controller.class.php:719
 msgid "Limit result set to users with one or more specific slugs."
 msgstr ""
+"Limite o conjunto de resultados para usuários com um ou mais slugs "
+"específicos."
 
 #: classes/controllers/PA_wp_rest_columnists_controller.class.php:727
 msgid ""
 "Limit result set to users matching at least one specific role provided. "
 "Accepts csv list or single role."
 msgstr ""
+"Limite o conjunto de resultados para usuários que correspondam a pelo menos "
+"uma função específica fornecida. Aceita lista csv ou função única."
 
 #: classes/controllers/PA_wp_rest_columnists_controller.class.php:735
 msgid "Limit result set to users who are considered authors."
-msgstr ""
+msgstr "Limite o conjunto de resultados para usuários considerados autores."
 
 #: components/menu/header-logo.php:3
 msgid "Seventh-day Adventist Church"
@@ -233,66 +237,55 @@ msgstr "Igreja Adventista do Sétimo Dia"
 #: core/PA_Theme_Noticias_Install.php:32 core/PA_Theme_Noticias_Install.php:33
 #: core/PA_Theme_Noticias_Install.php:34 core/PA_Theme_Noticias_Install.php:64
 msgid "Press"
-msgstr ""
+msgstr "Pressione"
 
 #: core/PA_Theme_Noticias_Install.php:35
-#, fuzzy
 msgid "Add press"
-msgstr "Adicionar novo"
+msgstr "Adicionar novo imprensa"
 
 #: core/PA_Theme_Noticias_Install.php:36
-#, fuzzy
 msgid "Add New"
 msgstr "Adicionar novo"
 
 #: core/PA_Theme_Noticias_Install.php:37
-#, fuzzy
 msgid "Add New press"
-msgstr "Adicionar novo"
+msgstr "Adicionar novo imprensa"
 
 #: core/PA_Theme_Noticias_Install.php:38
-#, fuzzy
 msgid "New press"
-msgstr "Adicionar novo"
+msgstr "Nova imprensa"
 
 #: core/PA_Theme_Noticias_Install.php:39
-#, fuzzy
 msgid "Edit press"
-msgstr "Edição&nbsp;Rápida"
+msgstr "Editar imprensa"
 
 #: core/PA_Theme_Noticias_Install.php:40
 msgid "View press"
-msgstr ""
+msgstr "Ver imprensa"
 
 #: core/PA_Theme_Noticias_Install.php:41
-#, fuzzy
 msgid "All press"
-msgstr "Todos os itens"
+msgstr "Todas as imprensa"
 
 #: core/PA_Theme_Noticias_Install.php:42
-#, fuzzy
 msgid "Search press"
-msgstr "Buscar…"
+msgstr "Buscar imprensa"
 
 #: core/PA_Theme_Noticias_Install.php:43
-#, fuzzy
 msgid "No press found."
-msgstr "Nenhuma correspondência encontrada"
+msgstr "Nenhuma imprensa encontrada"
 
 #: core/PA_Theme_Noticias_Install.php:44
-#, fuzzy
 msgid "No press found in Trash."
-msgstr "Me desculpe! Conteúdo não encontrado! :("
+msgstr "Nenhuma imprensa encontrada na Lixeira."
 
 #: core/PA_Theme_Noticias_Install.php:73 core/PA_Theme_Noticias_Install.php:81
-#, fuzzy
 msgid "Formatos de post"
-msgstr "Filtrar por tipo de post"
+msgstr ""
 
 #: core/PA_Theme_Noticias_Install.php:74
-#, fuzzy
 msgid "Formato de post"
-msgstr "Filtrar por tipo de post"
+msgstr ""
 
 #: core/PA_Theme_Noticias_Install.php:75
 msgid "Procurar formatos de post"
@@ -321,39 +314,32 @@ msgstr ""
 #: core/PA_Theme_Noticias_Install.php:107
 #: core/PA_Theme_Noticias_Install.php:108
 #: core/PA_Theme_Noticias_Install.php:115
-#, fuzzy
 msgid "Press type"
-msgstr "Filtrar por tipo de post"
+msgstr "Tipo de imprensa"
 
 #: core/PA_Theme_Noticias_Install.php:109
-#, fuzzy
 msgid "Search items"
-msgstr "Buscar…"
+msgstr "Buscar itens"
 
 #: core/PA_Theme_Noticias_Install.php:110
-#, fuzzy
 msgid "All items"
 msgstr "Todos os itens"
 
 #: core/PA_Theme_Noticias_Install.php:111
-#, fuzzy
 msgid "Edit items"
-msgstr "Edição&nbsp;Rápida"
+msgstr "Editar item"
 
 #: core/PA_Theme_Noticias_Install.php:112
-#, fuzzy
 msgid "Update item"
-msgstr "Atualizar"
+msgstr "Atualizar item"
 
 #: core/PA_Theme_Noticias_Install.php:113
-#, fuzzy
 msgid "Add new item"
-msgstr "Adicionar novo"
+msgstr "Adicionar novo item"
 
 #: core/PA_Theme_Noticias_Install.php:114
-#, fuzzy
 msgid "New item"
-msgstr "Adicionar item"
+msgstr "Novo item"
 
 #: core/PA_Theme_Noticias_Install.php:141
 #: core/PA_Theme_Noticias_Install.php:142
