@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 if(file_exists($composer = __DIR__ . '/vendor/autoload.php'))
     require_once $composer;
@@ -23,6 +23,11 @@ require_once(dirname(__FILE__) . '/classes/PA_Helpers.php');
 
 // CORE INSTALL
 require_once (dirname(__FILE__) . '/core/PA_Theme_Noticias_Install.php');
+
+add_action('after_setup_theme', function () {
+    load_theme_textdomain('iasd', THEME_DIR . 'language/');
+}, 9);
+
 
 /**
 * Remove unused taxonomies

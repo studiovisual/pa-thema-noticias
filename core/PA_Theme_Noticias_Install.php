@@ -48,7 +48,7 @@ class PAThemeNoticiasInstall {
 			'show_ui'            => true,
 			'show_in_menu'       => true,
 			'query_var'          => true,
-			'rewrite'            => array('slug' => 'press'),
+			'rewrite'            => ['slug' => sanitize_title(__('press-room-slug', 'iasd'))],
 			'capability_type'    => 'post',
 			'has_archive'        => true,
 			'hierarchical'       => false,
@@ -58,7 +58,7 @@ class PAThemeNoticiasInstall {
 			'show_in_rest'       => true,
 		);
 			
-		register_post_type(__('Press', 'iasd'), $args );
+		register_post_type('press', $args );
 
 		/**
 		 * 
@@ -81,14 +81,20 @@ class PAThemeNoticiasInstall {
 			'hierarchical'       => true, // make it hierarchical (like categories)
 			'labels'             => $labels,
 			'show_ui'            => true,
-			'show_admin_column'  => true,
+			'show_admin_column'  => false,
 			'show_in_quick_edit' => false,
 			'query_var'          => true,
 			'show_in_rest'       => true, // add support for Gutenberg editor
-			'rewrite'            => ['slug' => 'xtt-pa-format'],
+			'rewrite'            => ['slug' => sanitize_title(__('xtt-pa-format', 'iasd'))],
+			'default_term'		=> array(
+				'name' => 'Notícia',
+				'slug'	=> 'noticia'
+			),
 			'capabilities' 		  => array(
-				'edit_terms' 	  => false,
-				'delete_terms'    => false,
+				'edit_terms' 	  => 'manage_options',
+				'delete_terms'    => 'manage_options',
+				// 'manage_options'  => true,
+				'assign_terms' => 'manage_options',
 			),
 		);
 

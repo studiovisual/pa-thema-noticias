@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2021-11-10 16:07-0300\n"
-"PO-Revision-Date: 2021-11-11 17:07-0300\n"
+"POT-Creation-Date: 2021-11-12 08:36-0300\n"
+"PO-Revision-Date: 2021-11-12 12:21-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -22,72 +22,87 @@ msgstr ""
 msgid "Adventist news"
 msgstr "Notícias Adventistas"
 
-#: Blocks/PAContact/PAContact.php:21 Blocks/PAContact/PAContact.php:38
-#: Blocks/PAContact/PAContact.php:41
+#: Blocks/PAContact/PAContact.php:19 Blocks/PAContact/PAContact.php:35
+#: Blocks/PAContact/PAContact.php:38
 msgid "IASD - Contact"
 msgstr "IASD - Contato"
 
-#: Blocks/PAContact/PAContact.php:22
+#: Blocks/PAContact/PAContact.php:20
 msgid "Contact block"
 msgstr "Bloco de Contato"
 
-#: Blocks/PAContact/PAContact.php:37 Blocks/PAListPosts/PAListPosts.php:38
-#: Blocks/PAListPosts/PAListPress.php:38
+#: Blocks/PAContact/PAContact.php:34 Blocks/PAListPosts/PAListPosts.php:35
+#: Blocks/PAListPosts/PAListPress.php:35
 msgid "Title"
 msgstr "Título"
 
-#: Blocks/PAContact/PAContact.php:40
+#: Blocks/PAContact/PAContact.php:37
 msgid "Description"
 msgstr "Descrição"
 
-#: Blocks/PAContact/PAContact.php:43
+#: Blocks/PAContact/PAContact.php:40
 msgid "Email"
 msgstr "Email"
 
-#: Blocks/PAContact/PAContact.php:45
+#: Blocks/PAContact/PAContact.php:42
 msgid "Phone"
 msgstr "Telefone"
 
-#: Blocks/PAListColumnists/PAListColumnists.php:21
-#: Blocks/PAListColumnists/PAListColumnists.php:39
+#: Blocks/PAListColumnists/PAListColumnists.php:19
+#: Blocks/PAListColumnists/PAListColumnists.php:36
 msgid "IASD - List columnists"
 msgstr "IASD - Lista de colunistas"
 
-#: Blocks/PAListColumnists/PAListColumnists.php:22
+#: Blocks/PAListColumnists/PAListColumnists.php:20
 msgid "List columnists"
 msgstr "Lista de colunistas"
 
-#: Blocks/PAListColumnists/PAListColumnists.php:41
+#: Blocks/PAListColumnists/PAListColumnists.php:38
 msgid "Quantity"
 msgstr "Quantidade"
 
-#: Blocks/PAListPosts/PAListPosts.php:21
+#: Blocks/PAListPosts/PAListPosts.php:19
 msgid "IASD - Posts list"
 msgstr "IASD - Lista de posts"
 
-#: Blocks/PAListPosts/PAListPosts.php:22
+#: Blocks/PAListPosts/PAListPosts.php:20
 msgid "Posts list"
 msgstr "Lista de posts"
 
-#: Blocks/PAListPosts/PAListPress.php:21 Blocks/PAListPosts/PAListPress.php:39
+#: Blocks/PAListPosts/PAListPress.php:19 Blocks/PAListPosts/PAListPress.php:36
 msgid "IASD - List press"
 msgstr "IASD - Lista de imprensa"
 
-#: Blocks/PAListPosts/PAListPress.php:22
+#: Blocks/PAListPosts/PAListPress.php:20
 msgid "List press posts"
 msgstr "Lista de posts"
 
-#: classes/PA_Helpers.php:132
+#: classes/PA_Helpers.php:128
 msgid "Press room"
 msgstr "Sala de imprensa"
 
-#: classes/controllers/PA_ACF_HomeFields.class.php:51
+#: classes/controllers/PA_ACF_HomeFields.class.php:39
 msgid "Featured posts"
 msgstr "Post destaque"
 
+#: classes/controllers/PA_RewriteRules.class.php:29
+#: classes/controllers/PA_RewriteRules.class.php:42
+msgid "news-slug"
+msgstr "noticia"
+
+#: classes/controllers/PA_RewriteRules.class.php:32
+#: classes/controllers/PA_RewriteRules.class.php:53
+msgid "columns-slug"
+msgstr "colunassss"
+
+#: classes/controllers/PA_RewriteRules.class.php:73
+#: classes/controllers/PA_RewriteRules.class.php:81
+msgid "press-room-slug"
+msgstr "sala-de-imprensa"
+
 #: classes/controllers/PA_wp_rest_columnists_controller.class.php:203
 msgid "Invalid user ID."
-msgstr "ID de usuário inválido"
+msgstr "ID de usuário inválido."
 
 #: classes/controllers/PA_wp_rest_columnists_controller.class.php:246
 #: classes/controllers/PA_wp_rest_columnists_controller.class.php:252
@@ -234,158 +249,158 @@ msgstr "Limite o conjunto de resultados para usuários considerados autores."
 msgid "Seventh-day Adventist Church"
 msgstr "Igreja Adventista do Sétimo Dia"
 
-#: core/PA_Theme_Noticias_Install.php:32 core/PA_Theme_Noticias_Install.php:33
-#: core/PA_Theme_Noticias_Install.php:34 core/PA_Theme_Noticias_Install.php:64
+#: core/PA_Theme_Noticias_Install.php:29 core/PA_Theme_Noticias_Install.php:30
+#: core/PA_Theme_Noticias_Install.php:31 core/PA_Theme_Noticias_Install.php:61
 msgid "Press"
 msgstr "Pressione"
 
-#: core/PA_Theme_Noticias_Install.php:35
+#: core/PA_Theme_Noticias_Install.php:32
 msgid "Add press"
 msgstr "Adicionar novo imprensa"
 
-#: core/PA_Theme_Noticias_Install.php:36
+#: core/PA_Theme_Noticias_Install.php:33
 msgid "Add New"
 msgstr "Adicionar novo"
 
-#: core/PA_Theme_Noticias_Install.php:37
+#: core/PA_Theme_Noticias_Install.php:34
 msgid "Add New press"
 msgstr "Adicionar novo imprensa"
 
-#: core/PA_Theme_Noticias_Install.php:38
+#: core/PA_Theme_Noticias_Install.php:35
 msgid "New press"
 msgstr "Nova imprensa"
 
-#: core/PA_Theme_Noticias_Install.php:39
+#: core/PA_Theme_Noticias_Install.php:36
 msgid "Edit press"
 msgstr "Editar imprensa"
 
-#: core/PA_Theme_Noticias_Install.php:40
+#: core/PA_Theme_Noticias_Install.php:37
 msgid "View press"
 msgstr "Ver imprensa"
 
-#: core/PA_Theme_Noticias_Install.php:41
+#: core/PA_Theme_Noticias_Install.php:38
 msgid "All press"
 msgstr "Todas as imprensa"
 
-#: core/PA_Theme_Noticias_Install.php:42
+#: core/PA_Theme_Noticias_Install.php:39
 msgid "Search press"
 msgstr "Buscar imprensa"
 
-#: core/PA_Theme_Noticias_Install.php:43
+#: core/PA_Theme_Noticias_Install.php:40
 msgid "No press found."
-msgstr "Nenhuma imprensa encontrada"
+msgstr "Nenhuma imprensa encontrada."
 
-#: core/PA_Theme_Noticias_Install.php:44
+#: core/PA_Theme_Noticias_Install.php:41
 msgid "No press found in Trash."
 msgstr "Nenhuma imprensa encontrada na Lixeira."
 
-#: core/PA_Theme_Noticias_Install.php:73 core/PA_Theme_Noticias_Install.php:81
+#: core/PA_Theme_Noticias_Install.php:70 core/PA_Theme_Noticias_Install.php:78
 msgid "Formatos de post"
 msgstr ""
 
-#: core/PA_Theme_Noticias_Install.php:74
+#: core/PA_Theme_Noticias_Install.php:71
 msgid "Formato de post"
 msgstr ""
 
-#: core/PA_Theme_Noticias_Install.php:75
+#: core/PA_Theme_Noticias_Install.php:72
 msgid "Procurar formatos de post"
 msgstr ""
 
-#: core/PA_Theme_Noticias_Install.php:76
+#: core/PA_Theme_Noticias_Install.php:73
 msgid "Todas os formatos"
 msgstr ""
 
-#: core/PA_Theme_Noticias_Install.php:77
+#: core/PA_Theme_Noticias_Install.php:74
 msgid "Editar formato de post"
 msgstr ""
 
-#: core/PA_Theme_Noticias_Install.php:78
+#: core/PA_Theme_Noticias_Install.php:75
 msgid "Atualizar formato de post"
 msgstr ""
 
-#: core/PA_Theme_Noticias_Install.php:79
+#: core/PA_Theme_Noticias_Install.php:76
 msgid "Adicionar novo formato de post"
 msgstr ""
 
-#: core/PA_Theme_Noticias_Install.php:80
+#: core/PA_Theme_Noticias_Install.php:77
 msgid "Novo formato de post"
 msgstr ""
 
-#: core/PA_Theme_Noticias_Install.php:107
-#: core/PA_Theme_Noticias_Install.php:108
-#: core/PA_Theme_Noticias_Install.php:115
+#: core/PA_Theme_Noticias_Install.php:104
+#: core/PA_Theme_Noticias_Install.php:105
+#: core/PA_Theme_Noticias_Install.php:112
 msgid "Press type"
 msgstr "Tipo de imprensa"
 
-#: core/PA_Theme_Noticias_Install.php:109
+#: core/PA_Theme_Noticias_Install.php:106
 msgid "Search items"
 msgstr "Buscar itens"
 
-#: core/PA_Theme_Noticias_Install.php:110
+#: core/PA_Theme_Noticias_Install.php:107
 msgid "All items"
 msgstr "Todos os itens"
 
-#: core/PA_Theme_Noticias_Install.php:111
+#: core/PA_Theme_Noticias_Install.php:108
 msgid "Edit items"
 msgstr "Editar item"
 
-#: core/PA_Theme_Noticias_Install.php:112
+#: core/PA_Theme_Noticias_Install.php:109
 msgid "Update item"
 msgstr "Atualizar item"
 
-#: core/PA_Theme_Noticias_Install.php:113
+#: core/PA_Theme_Noticias_Install.php:110
 msgid "Add new item"
 msgstr "Adicionar novo item"
 
-#: core/PA_Theme_Noticias_Install.php:114
+#: core/PA_Theme_Noticias_Install.php:111
 msgid "New item"
 msgstr "Novo item"
 
-#: core/PA_Theme_Noticias_Install.php:141
-#: core/PA_Theme_Noticias_Install.php:142
+#: core/PA_Theme_Noticias_Install.php:138
+#: core/PA_Theme_Noticias_Install.php:139
 msgid "Região"
 msgstr ""
 
-#: core/PA_Theme_Noticias_Install.php:143
+#: core/PA_Theme_Noticias_Install.php:140
 msgid "Procurar regiões"
 msgstr ""
 
-#: core/PA_Theme_Noticias_Install.php:144
+#: core/PA_Theme_Noticias_Install.php:141
 msgid "Todas as região"
 msgstr ""
 
-#: core/PA_Theme_Noticias_Install.php:145
+#: core/PA_Theme_Noticias_Install.php:142
 msgid "Editar região"
 msgstr ""
 
-#: core/PA_Theme_Noticias_Install.php:146
+#: core/PA_Theme_Noticias_Install.php:143
 msgid "Atualizar região"
 msgstr ""
 
-#: core/PA_Theme_Noticias_Install.php:147
+#: core/PA_Theme_Noticias_Install.php:144
 msgid "Adicionar nova região"
 msgstr ""
 
-#: core/PA_Theme_Noticias_Install.php:148
+#: core/PA_Theme_Noticias_Install.php:145
 msgid "Nova região"
 msgstr ""
 
-#: core/PA_Theme_Noticias_Install.php:149
+#: core/PA_Theme_Noticias_Install.php:146
 msgid "Regiões"
 msgstr ""
 
-#: core/PA_Theme_Noticias_Install.php:209
+#: core/PA_Theme_Noticias_Install.php:203
 msgid "Colunista"
 msgstr ""
 
-#: core/PA_Theme_Noticias_Install.php:220
+#: core/PA_Theme_Noticias_Install.php:213
 msgid "Archive columnists"
 msgstr ""
 
-#: core/PA_Theme_Noticias_Install.php:227
+#: core/PA_Theme_Noticias_Install.php:220
 msgid "Columnist"
 msgstr ""
 
-#: core/PA_Theme_Noticias_Install.php:234
+#: core/PA_Theme_Noticias_Install.php:227
 msgid "Front press"
 msgstr ""
