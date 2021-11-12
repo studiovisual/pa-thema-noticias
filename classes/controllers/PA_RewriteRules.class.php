@@ -9,6 +9,7 @@ class PaRewriteRules
         // add_action( 'pre_post_link', [$this,'ReplacePostUrls'], 100, 3);
         add_action('init', [$this, 'LateInitNoticia'], 100);
         add_action('init', [$this, 'LateInitAuthor'], 100);
+        add_action('init', [$this, 'reWriteInitAuthor'], 100);
         add_filter('pre_post_link', [$this, 'PrePostLink'], 10, 3);
     }
 
@@ -31,6 +32,7 @@ class PaRewriteRules
                 }
             }
         }
+
         return $permalink;
     }
 
@@ -52,6 +54,16 @@ class PaRewriteRules
         $permalink = str_replace('%postname%', '([^/]+)', $permalink);
         $permalink .= '?$';
         $rewrite_redirect = 'index.php?name=$matches[2]&author=$matches[1]';
+        $permalink = add_rewrite_rule($permalink, $rewrite_redirect, 'top');
+        flush_rewrite_rules();
+    }
+
+    public static function reWriteInitAuthor()
+    {
+        $permalink = 'coluna/%author%';
+        $permalink = str_replace('%author%', '([^/]+)', $permalink);
+        $permalink .= '?$';
+        $rewrite_redirect = 'index.php?author_name=$matches[1]';
         $permalink = add_rewrite_rule($permalink, $rewrite_redirect, 'top');
         flush_rewrite_rules();
     }
