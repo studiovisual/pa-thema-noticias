@@ -184,3 +184,13 @@ function mytheme_add_editor_styles() {
     add_editor_style( 'style-editor.css' );
 }
 add_action( 'admin_init', 'mytheme_add_editor_styles' );
+
+
+add_filter( "rest_prepare_post", 'prefix_title_entity_decode' , 10, 1 ); 
+add_filter( "rest_prepare_press", 'prefix_title_entity_decode' , 10, 1 ); 
+function prefix_title_entity_decode($response){
+    $data = $response->get_data();
+    $data['title']['rendered'] = html_entity_decode( $data['title']['rendered']);
+    $response->set_data($data);
+    return $response;
+}
