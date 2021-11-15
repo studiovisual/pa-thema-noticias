@@ -88,10 +88,10 @@ class PAThemeNoticiasInstall {
 			'query_var'          => true,
 			'show_in_rest'       => true, // add support for Gutenberg editor
 			'rewrite'            => ['slug' => sanitize_title(__('xtt-pa-format-slug', 'iasd'))],
-			'default_term'		=> array(
-				'name' => 'Notícia',
-				'slug'	=> 'noticia'
-			),
+			// 'default_term'		=> array(
+			// 	'name' => 'Notícia',
+			// 	'slug'	=> 'noticia'
+			// ),
 			'capabilities' 		  => array(
 				'edit_terms' 	  => 'manage_options',
 				'delete_terms'    => 'manage_options',
