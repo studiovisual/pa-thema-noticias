@@ -189,4 +189,4 @@ function unsetJetPackModules ( $modules ) {
     unset( $modules['shortcodes'] );
     return $modules;
 }   
-// add_filter( 'jetpack_get_available_modules', 'unsetJetPackModules' );
+add_filter( 'jetpack_get_available_modules', 'unsetJetPackModules' );
