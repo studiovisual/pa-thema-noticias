@@ -31,7 +31,7 @@
                 </load-more>
                 <div class="d-flex justify-content-center mt-5">
                     <div class="spinner-border text-success" role="status">
-                        <span class="visually-hidden">Loading...</span>
+                        <span class="visually-hidden">{{__('Loading...', 'iasd')}}</span>
                     </div>
                   </div>
             </div>

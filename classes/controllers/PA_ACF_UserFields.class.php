@@ -14,15 +14,15 @@ class PaAcfUserFields {
 
     function createACFFields() {
         register_extended_field_group([
-            'title'  => 'Informações adicionais',
+            'title'  => __('Additional Information','iasd'),
             'style'  => 'default',
             'fields' => [
                 Image::make('Avatar', 'user_avatar')
                     ->returnFormat('id')
                     ->required(),
-                Url::make('Facebook', 'facebook'),
-                Url::make('Twitter', 'twitter'),
-                Url::make('Instagram', 'instagram'),
+                Url::make('Facebook URL', 'facebook'),
+                Url::make('Twitter URL', 'twitter'),
+                Url::make('Instagram URL', 'instagram'),
             ],
             'location' => [
                 Location::if('user_form', 'edit')->and('user_role', 'colunista'),
@@ -30,12 +30,12 @@ class PaAcfUserFields {
         ]);
 
         register_extended_field_group([
-            'title'  => 'Informações de coluna',
+            'title'  => __('Column information', 'iasd'),
             'style'  => 'default',
             'fields' => [
-                Text::make('Nome', 'column_name')
+                Text::make(__('Column name','iasd'), 'column_name')
                     ->required(),
-                Textarea::make('Resumo', 'column_excerpt')
+                Textarea::make(__('Column excerpt', 'iasd'), 'column_excerpt')
                     ->required(),
             ],
             'location' => [

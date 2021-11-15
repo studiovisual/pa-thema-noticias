@@ -16,7 +16,7 @@ class PAListPosts extends Block {
     public function __construct() {
 		// Set block settings
         parent::__construct([
-            'title' 	  => __('IASD - Posts list', 'iasd'),
+            'title' 	  => __('IASD - News - Post list', 'iasd'),
             'description' => __('Posts list', 'iasd'),
             'category' 	  => 'pa-adventista',
 			'keywords' 	  => ['list', 'posts'],
@@ -39,7 +39,7 @@ class PAListPosts extends Block {
 					->postTypes(['post'])
 					->manualItems(false)
 					->initialLimit(4)
-					->filterTaxonomies(['xtt-pa-sedes', 'xtt-pa-editorias', 'xtt-pa-projetos'])
+					->filterTaxonomies(['xtt-pa-sedes', 'xtt-pa-editorias', 'xtt-pa-projetos', 'xtt-pa-departamentos'])
 			],
 			MoreContent::make()
 		);

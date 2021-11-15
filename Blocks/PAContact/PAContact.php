@@ -16,7 +16,7 @@ class PAContact extends Block {
     public function __construct() {
 		// Set block settings
         parent::__construct([
-            'title' 	  => __('IASD - Contact', 'iasd'),
+            'title' 	  => __('IASD - News - Contact', 'iasd'),
             'description' => __('Contact block', 'iasd'),
             'category' 	  => 'pa-adventista',
 			'keywords' 	  => ['contact', 'text'],
@@ -32,10 +32,10 @@ class PAContact extends Block {
 	protected function setFields(): array {
 		return [
 			Text::make(__('Title', 'iasd'), 'title')
-				->defaultValue(__('IASD - Contact', 'iasd')),
+				->defaultValue(__('IASD - Noticias - Contact', 'iasd')),
 
 			Text::make(__('Description', 'iasd'), 'description')
-				->defaultValue(__('IASD - Contact', 'iasd')),
+				->defaultValue(__('IASD - Noticias - Contact', 'iasd')),
 
 			Email::make(__('Email', 'iasd'), 'email'),
 

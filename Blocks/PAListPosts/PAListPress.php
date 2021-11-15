@@ -16,7 +16,7 @@ class PAListPress extends Block {
     public function __construct() {
 		// Set block settings
         parent::__construct([
-            'title' 	  => __('IASD - List press', 'iasd'),
+            'title' 	  => __('IASD - News - Press list', 'iasd'),
             'description' => __('List press posts', 'iasd'),
             'category' 	  => 'pa-adventista',
 			'keywords' 	  => ['list', 'posts', 'press'],

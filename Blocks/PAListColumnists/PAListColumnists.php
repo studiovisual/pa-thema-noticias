@@ -16,7 +16,7 @@ class PAListColumnists extends Block {
     public function __construct() {
 		// Set block settings
         parent::__construct([
-            'title' 	  => __('IASD - List columnists', 'iasd'),
+            'title' 	  => __('IASD - News - Columnists List', 'iasd'),
             'description' => __('List columnists', 'iasd'),
             'category' 	  => 'pa-adventista',
 			'keywords' 	  => ['list', 'posts'],
