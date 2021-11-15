@@ -1,17 +1,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2021-11-15 11:16-0300\n"
+"POT-Creation-Date: 2021-11-15 11:33-0300\n"
 "PO-Revision-Date: 2021-11-15 11:35-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: pt_BR\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.0\n"
 "X-Poedit-Basepath: ..\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e;_x;esc_html__;esc_html_e;esc_html_x;esc_attr__;"
 "esc_attr_e;esc_attr_x\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -20,19 +20,19 @@ msgstr ""
 
 #: components/header/title.blade.php:5
 msgid "Adventist news"
-msgstr "Notícias Adventistas"
+msgstr "Noticias Adventistas"
 
 #: template-parts/home.blade.php:34
 msgid "Loading..."
-msgstr "Carregando…"
+msgstr "Cargando…"
 
 #: template-parts/single/footer.blade.php:11
 msgid "Past article"
-msgstr "Artigo anterior"
+msgstr "Artículo pasado"
 
 #: template-parts/single/footer.blade.php:21
 msgid "Next article"
-msgstr "Próximo artigo"
+msgstr "Artículo siguiente"
 
 #: template-parts/single/header.blade.php:7
 msgid "By"
@@ -40,7 +40,7 @@ msgstr "Por"
 
 #: template-parts/single/header.blade.php:29
 msgid "Hear text"
-msgstr "Ouvir texto"
+msgstr "Escuchar texto"
 
 #: Blocks/PAContact/PAContact.php:19
 msgid "IASD - News - Contact"
@@ -61,15 +61,15 @@ msgstr ""
 
 #: Blocks/PAContact/PAContact.php:37
 msgid "Description"
-msgstr "Descrição"
+msgstr "Descripción"
 
 #: Blocks/PAContact/PAContact.php:40
 msgid "Email"
-msgstr "Email"
+msgstr "Correo electrónico"
 
 #: Blocks/PAContact/PAContact.php:42
 msgid "Phone"
-msgstr "Telefone"
+msgstr "Teléfono"
 
 #: Blocks/PAListColumnists/PAListColumnists.php:19
 msgid "IASD - News - Columnists List"
@@ -85,7 +85,7 @@ msgstr ""
 
 #: Blocks/PAListColumnists/PAListColumnists.php:38
 msgid "Quantity"
-msgstr "Quantidade"
+msgstr "Cantidad"
 
 #: Blocks/PAListPosts/PAListPosts.php:19
 msgid "IASD - News - Post list"
@@ -109,11 +109,11 @@ msgstr ""
 
 #: classes/PA_Helpers.php:122
 msgid "Columna"
-msgstr "Coluna"
+msgstr "Columna"
 
 #: classes/PA_Helpers.php:128
 msgid "Press room"
-msgstr "Imprensa"
+msgstr "Prensa"
 
 #: classes/controllers/PA_ACF_HomeFields.class.php:27
 msgid "Features"
@@ -131,7 +131,7 @@ msgstr "Esta seleção influenciará a quantidade de itens exibidos no destaque.
 
 #: classes/controllers/PA_ACF_HomeFields.class.php:39
 msgid "Featured posts"
-msgstr "Post em destaque"
+msgstr "Posts destacados"
 
 #: classes/controllers/PA_ACF_HomeFields.class.php:55
 #: classes/controllers/PA_ACF_HomeFields.class.php:59
@@ -144,7 +144,7 @@ msgstr "Selecione a sede regional para filtrar os conteúdos na página."
 
 #: classes/controllers/PA_ACF_PostFields.class.php:16
 msgid "Video info"
-msgstr "Informação do vídeo"
+msgstr "Información del video"
 
 #: classes/controllers/PA_ACF_PostFields.class.php:19
 msgid "Video"
@@ -152,7 +152,7 @@ msgstr "Vídeo"
 
 #: classes/controllers/PA_ACF_PostFields.class.php:21
 msgid "Lenght"
-msgstr "Duração"
+msgstr "Largo"
 
 #: classes/controllers/PA_ACF_PostFields.class.php:22
 msgid "It will be obtained when saving the post."
@@ -160,7 +160,7 @@ msgstr "Será obtido ao salvar a postagem."
 
 #: classes/controllers/PA_ACF_PostFields.class.php:31
 msgid "Author info"
-msgstr "Informação do autor"
+msgstr "Información del autor"
 
 #: classes/controllers/PA_ACF_PostFields.class.php:35
 msgid "Author"
@@ -168,26 +168,26 @@ msgstr "Autor"
 
 #: classes/controllers/PA_ACF_UserFields.class.php:17
 msgid "Additional Information"
-msgstr "Informação adicional"
+msgstr "Información adicional"
 
 #: classes/controllers/PA_ACF_UserFields.class.php:33
 msgid "Column information"
-msgstr "Informação da coluna"
+msgstr "Información de la columna"
 
 #: classes/controllers/PA_ACF_UserFields.class.php:36
 msgid "Column name"
-msgstr "Nome da coluna"
+msgstr "Nombre de la columna"
 
 #: classes/controllers/PA_ACF_UserFields.class.php:38
 msgid "Column excerpt"
-msgstr "Resumo da coluna"
+msgstr "Extracto de columna"
 
 #: classes/controllers/PA_RewriteRules.class.php:22
 #: classes/controllers/PA_RewriteRules.class.php:37
 #: classes/controllers/PA_RewriteRules.class.php:62
 #: classes/controllers/PA_RewriteRules.class.php:73
 msgid "columns-slug"
-msgstr "coluna"
+msgstr "column"
 
 #: classes/controllers/PA_RewriteRules.class.php:40
 #: classes/controllers/PA_RewriteRules.class.php:51
@@ -341,80 +341,77 @@ msgstr "Limite o conjunto de resultados para usuários considerados autores."
 
 #: components/menu/header-logo.php:3
 msgid "Seventh-day Adventist Church"
-msgstr "Igreja Adventista do Sétimo Dia"
+msgstr "Iglesia Adventista Del Séptimo Día"
 
 #: core/PA_Theme_Noticias_Install.php:31 core/PA_Theme_Noticias_Install.php:32
 #: core/PA_Theme_Noticias_Install.php:33
 msgid "Press"
-msgstr "Imprensa"
+msgstr "Prensa"
 
 #: core/PA_Theme_Noticias_Install.php:34
 msgid "Add item"
-msgstr "Adicionar novo"
+msgstr "Añadir ítem"
 
 #: core/PA_Theme_Noticias_Install.php:35
 msgid "Add New"
-msgstr "Adicionar novo"
+msgstr "Agregar nuevo"
 
 #: core/PA_Theme_Noticias_Install.php:36
 msgid "Add New Item"
-msgstr "Adicionar novo item"
+msgstr "Agregar ítem nuevo"
 
 #: core/PA_Theme_Noticias_Install.php:37 core/PA_Theme_Noticias_Install.php:79
 #: core/PA_Theme_Noticias_Install.php:119
 #: core/PA_Theme_Noticias_Install.php:153
 msgid "New item"
-msgstr "Novo item"
+msgstr "Nuevo ítem"
 
 #: core/PA_Theme_Noticias_Install.php:38 core/PA_Theme_Noticias_Install.php:76
 #: core/PA_Theme_Noticias_Install.php:150
 msgid "Edit item"
-msgstr "Editar item"
+msgstr "Editar ítem"
 
 #: core/PA_Theme_Noticias_Install.php:39
 msgid "View item"
-msgstr "Visualizar item"
+msgstr "Ver ítem"
 
-#: core/PA_Theme_Noticias_Install.php:40
-msgid "All item"
+#: core/PA_Theme_Noticias_Install.php:40 core/PA_Theme_Noticias_Install.php:75
+#: core/PA_Theme_Noticias_Install.php:115
+#: core/PA_Theme_Noticias_Install.php:149
+msgid "All items"
 msgstr "Todos os itens"
 
 #: core/PA_Theme_Noticias_Install.php:41 core/PA_Theme_Noticias_Install.php:74
 #: core/PA_Theme_Noticias_Install.php:148
 msgid "Search item"
-msgstr "Buscar itens"
+msgstr "Búsqueda"
 
 #: core/PA_Theme_Noticias_Install.php:42
 msgid "No press found."
-msgstr "Nenhuma imprensa encontrada."
+msgstr "No se encontró prensa."
 
 #: core/PA_Theme_Noticias_Install.php:43
 msgid "No press found in Trash."
-msgstr "Nenhuma imprensa encontrada na Lixeira."
+msgstr "No se encontró prensa en la Papelera."
 
 #: core/PA_Theme_Noticias_Install.php:53
 msgid "press-room-slug"
-msgstr "sala-de-imprensa"
+msgstr "Prensa"
 
 #: core/PA_Theme_Noticias_Install.php:72 core/PA_Theme_Noticias_Install.php:73
 #: core/PA_Theme_Noticias_Install.php:80
 msgid "Post format"
-msgstr "Formato do post"
-
-#: core/PA_Theme_Noticias_Install.php:75 core/PA_Theme_Noticias_Install.php:115
-#: core/PA_Theme_Noticias_Install.php:149
-msgid "All items"
-msgstr "Todos os itens"
+msgstr "Formato de publicación"
 
 #: core/PA_Theme_Noticias_Install.php:77 core/PA_Theme_Noticias_Install.php:117
 #: core/PA_Theme_Noticias_Install.php:151
 msgid "Update item"
-msgstr "Atualizar item"
+msgstr "Actualizar ítem"
 
 #: core/PA_Theme_Noticias_Install.php:78 core/PA_Theme_Noticias_Install.php:118
 #: core/PA_Theme_Noticias_Install.php:152
 msgid "Add new item"
-msgstr "Adicionar novo item"
+msgstr "Agregar ítem nuevo"
 
 #: core/PA_Theme_Noticias_Install.php:90
 msgid "xtt-pa-format-slug"
@@ -428,44 +425,41 @@ msgstr "Tipo"
 
 #: core/PA_Theme_Noticias_Install.php:114
 msgid "Search items"
-msgstr "Buscar itens"
+msgstr "Búsqueda"
 
 #: core/PA_Theme_Noticias_Install.php:116
 msgid "Edit items"
-msgstr "Editar item"
+msgstr "Editar ítem"
 
 #: core/PA_Theme_Noticias_Install.php:130
 msgid "xtt-pa-press-type-slug"
-msgstr "press-type"
+msgstr "Tipo-prensa"
 
 #: core/PA_Theme_Noticias_Install.php:146
 #: core/PA_Theme_Noticias_Install.php:147
 msgid "Region"
-msgstr "Região"
+msgstr "Región"
 
 #: core/PA_Theme_Noticias_Install.php:154
 msgid "Regions"
-msgstr "Regiões"
+msgstr "Regiones"
 
 #: core/PA_Theme_Noticias_Install.php:165
 msgid "xtt-pa-regiao-slug"
-msgstr "regiao"
+msgstr "region"
 
 #: core/PA_Theme_Noticias_Install.php:211
-msgid "Colunista"
-msgstr "Colunista"
+#: core/PA_Theme_Noticias_Install.php:228
+msgid "Columnist"
+msgstr "Columnista"
 
 #: core/PA_Theme_Noticias_Install.php:221
 msgid "Archive columnists"
-msgstr "Archive - Colunistas"
-
-#: core/PA_Theme_Noticias_Install.php:228
-msgid "Columnist"
-msgstr "Colunista"
+msgstr "Archive - Columnista"
 
 #: core/PA_Theme_Noticias_Install.php:235
 msgid "Archive press"
-msgstr "Archive - Imprensa"
+msgstr "Archive - Prensa"
 
 #: core/PA_Theme_Noticias_Install.php:254
 #: core/PA_Theme_Noticias_Install.php:255
@@ -473,42 +467,48 @@ msgstr "Archive - Imprensa"
 #: core/PA_Theme_Noticias_Install.php:264
 #: core/PA_Theme_Noticias_Install.php:268
 msgid "News"
-msgstr "Notícias"
+msgstr "Noticias"
 
 #: core/PA_Theme_Noticias_Install.php:256
 #: core/PA_Theme_Noticias_Install.php:265
 #: core/PA_Theme_Noticias_Install.php:266
 msgid "Add news"
-msgstr "Nova notícia"
+msgstr "Nueva noticia"
 
 #: core/PA_Theme_Noticias_Install.php:267
 msgid "Edit"
-msgstr "Editar notícia"
+msgstr "Editar noticia"
 
 #: core/PA_Theme_Noticias_Install.php:269
 msgid "View news"
-msgstr "Ver notícia"
+msgstr "Ver noticia"
 
 #: core/PA_Theme_Noticias_Install.php:270
 msgid "Search news"
-msgstr "Buscar notícia"
+msgstr "Buscar noticias"
 
 #: core/PA_Theme_Noticias_Install.php:271
 msgid "No news found"
-msgstr "Nenhuma notícia encontrada"
+msgstr "No se encontraron noticias"
 
 #: core/PA_Theme_Noticias_Install.php:272
 msgid "No news in the trash"
-msgstr "Nenhuma notícia encontrada na lixeira"
+msgstr "No hay noticias en la basura"
+
+#~ msgid "Colunista"
+#~ msgstr "Columnista"
+
+#~ msgid "All item"
+#~ msgstr "Todo los ítems"
 
 #~ msgid "Add press"
-#~ msgstr "Imprensa"
+#~ msgstr "Prensa"
 
 #~ msgid "Add New press"
-#~ msgstr "Imprensa"
+#~ msgstr "Prensa"
 
 #~ msgid "New press"
-#~ msgstr "Nova imprensa"
+#~ msgstr "Nova prensa"
 
 #~ msgid "Edit press"
 #~ msgstr "Editar imprensa"

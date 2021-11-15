@@ -17,6 +17,8 @@ class PAThemeNoticiasInstall {
 		add_filter('manage_edit-press_columns', array($this, 'removeFakeColumn'));
 		add_action('init', array($this, 'addCustomRoles'));
 		add_action('widgets_init', array($this, 'setWidgets'), 11);
+		add_action('init', array($this, 'changePostObjectLabel') );
+		add_action('admin_menu', array($this, 'changePostMenuLabel') );
 	}
 
 	function installRoutines() {
@@ -29,14 +31,14 @@ class PAThemeNoticiasInstall {
 			'name'                  => __( 'Press', 'iasd' ),
 			'singular_name'         => __( 'Press', 'iasd' ),
 			'menu_name'             => __( 'Press', 'iasd' ),
-			'name_admin_bar'        => __( 'Add press', 'iasd' ),
+			'name_admin_bar'        => __( 'Add item', 'iasd' ),
 			'add_new'               => __( 'Add New', 'iasd' ),
-			'add_new_item'          => __( 'Add New press', 'iasd' ),
-			'new_item'              => __( 'New press', 'iasd' ),
-			'edit_item'             => __( 'Edit press', 'iasd' ),
-			'view_item'             => __( 'View press', 'iasd' ),
-			'all_items'             => __( 'All press', 'iasd' ),
-			'search_items'          => __( 'Search press', 'iasd' ),
+			'add_new_item'          => __( 'Add New Item', 'iasd' ),
+			'new_item'              => __( 'New item', 'iasd' ),
+			'edit_item'             => __( 'Edit item', 'iasd' ),
+			'view_item'             => __( 'View item', 'iasd' ),
+			'all_items'             => __( 'All items', 'iasd' ),
+			'search_items'          => __( 'Search item', 'iasd' ),
 			'not_found'             => __( 'No press found.', 'iasd' ),
 			'not_found_in_trash'    => __( 'No press found in Trash.', 'iasd' ),
 		); 
@@ -167,7 +169,7 @@ class PAThemeNoticiasInstall {
 			// ),
 		);
 	
-		register_taxonomy('xtt-pa-regiao', ['post'], $args);
+		// register_taxonomy('xtt-pa-regiao', ['post'], $args);
 
 		register_taxonomy_for_object_type('xtt-pa-editorias', 'press');
 
@@ -206,7 +208,7 @@ class PAThemeNoticiasInstall {
 	function addCustomRoles() {
 		add_role(
 			'colunista', 
-			__('Colunista', 'iasd'), 
+			__('Columnist', 'iasd'), 
 			array(
 				'level_1' => true,
 				'read' => true,
@@ -244,6 +246,30 @@ class PAThemeNoticiasInstall {
 		unset($posts_columns['fake']);
 
 		return $posts_columns;
+	}
+
+	public static function changePostMenuLabel() {
+		global $menu;
+		global $submenu;
+		$menu[5][0] = __('News', 'iasd');
+		$submenu['edit.php'][5][0] = __('News', 'iasd');
+		$submenu['edit.php'][10][0] = __('Add news', 'iasd');
+		echo '';
+	}
+
+	public static function changePostObjectLabel() {
+		global $wp_post_types;
+		$labels = &$wp_post_types['post']->labels;
+		$wp_post_types['post']->label = $labels->name = __('News', 'iasd');
+		$labels->singular_name = __('News', 'iasd');
+		$labels->add_new = __('Add news', 'iasd');
+		$labels->add_new_item = __('Add news', 'iasd');
+		$labels->edit_item = __('Edit', 'iasd');
+		$labels->new_item = __('News', 'iasd');
+		$labels->view_item = __('View news', 'iasd');
+		$labels->search_items = __('Search news', 'iasd');
+		$labels->not_found = __('No news found', 'iasd');
+		$labels->not_found_in_trash = __('No news in the trash', 'iasd');
 	}
 
 }
