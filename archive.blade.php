@@ -27,7 +27,7 @@
 					@endif
 					
 					<div class="pa-pg-numbers row">
-						@php( PaThemeHelpers::pageNumbers(); )
+						@php( PaThemeHelpers::pageNumbers())
 					</div>
 				</section>
 
