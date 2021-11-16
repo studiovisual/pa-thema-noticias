@@ -1,29 +1,25 @@
 class CardAuthor extends window.Slim {
+  constructor() {
+    super();
 
-    constructor() {
-        super();
+    if (!this.author) return;
 
-        if(!this.author)
-            return;
+    this.parseAvatar();
+  }
 
-        this.parseAvatar();
-    }
+  parseAvatar() {
+    if (!this.author.avatar || !this.author.avatar.hasOwnProperty("full"))
+      return;
 
-    parseAvatar() {
-        if(!this.author.avatar ||
-            !this.author.avatar.hasOwnProperty('full'))
-            return;
-
-        this.author.avatar = this.author.avatar.full;
-    }
-
+    this.author.avatar = this.author.avatar.full;
+  }
 }
-  
+
 CardAuthor.useShadow = false;
 CardAuthor.template = /*html*/ `
     <div class="pa-author-item pa-blog-item">
         <a href="{{ this.author.link }}" title="{{ this.author.name }}">
-            <div class="row align-items-start align-items-sm-start">
+            <div class="row align-items-center">
                 <div class="col-auto pe-3">
                     <div class="ratio ratio-1x1">
                         <figure class="figure m-0">
@@ -45,5 +41,5 @@ CardAuthor.template = /*html*/ `
         </a>
     </div>
 `;
-  
-customElements.define('card-author', CardAuthor);
+
+customElements.define("card-author", CardAuthor);

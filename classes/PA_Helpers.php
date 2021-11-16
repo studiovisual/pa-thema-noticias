@@ -119,7 +119,7 @@ function getRelatedPosts($post_id, $limit = 6): array {
 
 function getHeaderTitle($post_id = NULL) {
     if(is_author() || is_singular('post') && !empty($format = getPostFormat($post_id)) && $format->slug == 'artigo')
-        return 'Coluna | ' . (is_author() ? get_queried_object()->display_name : get_the_author_meta('display_name'));
+        return __('Columna', 'iasd').' | ' . (is_author() ? get_queried_object()->display_name : get_the_author_meta('display_name'));
     elseif(is_archive()) //is archive
         return get_taxonomy(get_queried_object()->taxonomy)->label . ' | ' . get_queried_object()->name;
     elseif(is_singular('post')) //is single
@@ -142,3 +142,51 @@ function getDepartment($post_id) {
 
     return null;
 }
+
+add_filter( 'jetpack_offline_mode', '__return_true' );
+
+function unsetJetPackModules ( $modules ) {
+    // unset( $modules['carousel'] );
+    unset( $modules['comment-likes'] );
+    unset( $modules['comments'] );
+    unset( $modules['contact-form'] );
+    unset( $modules['copy-post'] );
+    unset( $modules['custom-content-types'] );
+    unset( $modules['custom-css'] );
+    unset( $modules['enhanced-distribution'] );
+    unset( $modules['google-analytics'] );
+    unset( $modules['gravatar-hovercards'] );
+    unset( $modules['infinite-scroll'] );
+    unset( $modules['json-api'] );
+    unset( $modules['latex'] );
+    unset( $modules['lazy-images'] );
+    unset( $modules['likes'] );
+    unset( $modules['markdown'] );
+    unset( $modules['masterbar'] );
+    unset( $modules['monitor'] );
+    unset( $modules['notes'] );
+    unset( $modules['photon'] );
+    unset( $modules['photon-cdn'] );
+    unset( $modules['post-by-email'] );
+    unset( $modules['protect'] );
+    unset( $modules['publicize'] );
+    unset( $modules['related-posts'] );
+    unset( $modules['search'] );
+    unset( $modules['seo-tools'] );
+    unset( $modules['sharedaddy'] );
+    unset( $modules['shortlinks'] );
+    unset( $modules['sitemaps'] );
+    unset( $modules['sso'] );
+    unset( $modules['stats'] );
+    unset( $modules['subscriptions'] );
+    // unset( $modules['tiled-gallery'] );
+    unset( $modules['verification-tools'] );
+    unset( $modules['videopress'] );
+    // unset( $modules['widget-visibility'] );
+    // unset( $modules['widgets'] );
+    unset( $modules['woocommerce-analytics'] );
+    unset( $modules['wordads'] );
+    unset( $modules['shortcodes'] );
+    return $modules;
+}   
+add_filter( 'jetpack_get_available_modules', 'unsetJetPackModules' );

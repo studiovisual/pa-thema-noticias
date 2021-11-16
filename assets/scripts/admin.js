@@ -3,7 +3,9 @@
 
     function customizeTaxonomySelector(OriginalComponent) {
         return function(props) {
-            if(props.slug === 'xtt-pa-format' || props.slug === 'xtt-pa-regiao' || props.slug === 'xtt-pa-press-type')
+            // if(props.slug === 'xtt-pa-format' || props.slug === 'xtt-pa-regiao' || props.slug === 'xtt-pa-press-type')
+
+            if(props.slug === 'xtt-pa-owner' || props.slug === 'xtt-pa-regiao' || props.slug === 'xtt-pa-press-type')
                 return el(window.DropdownTermSelector, { ...props });
 
             return el(OriginalComponent, { ...props });

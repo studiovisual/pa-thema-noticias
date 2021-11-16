@@ -8,7 +8,7 @@
         <div class="row align-items-center">
             <div class="col col-xl-4 order-2 order-xl-1">
                 @notempty($previous)
-                    <a class="pa-post-link text-decoration-none" href="{{ get_permalink($previous) }}"><i class="fas fa-arrow-left me-3"></i>Artigo anterior</a>
+                    <a class="pa-post-link text-decoration-none" href="{{ get_permalink($previous) }}"><i class="fas fa-arrow-left me-3"></i>{{__('Past article', 'iasd')}}</a>
                 @endnotempty
             </div>
             
@@ -18,7 +18,7 @@
 
             <div class="col col-xl-4 text-end order-3">
                 {{-- @notempty($next) --}}
-                    <a class="pa-post-link text-decoration-none" href="{{ get_permalink($next) }}">Próximo artigo<i class="fas fa-arrow-right ms-3"></i></a>
+                    <a class="pa-post-link text-decoration-none" href="{{ get_permalink($next) }}">{{__('Next article', 'iasd')}}<i class="fas fa-arrow-right ms-3"></i></a>
                 {{-- @endnotempty --}}
             </div>
         </div>

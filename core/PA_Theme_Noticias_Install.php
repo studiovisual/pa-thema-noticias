@@ -17,6 +17,8 @@ class PAThemeNoticiasInstall {
 		add_filter('manage_edit-press_columns', array($this, 'removeFakeColumn'));
 		add_action('init', array($this, 'addCustomRoles'));
 		add_action('widgets_init', array($this, 'setWidgets'), 11);
+		add_action('init', array($this, 'changePostObjectLabel') );
+		add_action('admin_menu', array($this, 'changePostMenuLabel') );
 	}
 
 	function installRoutines() {
@@ -28,15 +30,15 @@ class PAThemeNoticiasInstall {
 		$labels = array(
 			'name'                  => __( 'Press', 'iasd' ),
 			'singular_name'         => __( 'Press', 'iasd' ),
-			'menu_name'             => __( 'Press', 'Admin Menu text', 'iasd' ),
-			'name_admin_bar'        => __( 'Add press', 'iasd' ),
+			'menu_name'             => __( 'Press', 'iasd' ),
+			'name_admin_bar'        => __( 'Add item', 'iasd' ),
 			'add_new'               => __( 'Add New', 'iasd' ),
-			'add_new_item'          => __( 'Add New press', 'iasd' ),
-			'new_item'              => __( 'New press', 'iasd' ),
-			'edit_item'             => __( 'Edit press', 'iasd' ),
-			'view_item'             => __( 'View press', 'iasd' ),
-			'all_items'             => __( 'All press', 'iasd' ),
-			'search_items'          => __( 'Search press', 'iasd' ),
+			'add_new_item'          => __( 'Add New Item', 'iasd' ),
+			'new_item'              => __( 'New item', 'iasd' ),
+			'edit_item'             => __( 'Edit item', 'iasd' ),
+			'view_item'             => __( 'View item', 'iasd' ),
+			'all_items'             => __( 'All items', 'iasd' ),
+			'search_items'          => __( 'Search item', 'iasd' ),
 			'not_found'             => __( 'No press found.', 'iasd' ),
 			'not_found_in_trash'    => __( 'No press found in Trash.', 'iasd' ),
 		); 
@@ -48,7 +50,7 @@ class PAThemeNoticiasInstall {
 			'show_ui'            => true,
 			'show_in_menu'       => true,
 			'query_var'          => true,
-			'rewrite'            => array('slug' => 'press'),
+			'rewrite'            => ['slug' => sanitize_title(__('press-room-slug', 'iasd'))],
 			'capability_type'    => 'post',
 			'has_archive'        => true,
 			'hierarchical'       => false,
@@ -58,7 +60,7 @@ class PAThemeNoticiasInstall {
 			'show_in_rest'       => true,
 		);
 			
-		register_post_type(__('Press', 'iasd'), $args );
+		register_post_type('press', $args );
 
 		/**
 		 * 
@@ -67,28 +69,34 @@ class PAThemeNoticiasInstall {
 		 */
 
 		$labels = array(
-		'name'              => __('Formatos de post'),
-		'singular_name'     => __('Formato de post'),
-		'search_items'      => __('Procurar formatos de post'),
-		'all_items'         => __('Todas os formatos'),
-		'edit_item'         => __('Editar formato de post'),
-		'update_item'       => __('Atualizar formato de post'),
-		'add_new_item'      => __('Adicionar novo formato de post'),
-		'new_item_name'     => __('Novo formato de post'),
-		'menu_name'         => __('Formatos de post'),
+			'name'              => __('Post format', 'iasd'),
+			'singular_name'     => __('Post format', 'iasd'),
+			'search_items'      => __('Search item', 'iasd'),
+			'all_items'         => __('All items', 'iasd'),
+			'edit_item'         => __('Edit item', 'iasd'),
+			'update_item'       => __('Update item', 'iasd'),
+			'add_new_item'      => __('Add new item', 'iasd'),
+			'new_item_name'     => __('New item', 'iasd'),
+			'menu_name'         => __('Post format', 'iasd'),
 		);
 		$args   = array(
 			'hierarchical'       => true, // make it hierarchical (like categories)
 			'labels'             => $labels,
 			'show_ui'            => true,
-			'show_admin_column'  => true,
+			'show_admin_column'  => false,
 			'show_in_quick_edit' => false,
 			'query_var'          => true,
 			'show_in_rest'       => true, // add support for Gutenberg editor
-			'rewrite'            => ['slug' => 'xtt-pa-format'],
+			'rewrite'            => ['slug' => sanitize_title(__('xtt-pa-format-slug', 'iasd'))],
+			// 'default_term'		=> array(
+			// 	'name' => 'Notícia',
+			// 	'slug'	=> 'noticia'
+			// ),
 			'capabilities' 		  => array(
-				'edit_terms' 	  => false,
-				'delete_terms'    => false,
+				'edit_terms' 	  => 'manage_options',
+				'delete_terms'    => 'manage_options',
+				// 'manage_options'  => true,
+				'assign_terms' => 'manage_options',
 			),
 		);
 
@@ -101,15 +109,15 @@ class PAThemeNoticiasInstall {
 		 */
 
 		$labels = array(
-			'name'              => __('Press type'),
-			'singular_name'     => __('Press type'),
-			'search_items'      => __('Search items'),
-			'all_items'         => __('All items'),
-			'edit_item'         => __('Edit items'),
-			'update_item'       => __('Update item'),
-			'add_new_item'      => __('Add new item'),
-			'new_item_name'     => __('New item'),
-			'menu_name'         => __('Press type'),
+			'name'              => __('Press type', 'iasd'),
+			'singular_name'     => __('Press type', 'iasd'),
+			'search_items'      => __('Search items', 'iasd'),
+			'all_items'         => __('All items', 'iasd'),
+			'edit_item'         => __('Edit items', 'iasd'),
+			'update_item'       => __('Update item', 'iasd'),
+			'add_new_item'      => __('Add new item', 'iasd'),
+			'new_item_name'     => __('New item', 'iasd'),
+			'menu_name'         => __('Press type', 'iasd'),
 		);
 		$args = array(
 			'hierarchical'       => true, // make it hierarchical (like categories)
@@ -119,7 +127,7 @@ class PAThemeNoticiasInstall {
 			'show_in_quick_edit' => false,
 			'query_var'          => true,
 			'show_in_rest'       => true, // add support for Gutenberg editor
-			'rewrite'            => ['slug' => 'xtt-pa-press-type'],
+			'rewrite'            => ['slug' => sanitize_title(__('xtt-pa-press-type-slug', 'iasd'))],
 			'capabilities' 		  => array(
 				'edit_terms' 	  => false,
 				'delete_terms'    => false,
@@ -135,15 +143,15 @@ class PAThemeNoticiasInstall {
 		 */
 
 		$labels = array(
-			'name'          => __('Região'),
-			'singular_name' => __('Região'),
-			'search_items'  => __('Procurar regiões'),
-			'all_items'     => __('Todas as região'),
-			'edit_item'     => __('Editar região'),
-			'update_item'   => __('Atualizar região'),
-			'add_new_item'  => __('Adicionar nova região'),
-			'new_item_name' => __('Nova região'),
-			'menu_name'     => __('Regiões'),
+			'name'          => __('Region', 'iasd'),
+			'singular_name' => __('Region', 'iasd'),
+			'search_items'  => __('Search item', 'iasd'),
+			'all_items'     => __('All items', 'iasd'),
+			'edit_item'     => __('Edit item', 'iasd'),
+			'update_item'   => __('Update item', 'iasd'),
+			'add_new_item'  => __('Add new item', 'iasd'),
+			'new_item_name' => __('New item', 'iasd'),
+			'menu_name'     => __('Regions', 'iasd'),
 		);
 
 		$args   = array(
@@ -154,14 +162,14 @@ class PAThemeNoticiasInstall {
 			'show_in_quick_edit' => false,
 			'query_var'          => true,
 			'show_in_rest'       => true, // add support for Gutenberg editor
-			'rewrite'            => ['slug' => 'xtt-pa-regiao'],
+			'rewrite'            => ['slug' => sanitize_title(__('xtt-pa-regiao-slug', 'iasd'))],
 			// 'capabilities' 		 => array(
 			// 	'edit_terms' 	 => false,
 			// 	'delete_terms'   => false,
 			// ),
 		);
 	
-		register_taxonomy('xtt-pa-regiao', ['post'], $args);
+		// register_taxonomy('xtt-pa-regiao', ['post'], $args);
 
 		register_taxonomy_for_object_type('xtt-pa-editorias', 'press');
 
@@ -200,7 +208,7 @@ class PAThemeNoticiasInstall {
 	function addCustomRoles() {
 		add_role(
 			'colunista', 
-			__('Colunista'), 
+			__('Columnist', 'iasd'), 
 			array(
 				'level_1' => true,
 				'read' => true,
@@ -224,7 +232,7 @@ class PAThemeNoticiasInstall {
 		));
 
 		register_sidebar(array(
-			'name'          => __('Front press', 'iasd'),
+			'name'          => __('Archive press', 'iasd'),
 			'id'            => 'front-press',
 			'before_widget' => '<div>',
 			'after_widget'  => '</div>',
@@ -238,6 +246,30 @@ class PAThemeNoticiasInstall {
 		unset($posts_columns['fake']);
 
 		return $posts_columns;
+	}
+
+	public static function changePostMenuLabel() {
+		global $menu;
+		global $submenu;
+		$menu[5][0] = __('News', 'iasd');
+		$submenu['edit.php'][5][0] = __('News', 'iasd');
+		$submenu['edit.php'][10][0] = __('Add news', 'iasd');
+		echo '';
+	}
+
+	public static function changePostObjectLabel() {
+		global $wp_post_types;
+		$labels = &$wp_post_types['post']->labels;
+		$wp_post_types['post']->label = $labels->name = __('News', 'iasd');
+		$labels->singular_name = __('News', 'iasd');
+		$labels->add_new = __('Add news', 'iasd');
+		$labels->add_new_item = __('Add news', 'iasd');
+		$labels->edit_item = __('Edit', 'iasd');
+		$labels->new_item = __('News', 'iasd');
+		$labels->view_item = __('View news', 'iasd');
+		$labels->search_items = __('Search news', 'iasd');
+		$labels->not_found = __('No news found', 'iasd');
+		$labels->not_found_in_trash = __('No news in the trash', 'iasd');
 	}
 
 }

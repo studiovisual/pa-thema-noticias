@@ -4,7 +4,7 @@
     <h2 class="mb-3 pb-3">{!! \Illuminate\Support\Str::of(get_the_excerpt())->limit(250) !!}</h3>
 
     @if(!empty($format = getPostFormat(get_the_ID())) && $format->slug != 'artigo' && is_singular('post'))        
-        <div class="pa-post-meta mb-2">Por 
+        <div class="pa-post-meta mb-2">{{__('By', 'iasd')}} 
             <span>{!! !empty($custom_author = get_field('custom_author')) ? $custom_author : get_the_author() !!}</span>@if($region = getPostRegion(get_the_ID()))<em class="pa-pipe">|</em><span class="ms-2"><i class="fas fa-map-marker-alt me-2" aria-hidden="true"></i> {{ $region->name }}</span>@endif
         </div>
     @endif
@@ -26,7 +26,7 @@
                 @if(get_post_meta(get_the_ID(), 'amazon_polly_enable', true))
                     <li class="pa-text-listen list-inline-item">
                         <a href="#" class="rounded p-2" onclick="pa_play(event, this)">
-                            <i class="fas fa-volume-up"></i> Ouvir Texto
+                            <i class="fas fa-volume-up"></i> {{__('Hear text', 'iasd')}}
                         </a>
                         
                         <audio id="pa-accessibility-player" src="{{ get_post_meta(get_the_ID(), 'amazon_polly_audio_link_location', true) }}" controls></audio>

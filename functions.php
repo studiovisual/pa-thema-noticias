@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 if(file_exists($composer = __DIR__ . '/vendor/autoload.php'))
     require_once $composer;
@@ -23,6 +23,11 @@ require_once(dirname(__FILE__) . '/classes/PA_Helpers.php');
 
 // CORE INSTALL
 require_once (dirname(__FILE__) . '/core/PA_Theme_Noticias_Install.php');
+
+add_action('after_setup_theme', function () {
+    load_theme_textdomain('iasd', THEME_DIR . 'language/');
+}, 9);
+
 
 /**
 * Remove unused taxonomies
@@ -184,3 +189,13 @@ function mytheme_add_editor_styles() {
     add_editor_style( 'style-editor.css' );
 }
 add_action( 'admin_init', 'mytheme_add_editor_styles' );
+
+
+add_filter( "rest_prepare_post", 'prefix_title_entity_decode' , 10, 1 ); 
+add_filter( "rest_prepare_press", 'prefix_title_entity_decode' , 10, 1 ); 
+function prefix_title_entity_decode($response){
+    $data = $response->get_data();
+    $data['title']['rendered'] = html_entity_decode( $data['title']['rendered']);
+    $response->set_data($data);
+    return $response;
+}

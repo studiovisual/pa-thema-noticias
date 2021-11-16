@@ -3,18 +3,50 @@
 @section('content')
 	@php
 		global $wp_query, $queryFeatured;
+		
+		
 	@endphp
 
 	<div class="pa-content py-5">
 		<div class="container">
 			<div class="row justify-content-center">
 				<section class="col-12 col-md-8">
-					@includeWhen(get_query_var('paged') < 1 && $queryFeatured->found_posts > 0, 'template-parts.global.feature', [
+
+					@php
+						if(get_query_var('paged') < 1 && $queryFeatured->found_posts > 0):
+						get_template_part('template-parts/global/feature', 'feature', [
+							'post' => $queryFeatured->posts[0],
+							'tag'  => $format = get_post_format($queryFeatured->posts[0]) ? : __('News', 'iasd'),
+						]); 
+						endif;
+					@endphp
+					
+					{{-- @includeWhen(get_query_var('paged') < 1 && $queryFeatured->found_posts > 0, 'template-parts.global.feature', [
 						'post'   => $queryFeatured->posts[0],
 						'format' => !empty($format = getPostFormat($queryFeatured->posts[0]->ID)) ? $format->name : '',
-					])
+					]) --}}
 
-					@if($wp_query->found_posts >= 1)
+					@php
+
+						if($wp_query->found_posts >= 1):
+					@endphp
+
+					<div class="pa-blog-itens my-5">
+						@php
+							foreach($wp_query->posts as $post):
+							get_template_part('template-parts/global/card-post', 'card-post', [
+								'post'     => $post,
+								'category' => $categories = get_the_category($post->ID) ? $categories[0]->name : '',
+								'format'   => get_post_format($post) ? : __('News', 'iasd'),
+							]); 
+							endforeach; 
+						@endphp
+					</div>
+					@php
+			 			endif; 
+					@endphp
+
+					{{-- @if($wp_query->found_posts >= 1)
 						<div class="pa-blog-itens my-5">
 							@foreach($wp_query->posts as $post)
 								@include('template-parts.global.card-post', [
@@ -24,10 +56,10 @@
 								])
 							@endforeach
 						</div>
-					@endif
+					@endif --}}
 					
 					<div class="pa-pg-numbers row">
-						@php(new PaPageNumbers())
+						@php( PaThemeHelpers::pageNumbers())
 					</div>
 				</section>
 
