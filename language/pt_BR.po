@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2021-11-15 11:16-0300\n"
-"PO-Revision-Date: 2021-11-15 11:35-0300\n"
+"POT-Creation-Date: 2021-11-17 09:42-0300\n"
+"PO-Revision-Date: 2021-11-17 09:42-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -17,6 +17,15 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: node_modules\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
+
+#: archive.blade.php:19 archive.blade.php:40
+#: core/PA_Theme_Noticias_Install.php:254
+#: core/PA_Theme_Noticias_Install.php:255
+#: core/PA_Theme_Noticias_Install.php:263
+#: core/PA_Theme_Noticias_Install.php:264
+#: core/PA_Theme_Noticias_Install.php:268
+msgid "News"
+msgstr "Notícias"
 
 #: components/header/title.blade.php:5
 msgid "Adventist news"
@@ -182,17 +191,30 @@ msgstr "Nome da coluna"
 msgid "Column excerpt"
 msgstr "Resumo da coluna"
 
-#: classes/controllers/PA_RewriteRules.class.php:22
-#: classes/controllers/PA_RewriteRules.class.php:37
-#: classes/controllers/PA_RewriteRules.class.php:62
-#: classes/controllers/PA_RewriteRules.class.php:73
-msgid "columns-slug"
-msgstr "coluna"
-
 #: classes/controllers/PA_RewriteRules.class.php:40
 #: classes/controllers/PA_RewriteRules.class.php:51
+#: classes/controllers/PA_RewriteRules.class.php:119
+#: core/PA_Theme_Noticias_Install.php:53
+msgid "press-room-slug"
+msgstr "imprensa"
+
+#: classes/controllers/PA_RewriteRules.class.php:61
+#: classes/controllers/PA_RewriteRules.class.php:108
+#: classes/controllers/_PA_RewriteRules.class.php:40
+#: classes/controllers/_PA_RewriteRules.class.php:51
 msgid "news-slug"
 msgstr "noticia"
+
+#: classes/controllers/PA_RewriteRules.class.php:72
+#: classes/controllers/PA_RewriteRules.class.php:83
+#: classes/controllers/PA_RewriteRules.class.php:105
+#: classes/controllers/PA_RewriteRules.class.php:128
+#: classes/controllers/_PA_RewriteRules.class.php:22
+#: classes/controllers/_PA_RewriteRules.class.php:37
+#: classes/controllers/_PA_RewriteRules.class.php:62
+#: classes/controllers/_PA_RewriteRules.class.php:73
+msgid "columns-slug"
+msgstr "coluna"
 
 #: classes/controllers/PA_wp_rest_columnists_controller.class.php:203
 msgid "Invalid user ID."
@@ -375,8 +397,10 @@ msgstr "Editar item"
 msgid "View item"
 msgstr "Visualizar item"
 
-#: core/PA_Theme_Noticias_Install.php:40
-msgid "All item"
+#: core/PA_Theme_Noticias_Install.php:40 core/PA_Theme_Noticias_Install.php:75
+#: core/PA_Theme_Noticias_Install.php:115
+#: core/PA_Theme_Noticias_Install.php:149
+msgid "All items"
 msgstr "Todos os itens"
 
 #: core/PA_Theme_Noticias_Install.php:41 core/PA_Theme_Noticias_Install.php:74
@@ -392,19 +416,10 @@ msgstr "Nenhuma imprensa encontrada."
 msgid "No press found in Trash."
 msgstr "Nenhuma imprensa encontrada na Lixeira."
 
-#: core/PA_Theme_Noticias_Install.php:53
-msgid "press-room-slug"
-msgstr "sala-de-imprensa"
-
 #: core/PA_Theme_Noticias_Install.php:72 core/PA_Theme_Noticias_Install.php:73
 #: core/PA_Theme_Noticias_Install.php:80
 msgid "Post format"
 msgstr "Formato do post"
-
-#: core/PA_Theme_Noticias_Install.php:75 core/PA_Theme_Noticias_Install.php:115
-#: core/PA_Theme_Noticias_Install.php:149
-msgid "All items"
-msgstr "Todos os itens"
 
 #: core/PA_Theme_Noticias_Install.php:77 core/PA_Theme_Noticias_Install.php:117
 #: core/PA_Theme_Noticias_Install.php:151
@@ -452,28 +467,17 @@ msgid "xtt-pa-regiao-slug"
 msgstr "regiao"
 
 #: core/PA_Theme_Noticias_Install.php:211
-msgid "Colunista"
+#: core/PA_Theme_Noticias_Install.php:228
+msgid "Columnist"
 msgstr "Colunista"
 
 #: core/PA_Theme_Noticias_Install.php:221
 msgid "Archive columnists"
 msgstr "Archive - Colunistas"
 
-#: core/PA_Theme_Noticias_Install.php:228
-msgid "Columnist"
-msgstr "Colunista"
-
 #: core/PA_Theme_Noticias_Install.php:235
 msgid "Archive press"
 msgstr "Archive - Imprensa"
-
-#: core/PA_Theme_Noticias_Install.php:254
-#: core/PA_Theme_Noticias_Install.php:255
-#: core/PA_Theme_Noticias_Install.php:263
-#: core/PA_Theme_Noticias_Install.php:264
-#: core/PA_Theme_Noticias_Install.php:268
-msgid "News"
-msgstr "Notícias"
 
 #: core/PA_Theme_Noticias_Install.php:256
 #: core/PA_Theme_Noticias_Install.php:265
@@ -500,6 +504,12 @@ msgstr "Nenhuma notícia encontrada"
 #: core/PA_Theme_Noticias_Install.php:272
 msgid "No news in the trash"
 msgstr "Nenhuma notícia encontrada na lixeira"
+
+#~ msgid "All item"
+#~ msgstr "Todos os itens"
+
+#~ msgid "Colunista"
+#~ msgstr "Colunista"
 
 #~ msgid "Add press"
 #~ msgstr "Imprensa"

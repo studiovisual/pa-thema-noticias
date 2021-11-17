@@ -52,7 +52,7 @@ class PAThemeNoticiasInstall {
 			'query_var'          => true,
 			'rewrite'            => ['slug' => sanitize_title(__('press-room-slug', 'iasd'))],
 			'capability_type'    => 'post',
-			'has_archive'        => true,
+			'has_archive'        => false,
 			'hierarchical'       => false,
 			'menu_position'      => 4,
 			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt' ),
