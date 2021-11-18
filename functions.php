@@ -213,12 +213,3 @@ function prefix_title_entity_decode($response)
     $response->set_data($data);
     return $response;
 }
-
-
-// Filtro que desregistra colunas na tabela que lista as noticias
-add_filter('manage_post_posts_columns', 'unregister_post_columns', 10001);
-function unregister_post_columns($columns)
-{
-    unset($columns['editor']);
-    return $columns;
-}
