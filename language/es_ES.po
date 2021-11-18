@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2021-11-17 22:32-0300\n"
-"PO-Revision-Date: 2021-11-17 22:33-0300\n"
+"PO-Revision-Date: 2021-11-18 19:23-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -196,7 +196,7 @@ msgstr "Extracto de columna"
 #: classes/controllers/PA_RewriteRules.class.php:119
 #: core/PA_Theme_Noticias_Install.php:53
 msgid "press-room-slug"
-msgstr "Prensa"
+msgstr "prensa"
 
 #: classes/controllers/PA_RewriteRules.class.php:61
 #: classes/controllers/PA_RewriteRules.class.php:108
@@ -445,7 +445,7 @@ msgstr "Editar ítem"
 
 #: core/PA_Theme_Noticias_Install.php:130
 msgid "xtt-pa-press-type-slug"
-msgstr "Tipo-prensa"
+msgstr "press-type"
 
 #: core/PA_Theme_Noticias_Install.php:146
 #: core/PA_Theme_Noticias_Install.php:147
