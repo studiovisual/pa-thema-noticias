@@ -170,6 +170,7 @@ class PAThemeNoticiasInstall
 		// register_taxonomy('xtt-pa-regiao', ['post'], $args);
 
 		register_taxonomy_for_object_type('xtt-pa-editorias', 'press');
+		register_taxonomy_for_object_type('xtt-pa-owner', 'press');
 
 		foreach (['acf/include_field_types', 'acf/register_fields'] as $hook) {
 			add_filter($hook, function () {

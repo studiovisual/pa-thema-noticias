@@ -37,6 +37,13 @@ class PA_Enqueue_Files
 							'xtt-pa-owner',
 							'xtt-pa-sedes'
 						],
+					],
+					[
+						'post_type'    => 'press',
+						'taxonomies'   => [
+							'xtt-pa-editorias',
+							'xtt-pa-owner'
+						],
 					]
 				],
 				'unregisterBlocks' => [
