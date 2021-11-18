@@ -19,6 +19,7 @@ class PAThemeNoticiasInstall {
 		add_action('widgets_init', array($this, 'setWidgets'), 11);
 		add_action('init', array($this, 'changePostObjectLabel') );
 		add_action('admin_menu', array($this, 'changePostMenuLabel') );
+		add_filter('manage_post_posts_columns', array($this, 'removeColumns'), 10001);
 	}
 
 	function installRoutines() {
@@ -270,6 +271,11 @@ class PAThemeNoticiasInstall {
 		$labels->search_items = __('Search news', 'iasd');
 		$labels->not_found = __('No news found', 'iasd');
 		$labels->not_found_in_trash = __('No news in the trash', 'iasd');
+	}
+
+	function removeColumns($columns) {
+		unset($columns['editor']);
+		return $columns;
 	}
 
 }
