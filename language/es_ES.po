@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2021-11-15 11:33-0300\n"
-"PO-Revision-Date: 2021-11-15 11:35-0300\n"
+"POT-Creation-Date: 2021-11-17 22:32-0300\n"
+"PO-Revision-Date: 2021-11-17 22:33-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -17,6 +17,15 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: node_modules\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
+
+#: archive.blade.php:19 archive.blade.php:40
+#: core/PA_Theme_Noticias_Install.php:254
+#: core/PA_Theme_Noticias_Install.php:255
+#: core/PA_Theme_Noticias_Install.php:263
+#: core/PA_Theme_Noticias_Install.php:264
+#: core/PA_Theme_Noticias_Install.php:268
+msgid "News"
+msgstr "Noticias"
 
 #: components/header/title.blade.php:5
 msgid "Adventist news"
@@ -111,7 +120,7 @@ msgstr ""
 msgid "Columna"
 msgstr "Columna"
 
-#: classes/PA_Helpers.php:128
+#: classes/PA_Helpers.php:124 classes/PA_Helpers.php:130
 msgid "Press room"
 msgstr "Prensa"
 
@@ -182,17 +191,24 @@ msgstr "Nombre de la columna"
 msgid "Column excerpt"
 msgstr "Extracto de columna"
 
-#: classes/controllers/PA_RewriteRules.class.php:22
-#: classes/controllers/PA_RewriteRules.class.php:37
-#: classes/controllers/PA_RewriteRules.class.php:62
-#: classes/controllers/PA_RewriteRules.class.php:73
-msgid "columns-slug"
-msgstr "column"
-
 #: classes/controllers/PA_RewriteRules.class.php:40
 #: classes/controllers/PA_RewriteRules.class.php:51
+#: classes/controllers/PA_RewriteRules.class.php:119
+#: core/PA_Theme_Noticias_Install.php:53
+msgid "press-room-slug"
+msgstr "Prensa"
+
+#: classes/controllers/PA_RewriteRules.class.php:61
+#: classes/controllers/PA_RewriteRules.class.php:108
 msgid "news-slug"
 msgstr "noticia"
+
+#: classes/controllers/PA_RewriteRules.class.php:72
+#: classes/controllers/PA_RewriteRules.class.php:83
+#: classes/controllers/PA_RewriteRules.class.php:105
+#: classes/controllers/PA_RewriteRules.class.php:128
+msgid "columns-slug"
+msgstr "column"
 
 #: classes/controllers/PA_wp_rest_columnists_controller.class.php:203
 msgid "Invalid user ID."
@@ -394,10 +410,6 @@ msgstr "No se encontró prensa."
 msgid "No press found in Trash."
 msgstr "No se encontró prensa en la Papelera."
 
-#: core/PA_Theme_Noticias_Install.php:53
-msgid "press-room-slug"
-msgstr "Prensa"
-
 #: core/PA_Theme_Noticias_Install.php:72 core/PA_Theme_Noticias_Install.php:73
 #: core/PA_Theme_Noticias_Install.php:80
 msgid "Post format"
@@ -421,7 +433,7 @@ msgstr "formato"
 #: core/PA_Theme_Noticias_Install.php:113
 #: core/PA_Theme_Noticias_Install.php:120
 msgid "Press type"
-msgstr "Tipo"
+msgstr "Tipo de contenido"
 
 #: core/PA_Theme_Noticias_Install.php:114
 msgid "Search items"
@@ -460,14 +472,6 @@ msgstr "Archive - Columnista"
 #: core/PA_Theme_Noticias_Install.php:235
 msgid "Archive press"
 msgstr "Archive - Prensa"
-
-#: core/PA_Theme_Noticias_Install.php:254
-#: core/PA_Theme_Noticias_Install.php:255
-#: core/PA_Theme_Noticias_Install.php:263
-#: core/PA_Theme_Noticias_Install.php:264
-#: core/PA_Theme_Noticias_Install.php:268
-msgid "News"
-msgstr "Noticias"
 
 #: core/PA_Theme_Noticias_Install.php:256
 #: core/PA_Theme_Noticias_Install.php:265

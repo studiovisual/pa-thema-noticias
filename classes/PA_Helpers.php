@@ -119,13 +119,15 @@ function getRelatedPosts($post_id, $limit = 6): array {
 
 function getHeaderTitle($post_id = NULL) {
     if(is_author() || is_singular('post') && !empty($format = getPostFormat($post_id)) && $format->slug == 'artigo')
-        return __('Columna', 'iasd').' | ' . (is_author() ? get_queried_object()->display_name : get_the_author_meta('display_name'));
+        return __('Columna', 'iasd') .' | '. (is_author() ? get_queried_object()->display_name : get_the_author_meta('display_name'));
+    elseif(is_tax('xtt-pa-press-type'))
+        return __('Press room', 'iasd') .' | '. get_queried_object()->name;
     elseif(is_archive()) //is archive
-        return get_taxonomy(get_queried_object()->taxonomy)->label . ' | ' . get_queried_object()->name;
+        return get_taxonomy(get_queried_object()->taxonomy)->label .' | '. get_queried_object()->name;
     elseif(is_singular('post')) //is single
         return getPostEditorial($post_id)->name;
     elseif(is_singular('press')) //is single
-        return __('Press room', 'iasd');
+        return __('Press room', 'iasd') .' | '. get_the_terms(get_the_ID(), 'xtt-pa-press-type')[0]->name;
     
     return the_title(); //default
 }
