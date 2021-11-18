@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2021-11-17 09:42-0300\n"
-"PO-Revision-Date: 2021-11-17 17:05-0300\n"
+"PO-Revision-Date: 2021-11-17 22:32-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -196,7 +196,7 @@ msgstr "Resumo da coluna"
 #: classes/controllers/PA_RewriteRules.class.php:119
 #: core/PA_Theme_Noticias_Install.php:53
 msgid "press-room-slug"
-msgstr "Imprensa"
+msgstr "imprensa"
 
 #: classes/controllers/PA_RewriteRules.class.php:61
 #: classes/controllers/PA_RewriteRules.class.php:108
