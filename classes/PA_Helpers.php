@@ -6,16 +6,17 @@
  * @param  int $post_id The post ID
  * @return string Formated length string
  */
-function videoLength(int $post_id = 0): string {
+function videoLength(int $post_id = 0): string
+{
     $length = get_field('video_length', !empty($post_id) ? $post_id : get_the_ID());
 
-    if(empty($length))
+    if (empty($length))
         return "";
 
-    if($length / 3600 >= 1)
+    if ($length / 3600 >= 1)
         return sprintf('%02d:%02d:%02d', ($length / 3600), ($length / 60 % 60), $length % 60);
     else
-	    return sprintf('%02d:%02d', ($length / 60 % 60), $length % 60);
+        return sprintf('%02d:%02d', ($length / 60 % 60), $length % 60);
 }
 
 /**
@@ -26,11 +27,12 @@ function videoLength(int $post_id = 0): string {
  * @param  string $video_id The video ID
  * @return void
  */
-function getVideoLength(int $post_id, string $video_host, string $video_id): void {
+function getVideoLength(int $post_id, string $video_host, string $video_id): void
+{
     $json = file_get_contents("https://api.feliz7play.com/v4/{$video_host}info?video_id={$video_id}");
     $obj = json_decode($json);
 
-    if(!empty($obj))
+    if (!empty($obj))
         update_field('video_length', $obj->time, $post_id);
 }
 
@@ -40,12 +42,13 @@ function getVideoLength(int $post_id, string $video_host, string $video_id): voi
  * @param string $post_id The post ID
  * @return mixed
  */
-function getPostFormat($post_id) {
-    if($term = get_the_terms($post_id, 'xtt-pa-format')){
+function getPostFormat($post_id)
+{
+    if ($term = get_the_terms($post_id, 'xtt-pa-format')) {
         return $term[0];
     }
 
-    if($term = get_the_terms($post_id, 'xtt-pa-press-type'))
+    if ($term = get_the_terms($post_id, 'xtt-pa-press-type'))
         return $term[0];
 
     return null;
@@ -57,8 +60,9 @@ function getPostFormat($post_id) {
  * @param string $post_id The post ID
  * @return mixed
  */
-function getPostEditorial($post_id) {
-    if($term = get_the_terms($post_id, 'xtt-pa-editorias'))
+function getPostEditorial($post_id)
+{
+    if ($term = get_the_terms($post_id, 'xtt-pa-editorias'))
         return $term[0];
 
     return null;
@@ -70,8 +74,9 @@ function getPostEditorial($post_id) {
  * @param string $post_id The post ID
  * @return mixed
  */
-function getPostRegion($post_id) {
-    if($term = get_the_terms($post_id, 'xtt-pa-regiao'))
+function getPostRegion($post_id)
+{
+    if ($term = get_the_terms($post_id, 'xtt-pa-regiao'))
         return $term[0];
 
     return null;
@@ -83,8 +88,9 @@ function getPostRegion($post_id) {
  * @param string $post_id The post ID
  * @return string
  */
-function getPrioritySeat($post_id): string {
-    if($term = get_the_terms($post_id, 'xtt-pa-owner'))
+function getPrioritySeat($post_id): string
+{
+    if ($term = get_the_terms($post_id, 'xtt-pa-owner'))
         return $term[0]->name;
 
     return 'Não há nenhuma sede proprietária vinculada a este post.';
@@ -97,8 +103,9 @@ function getPrioritySeat($post_id): string {
  * @param int $limit Maximum posts per query. Default = 6
  * @return array
  */
-function getRelatedPosts($post_id, $limit = 6): array {
-    if($term = get_the_terms($post_id, 'xtt-pa-projetos')):
+function getRelatedPosts($post_id, $limit = 6): array
+{
+    if ($term = get_the_terms($post_id, 'xtt-pa-projetos')) :
         $args = array(
             'post_type'      => 'post',
             'post__not_in'   => array($post_id),
@@ -110,25 +117,26 @@ function getRelatedPosts($post_id, $limit = 6): array {
                 ),
             ),
         );
-        
+
         return get_posts($args);
     endif;
 
     return array();
 }
 
-function getHeaderTitle($post_id = NULL) {
-    if(is_author() || is_singular('post') && !empty($format = getPostFormat($post_id)) && $format->slug == 'artigo')
-        return __('Columna', 'iasd') .' | '. (is_author() ? get_queried_object()->display_name : get_the_author_meta('display_name'));
-    elseif(is_tax('xtt-pa-press-type'))
-        return __('Press room', 'iasd') .' | '. get_queried_object()->name;
-    elseif(is_archive()) //is archive
-        return get_taxonomy(get_queried_object()->taxonomy)->label .' | '. get_queried_object()->name;
-    elseif(is_singular('post')) //is single
+function getHeaderTitle($post_id = NULL)
+{
+    if (is_author() || is_singular('post') && !empty($format = getPostFormat($post_id)) && $format->slug == 'artigo')
+        return __('Columna', 'iasd') . ' | ' . (is_author() ? get_queried_object()->display_name : get_the_author_meta('display_name'));
+    elseif (is_tax('xtt-pa-press-type'))
+        return __('Press room', 'iasd') . ' | ' . get_queried_object()->name;
+    elseif (is_archive()) //is archive
+        return get_taxonomy(get_queried_object()->taxonomy)->label . ' | ' . get_queried_object()->name;
+    elseif (is_singular('post')) //is single
         return getPostEditorial($post_id)->name;
-    elseif(is_singular('press')) //is single
-        return __('Press room', 'iasd') .' | '. get_the_terms(get_the_ID(), 'xtt-pa-press-type')[0]->name;
-    
+    elseif (is_singular('press')) //is single
+        return __('Press room', 'iasd') . ' | ' . get_the_terms(get_the_ID(), 'xtt-pa-press-type')[0]->name;
+
     return the_title(); //default
 }
 
@@ -138,57 +146,68 @@ function getHeaderTitle($post_id = NULL) {
  * @param string $post_id The post ID
  * @return mixed
  */
-function getDepartment($post_id) {
-    if($term = get_the_terms($post_id, 'xtt-pa-departamentos'))
+function getDepartment($post_id)
+{
+    if ($term = get_the_terms($post_id, 'xtt-pa-departamentos'))
         return $term[0];
 
     return null;
 }
 
-add_filter( 'jetpack_offline_mode', '__return_true' );
+add_filter('jetpack_offline_mode', '__return_true');
 
-function unsetJetPackModules ( $modules ) {
+function unsetJetPackModules($modules)
+{
     // unset( $modules['carousel'] );
-    unset( $modules['comment-likes'] );
-    unset( $modules['comments'] );
-    unset( $modules['contact-form'] );
-    unset( $modules['copy-post'] );
-    unset( $modules['custom-content-types'] );
-    unset( $modules['custom-css'] );
-    unset( $modules['enhanced-distribution'] );
-    unset( $modules['google-analytics'] );
-    unset( $modules['gravatar-hovercards'] );
-    unset( $modules['infinite-scroll'] );
-    unset( $modules['json-api'] );
-    unset( $modules['latex'] );
-    unset( $modules['lazy-images'] );
-    unset( $modules['likes'] );
-    unset( $modules['markdown'] );
-    unset( $modules['masterbar'] );
-    unset( $modules['monitor'] );
-    unset( $modules['notes'] );
-    unset( $modules['photon'] );
-    unset( $modules['photon-cdn'] );
-    unset( $modules['post-by-email'] );
-    unset( $modules['protect'] );
-    unset( $modules['publicize'] );
-    unset( $modules['related-posts'] );
-    unset( $modules['search'] );
-    unset( $modules['seo-tools'] );
-    unset( $modules['sharedaddy'] );
-    unset( $modules['shortlinks'] );
-    unset( $modules['sitemaps'] );
-    unset( $modules['sso'] );
-    unset( $modules['stats'] );
-    unset( $modules['subscriptions'] );
+    unset($modules['comment-likes']);
+    unset($modules['comments']);
+    unset($modules['contact-form']);
+    unset($modules['copy-post']);
+    unset($modules['custom-content-types']);
+    unset($modules['custom-css']);
+    unset($modules['enhanced-distribution']);
+    unset($modules['google-analytics']);
+    unset($modules['gravatar-hovercards']);
+    unset($modules['infinite-scroll']);
+    unset($modules['json-api']);
+    unset($modules['latex']);
+    unset($modules['lazy-images']);
+    unset($modules['likes']);
+    unset($modules['markdown']);
+    unset($modules['masterbar']);
+    unset($modules['monitor']);
+    unset($modules['notes']);
+    unset($modules['photon']);
+    unset($modules['photon-cdn']);
+    unset($modules['post-by-email']);
+    unset($modules['protect']);
+    unset($modules['publicize']);
+    unset($modules['related-posts']);
+    unset($modules['search']);
+    unset($modules['seo-tools']);
+    unset($modules['sharedaddy']);
+    unset($modules['shortlinks']);
+    unset($modules['sitemaps']);
+    unset($modules['sso']);
+    unset($modules['stats']);
+    unset($modules['subscriptions']);
     // unset( $modules['tiled-gallery'] );
-    unset( $modules['verification-tools'] );
-    unset( $modules['videopress'] );
+    unset($modules['verification-tools']);
+    unset($modules['videopress']);
     // unset( $modules['widget-visibility'] );
     // unset( $modules['widgets'] );
-    unset( $modules['woocommerce-analytics'] );
-    unset( $modules['wordads'] );
-    unset( $modules['shortcodes'] );
+    unset($modules['woocommerce-analytics']);
+    unset($modules['wordads']);
+    unset($modules['shortcodes']);
     return $modules;
-}   
-add_filter( 'jetpack_get_available_modules', 'unsetJetPackModules' );
+}
+add_filter('jetpack_get_available_modules', 'unsetJetPackModules');
+
+function checkRole($user_role = "")
+{
+    $user = wp_get_current_user();
+    if (array_intersect([strtolower($user_role)], $user->roles))
+        return true;
+
+    return false;
+}
