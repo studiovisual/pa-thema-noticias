@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-if(file_exists($composer = __DIR__ . '/vendor/autoload.php'))
+if (file_exists($composer = __DIR__ . '/vendor/autoload.php'))
     require_once $composer;
 
 define('PARENT_THEME_URI', get_template_directory_uri() . '/');
@@ -22,7 +22,7 @@ require_once(dirname(__FILE__) . '/classes/controllers/PA_wp_rest_columnists_con
 require_once(dirname(__FILE__) . '/classes/PA_Helpers.php');
 
 // CORE INSTALL
-require_once (dirname(__FILE__) . '/core/PA_Theme_Noticias_Install.php');
+require_once(dirname(__FILE__) . '/core/PA_Theme_Noticias_Install.php');
 
 add_action('after_setup_theme', function () {
     load_theme_textdomain('iasd', THEME_DIR . 'language/');
@@ -30,9 +30,9 @@ add_action('after_setup_theme', function () {
 
 
 /**
-* Remove unused taxonomies
-*/
-add_action('wp_loaded', function() {
+ * Remove unused taxonomies
+ */
+add_action('wp_loaded', function () {
     unregister_taxonomy_for_object_type('xtt-pa-colecoes', 'post');
     unregister_taxonomy_for_object_type('post_tag', 'post');
     unregister_taxonomy_for_object_type('category', 'post');
@@ -52,7 +52,7 @@ add_filter('template_include', function ($template) {
     $template_chosen = str_replace('.blade', '', $template_chosen);
     $grandchild_template = dirname(__FILE__) . '/' . $template_chosen . '.blade.php';
 
-    if(file_exists($grandchild_template)):
+    if (file_exists($grandchild_template)) :
         blade($template_chosen);
         return '';
     endif;
@@ -61,42 +61,42 @@ add_filter('template_include', function ($template) {
 });
 
 /**
-* Filter save post to get video length
-*/
-add_action('acf/save_post', function($post_id) {
-    if(get_post_type($post_id) != 'post')
+ * Filter save post to get video length
+ */
+add_action('acf/save_post', function ($post_id) {
+    if (get_post_type($post_id) != 'post')
         return;
 
     $url = parse_url(get_field('video_url', $post_id, false));
     $host = '';
     $id = '';
 
-    if(empty($url))
+    if (empty($url))
         return;
 
-    if(str_contains($url['host'], 'youtube') || str_contains($url['host'], 'youtu.be')):
+    if (str_contains($url['host'], 'youtube') || str_contains($url['host'], 'youtu.be')) :
         $host = 'youtube';
 
-        if(array_key_exists('query', $url)):
+        if (array_key_exists('query', $url)) :
             parse_str($url['query'], $params);
             $id = $params['v'];
-        else:
+        else :
             $id = str_replace('/', '', $url['path']);
         endif;
-    elseif(str_contains($url['host'], 'vimeo')):
+    elseif (str_contains($url['host'], 'vimeo')) :
         $host = 'vimeo';
         $id = str_replace('/', '', $url['path']);
     endif;
 
-    if(!empty($host) && !empty($id))
+    if (!empty($host) && !empty($id))
         getVideoLength($post_id, $host, $id);
 });
 
 // Make JavaScript Asynchronous in Wordpress
-add_filter('script_loader_tag', function($tag, $handle) {
+add_filter('script_loader_tag', function ($tag, $handle) {
     $include = array('pa-child-script');
 
-    if(is_admin() || !in_array($handle, $include))
+    if (is_admin() || !in_array($handle, $include))
         return $tag;
 
     $tag = str_replace(' src', ' defer src', $tag);
@@ -105,33 +105,41 @@ add_filter('script_loader_tag', function($tag, $handle) {
 }, 10, 2);
 
 
-add_action('rest_api_init', function() {
-	register_rest_field(
-        array('post', 'press'), 
-        'featured_media_url', array(
-			'get_callback'    => 'featured_media_url_callback',
-			'update_callback' => null,
-			'schema'          => null,
-		)
-	);
+add_action('rest_api_init', function () {
+    register_rest_field(
+        array('post', 'press'),
+        'featured_media_url',
+        array(
+            'get_callback'    => 'featured_media_url_callback',
+            'update_callback' => null,
+            'schema'          => null,
+        )
+    );
 
     register_rest_field(
         array('post', 'press'),
-        'terms', array(
+        'terms',
+        array(
             'get_callback'    => 'terms_callback',
             'update_callback' => null,
             'schema'          => null,
         )
     );
 
-    register_rest_field('user', 'avatar', array(
+    register_rest_field(
+        'user',
+        'avatar',
+        array(
             'get_callback'    => 'avatar_callback',
             'update_callback' => null,
             'schema'          => null,
         )
     );
 
-    register_rest_field('user', 'column', array(
+    register_rest_field(
+        'user',
+        'column',
+        array(
             'get_callback'    => 'column_callback',
             'update_callback' => null,
             'schema'          => null,
@@ -139,63 +147,69 @@ add_action('rest_api_init', function() {
     );
 });
 
-function featured_media_url_callback($post) {
-	$img_id = get_post_thumbnail_id($post['id']);
+function featured_media_url_callback($post)
+{
+    $img_id = get_post_thumbnail_id($post['id']);
 
-	$img_scr = Array(
-		'full'             => !empty($full    = wp_get_attachment_image_src($img_id, ''))             ? $full[0]    : '',
-		'medium'           => !empty($medium  = wp_get_attachment_image_src($img_id, 'medium_large')) ? $medium[0]  : '',
-		'small'            => !empty($small   = wp_get_attachment_image_src($img_id, 'thumbnail'))    ? $small[0]   : '',
-		'pa-block-preview' => !empty($preview = wp_get_attachment_image_src($img_id, 'medium_large')) ? $preview[0] : '',
-		'pa-block-render'  => !empty($render  = wp_get_attachment_image_src($img_id, 'medium_large')) ? $render[0]  : '',
-	);
+    $img_scr = array(
+        'full'             => !empty($full    = wp_get_attachment_image_src($img_id, ''))             ? $full[0]    : '',
+        'medium'           => !empty($medium  = wp_get_attachment_image_src($img_id, 'medium_large')) ? $medium[0]  : '',
+        'small'            => !empty($small   = wp_get_attachment_image_src($img_id, 'thumbnail'))    ? $small[0]   : '',
+        'pa-block-preview' => !empty($preview = wp_get_attachment_image_src($img_id, 'medium_large')) ? $preview[0] : '',
+        'pa-block-render'  => !empty($render  = wp_get_attachment_image_src($img_id, 'medium_large')) ? $render[0]  : '',
+    );
 
     return $img_scr;
 }
 
-function terms_callback($post) {
+function terms_callback($post)
+{
     return [
         'editorial' => !empty($editorial = getPostEditorial($post['id'])) ? $editorial->name : '',
         'format'    => !empty($format    = getPostFormat($post['id']))    ? $format->name    : '',
     ];
 }
 
-function avatar_callback($user) {
+function avatar_callback($user)
+{
     $img_id = get_field('user_avatar', 'user_' . $user['id']);
 
-    $img_scr = Array(
-		'full'             => !empty($full    = wp_get_attachment_image_src($img_id, ''))             ? $full[0]    : '',
-		'medium'           => !empty($medium  = wp_get_attachment_image_src($img_id, 'medium_large')) ? $medium[0]  : '',
-		'small'            => !empty($small   = wp_get_attachment_image_src($img_id, 'thumbnail'))    ? $small[0]   : '',
-		'pa-block-preview' => !empty($preview = wp_get_attachment_image_src($img_id, 'medium_large')) ? $preview[0] : '',
-		'pa-block-render'  => !empty($render  = wp_get_attachment_image_src($img_id, 'medium_large')) ? $render[0]  : '',
-	);
+    $img_scr = array(
+        'full'             => !empty($full    = wp_get_attachment_image_src($img_id, ''))             ? $full[0]    : '',
+        'medium'           => !empty($medium  = wp_get_attachment_image_src($img_id, 'medium_large')) ? $medium[0]  : '',
+        'small'            => !empty($small   = wp_get_attachment_image_src($img_id, 'thumbnail'))    ? $small[0]   : '',
+        'pa-block-preview' => !empty($preview = wp_get_attachment_image_src($img_id, 'medium_large')) ? $preview[0] : '',
+        'pa-block-render'  => !empty($render  = wp_get_attachment_image_src($img_id, 'medium_large')) ? $render[0]  : '',
+    );
 
     return $img_scr;
 }
 
-function column_callback($user) {
+function column_callback($user)
+{
     return [
         'name'    => !empty($name    = get_field('column_name',    'user_' . $user['id'])) ? $name    : '',
         'excerpt' => !empty($excerpt = get_field('column_excerpt', 'user_' . $user['id'])) ? $excerpt : '',
-    ]; 
+    ];
 }
 
 
 add_filter('option_show_avatars', '__return_false');
 
-function mytheme_add_editor_styles() {
-    add_theme_support( 'editor-styles' );
-    add_editor_style( 'style-editor.css' );
+function mytheme_add_editor_styles()
+{
+    add_theme_support('editor-styles');
+    add_editor_style('style-editor.css');
 }
-add_action( 'admin_init', 'mytheme_add_editor_styles' );
+add_action('admin_init', 'mytheme_add_editor_styles');
 
 
-add_filter( "rest_prepare_post", 'prefix_title_entity_decode' , 10, 1 ); 
-add_filter( "rest_prepare_press", 'prefix_title_entity_decode' , 10, 1 ); 
-function prefix_title_entity_decode($response){
+add_filter("rest_prepare_post", 'prefix_title_entity_decode', 10, 1);
+add_filter("rest_prepare_press", 'prefix_title_entity_decode', 10, 1);
+function prefix_title_entity_decode($response)
+{
     $data = $response->get_data();
-    $data['title']['rendered'] = html_entity_decode( $data['title']['rendered']);
+    $data['title']['rendered'] = html_entity_decode($data['title']['rendered']);
     $response->set_data($data);
     return $response;
 }

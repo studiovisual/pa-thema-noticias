@@ -8,41 +8,45 @@ use Log1x\AcfPhoneNumber\PhoneNumberField;
  * 
  */
 
-class PAThemeNoticiasInstall {
+class PAThemeNoticiasInstall
+{
 
-	public function __construct() {
+	public function __construct()
+	{
 		add_action('after_setup_theme', array($this, 'installRoutines'), 11);
 		add_action('admin_enqueue_scripts', array($this, 'enqueueAssets'));
 		add_action('after_setup_theme', array($this, 'removePostFormats'), 100);
 		add_filter('manage_edit-press_columns', array($this, 'removeFakeColumn'));
 		add_action('init', array($this, 'addCustomRoles'));
 		add_action('widgets_init', array($this, 'setWidgets'), 11);
-		add_action('init', array($this, 'changePostObjectLabel') );
-		add_action('admin_menu', array($this, 'changePostMenuLabel') );
+		add_action('init', array($this, 'changePostObjectLabel'));
+		add_action('admin_menu', array($this, 'changePostMenuLabel'));
+		add_filter('manage_post_posts_columns', array($this, 'removeColumns'), 10001);
 	}
 
-	function installRoutines() {
+	function installRoutines()
+	{
 		/**
 		 * 
 		 * SALA DE IMPRENSA
 		 * 
 		 */
 		$labels = array(
-			'name'                  => __( 'Press', 'iasd' ),
-			'singular_name'         => __( 'Press', 'iasd' ),
-			'menu_name'             => __( 'Press', 'iasd' ),
-			'name_admin_bar'        => __( 'Add item', 'iasd' ),
-			'add_new'               => __( 'Add New', 'iasd' ),
-			'add_new_item'          => __( 'Add New Item', 'iasd' ),
-			'new_item'              => __( 'New item', 'iasd' ),
-			'edit_item'             => __( 'Edit item', 'iasd' ),
-			'view_item'             => __( 'View item', 'iasd' ),
-			'all_items'             => __( 'All items', 'iasd' ),
-			'search_items'          => __( 'Search item', 'iasd' ),
-			'not_found'             => __( 'No press found.', 'iasd' ),
-			'not_found_in_trash'    => __( 'No press found in Trash.', 'iasd' ),
-		); 
-			
+			'name'                  => __('Press', 'iasd'),
+			'singular_name'         => __('Press', 'iasd'),
+			'menu_name'             => __('Press', 'iasd'),
+			'name_admin_bar'        => __('Add item', 'iasd'),
+			'add_new'               => __('Add New', 'iasd'),
+			'add_new_item'          => __('Add New Item', 'iasd'),
+			'new_item'              => __('New item', 'iasd'),
+			'edit_item'             => __('Edit item', 'iasd'),
+			'view_item'             => __('View item', 'iasd'),
+			'all_items'             => __('All items', 'iasd'),
+			'search_items'          => __('Search item', 'iasd'),
+			'not_found'             => __('No press found.', 'iasd'),
+			'not_found_in_trash'    => __('No press found in Trash.', 'iasd'),
+		);
+
 		$args = array(
 			'labels'             => $labels,
 			'public'             => true,
@@ -52,15 +56,15 @@ class PAThemeNoticiasInstall {
 			'query_var'          => true,
 			'rewrite'            => ['slug' => sanitize_title(__('press-room-slug', 'iasd'))],
 			'capability_type'    => 'post',
-			'has_archive'        => true,
+			'has_archive'        => false,
 			'hierarchical'       => false,
 			'menu_position'      => 4,
-			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt' ),
+			'supports'           => array('title', 'editor', 'author', 'thumbnail', 'excerpt'),
 			// 'taxonomies'         => array( 'category', 'post_tag' ),
 			'show_in_rest'       => true,
 		);
-			
-		register_post_type('press', $args );
+
+		register_post_type('press', $args);
 
 		/**
 		 * 
@@ -82,22 +86,16 @@ class PAThemeNoticiasInstall {
 		$args   = array(
 			'hierarchical'       => true, // make it hierarchical (like categories)
 			'labels'             => $labels,
-			'show_ui'            => true,
+			'show_ui'            => checkRole('adminiStrator'),
 			'show_admin_column'  => false,
 			'show_in_quick_edit' => false,
 			'query_var'          => true,
 			'show_in_rest'       => true, // add support for Gutenberg editor
 			'rewrite'            => ['slug' => sanitize_title(__('xtt-pa-format-slug', 'iasd'))],
-			// 'default_term'		=> array(
-			// 	'name' => 'Notícia',
-			// 	'slug'	=> 'noticia'
-			// ),
-			'capabilities' 		  => array(
-				'edit_terms' 	  => 'manage_options',
-				'delete_terms'    => 'manage_options',
-				// 'manage_options'  => true,
-				'assign_terms' => 'manage_options',
-			),
+			'default_term'		=> array(
+				'name' => 'Notícia',
+				'slug'	=> 'noticia'
+			)
 		);
 
 		register_taxonomy('xtt-pa-format', ['post'], $args);
@@ -133,7 +131,7 @@ class PAThemeNoticiasInstall {
 				'delete_terms'    => false,
 			),
 		);
-	
+
 		register_taxonomy('xtt-pa-press-type', ['press'], $args);
 
 		/**
@@ -168,47 +166,50 @@ class PAThemeNoticiasInstall {
 			// 	'delete_terms'   => false,
 			// ),
 		);
-	
+
 		// register_taxonomy('xtt-pa-regiao', ['post'], $args);
 
 		register_taxonomy_for_object_type('xtt-pa-editorias', 'press');
 
 		foreach (['acf/include_field_types', 'acf/register_fields'] as $hook) {
-            add_filter($hook, function() {
-                return new PhoneNumberField(
-                    get_stylesheet_directory_uri() . '/vendor/log1x/acf-phone-number/public',
-                    get_stylesheet_directory() . '/vendor/log1x/acf-phone-number/public'
-                );
-            });
-        }
+			add_filter($hook, function () {
+				return new PhoneNumberField(
+					get_stylesheet_directory_uri() . '/vendor/log1x/acf-phone-number/public',
+					get_stylesheet_directory() . '/vendor/log1x/acf-phone-number/public'
+				);
+			});
+		}
 	}
 
-  	function enqueueAssets() {
+	function enqueueAssets()
+	{
 		global $current_screen;
 
-		if($current_screen->id == 'user-edit')
+		if ($current_screen->id == 'user-edit')
 			wp_enqueue_media();
 
-		if($current_screen->id != 'post' && $current_screen->id != 'edit-post')
+		if ($current_screen->id != 'post' && $current_screen->id != 'edit-post')
 			return;
 
 		wp_enqueue_script(
-			'adventistas-noticias-admin', 
-			get_stylesheet_directory_uri() . '/assets/scripts/admin.js', 
-			array('wp-i18n', 'wp-blocks', 'wp-edit-post', 'wp-element', 'wp-editor', 'wp-components', 'wp-data', 'wp-plugins', 'wp-edit-post', 'lodash'), 
-			null, 
+			'adventistas-noticias-admin',
+			get_stylesheet_directory_uri() . '/assets/scripts/admin.js',
+			array('wp-i18n', 'wp-blocks', 'wp-edit-post', 'wp-element', 'wp-editor', 'wp-components', 'wp-data', 'wp-plugins', 'wp-edit-post', 'lodash'),
+			null,
 			false
 		);
 	}
 
-	function removePostFormats() {
+	function removePostFormats()
+	{
 		remove_theme_support('post-formats');
 	}
 
-	function addCustomRoles() {
+	function addCustomRoles()
+	{
 		add_role(
-			'colunista', 
-			__('Columnist', 'iasd'), 
+			'colunista',
+			__('Columnist', 'iasd'),
 			array(
 				'level_1' => true,
 				'read' => true,
@@ -216,7 +217,8 @@ class PAThemeNoticiasInstall {
 		);
 	}
 
-	function setWidgets() {
+	function setWidgets()
+	{
 		register_sidebar(array(
 			'name'          => __('Archive columnists', 'iasd'),
 			'id'            => 'archive-authors',
@@ -242,13 +244,15 @@ class PAThemeNoticiasInstall {
 		unregister_sidebar('single');
 	}
 
-	function removeFakeColumn($posts_columns) {
+	function removeFakeColumn($posts_columns)
+	{
 		unset($posts_columns['fake']);
 
 		return $posts_columns;
 	}
 
-	public static function changePostMenuLabel() {
+	public static function changePostMenuLabel()
+	{
 		global $menu;
 		global $submenu;
 		$menu[5][0] = __('News', 'iasd');
@@ -257,7 +261,8 @@ class PAThemeNoticiasInstall {
 		echo '';
 	}
 
-	public static function changePostObjectLabel() {
+	public static function changePostObjectLabel()
+	{
 		global $wp_post_types;
 		$labels = &$wp_post_types['post']->labels;
 		$wp_post_types['post']->label = $labels->name = __('News', 'iasd');
@@ -272,6 +277,11 @@ class PAThemeNoticiasInstall {
 		$labels->not_found_in_trash = __('No news in the trash', 'iasd');
 	}
 
+	function removeColumns($columns)
+	{
+		unset($columns['editor']);
+		return $columns;
+	}
 }
 
 $PAThemeNoticiasInstall = new PAThemeNoticiasInstall();
