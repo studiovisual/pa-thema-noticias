@@ -34,6 +34,7 @@ add_action('after_setup_theme', function () {
  */
 add_action('wp_loaded', function () {
     unregister_taxonomy_for_object_type('xtt-pa-colecoes', 'post');
+    unregister_taxonomy_for_object_type('xtt-pa-kits', 'post');
     unregister_taxonomy_for_object_type('post_tag', 'post');
     unregister_taxonomy_for_object_type('category', 'post');
 });
