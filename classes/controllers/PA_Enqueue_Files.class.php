@@ -56,7 +56,7 @@ class PA_Enqueue_Files
 					'acf/p-a-list-items',
 					'acf/p-a-list-icons',
 					'acf/p-a-carousel-feature',
-					'acf/p-a-list-videos'
+					// 'acf/p-a-list-videos'
 				],
 			)
 		);
