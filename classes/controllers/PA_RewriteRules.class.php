@@ -101,7 +101,7 @@ class PaRewriteRules
                 $post_format = get_the_terms($post->ID, 'xtt-pa-format');
                 $author = get_the_author_meta('user_login', $post->post_author);
 
-                if ($post_format[0]->slug == 'artigo') {
+                if ($post_format[0]->slug == 'coluna' || $post_format[0]->slug == 'columna') {
                     $permalink = str_replace('/%postname%/', sanitize_title(__('columns-slug','iasd')) . '/' . $author . '/%postname%/', $permalink);
                 } else {
                     if ($editoria) {
