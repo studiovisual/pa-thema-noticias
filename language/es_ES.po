@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2021-11-17 22:32-0300\n"
-"PO-Revision-Date: 2021-11-18 19:23-0300\n"
+"POT-Creation-Date: 2021-11-29 09:44-0300\n"
+"PO-Revision-Date: 2021-11-29 09:44-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -19,11 +19,11 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 
 #: archive.blade.php:19 archive.blade.php:40
-#: core/PA_Theme_Noticias_Install.php:254
-#: core/PA_Theme_Noticias_Install.php:255
-#: core/PA_Theme_Noticias_Install.php:263
-#: core/PA_Theme_Noticias_Install.php:264
-#: core/PA_Theme_Noticias_Install.php:268
+#: core/PA_Theme_Noticias_Install.php:259
+#: core/PA_Theme_Noticias_Install.php:260
+#: core/PA_Theme_Noticias_Install.php:269
+#: core/PA_Theme_Noticias_Install.php:270
+#: core/PA_Theme_Noticias_Install.php:274
 msgid "News"
 msgstr "Noticias"
 
@@ -116,11 +116,11 @@ msgstr ""
 msgid "IASD - List press"
 msgstr ""
 
-#: classes/PA_Helpers.php:122
-msgid "Columna"
+#: classes/PA_Helpers.php:130
+msgid "Column"
 msgstr "Columna"
 
-#: classes/PA_Helpers.php:124 classes/PA_Helpers.php:130
+#: classes/PA_Helpers.php:132 classes/PA_Helpers.php:138
 msgid "Press room"
 msgstr "Prensa"
 
@@ -194,7 +194,7 @@ msgstr "Extracto de columna"
 #: classes/controllers/PA_RewriteRules.class.php:40
 #: classes/controllers/PA_RewriteRules.class.php:51
 #: classes/controllers/PA_RewriteRules.class.php:119
-#: core/PA_Theme_Noticias_Install.php:53
+#: core/PA_Theme_Noticias_Install.php:57
 msgid "press-room-slug"
 msgstr "prensa"
 
@@ -208,7 +208,7 @@ msgstr "noticia"
 #: classes/controllers/PA_RewriteRules.class.php:105
 #: classes/controllers/PA_RewriteRules.class.php:128
 msgid "columns-slug"
-msgstr "column"
+msgstr "columna"
 
 #: classes/controllers/PA_wp_rest_columnists_controller.class.php:203
 msgid "Invalid user ID."
@@ -359,143 +359,143 @@ msgstr "Limite o conjunto de resultados para usuários considerados autores."
 msgid "Seventh-day Adventist Church"
 msgstr "Iglesia Adventista Del Séptimo Día"
 
-#: core/PA_Theme_Noticias_Install.php:31 core/PA_Theme_Noticias_Install.php:32
-#: core/PA_Theme_Noticias_Install.php:33
+#: core/PA_Theme_Noticias_Install.php:35 core/PA_Theme_Noticias_Install.php:36
+#: core/PA_Theme_Noticias_Install.php:37
 msgid "Press"
 msgstr "Prensa"
 
-#: core/PA_Theme_Noticias_Install.php:34
+#: core/PA_Theme_Noticias_Install.php:38
 msgid "Add item"
 msgstr "Añadir ítem"
 
-#: core/PA_Theme_Noticias_Install.php:35
+#: core/PA_Theme_Noticias_Install.php:39
 msgid "Add New"
 msgstr "Agregar nuevo"
 
-#: core/PA_Theme_Noticias_Install.php:36
+#: core/PA_Theme_Noticias_Install.php:40
 msgid "Add New Item"
 msgstr "Agregar ítem nuevo"
 
-#: core/PA_Theme_Noticias_Install.php:37 core/PA_Theme_Noticias_Install.php:79
-#: core/PA_Theme_Noticias_Install.php:119
-#: core/PA_Theme_Noticias_Install.php:153
+#: core/PA_Theme_Noticias_Install.php:41 core/PA_Theme_Noticias_Install.php:83
+#: core/PA_Theme_Noticias_Install.php:117
+#: core/PA_Theme_Noticias_Install.php:151
 msgid "New item"
 msgstr "Nuevo ítem"
 
-#: core/PA_Theme_Noticias_Install.php:38 core/PA_Theme_Noticias_Install.php:76
-#: core/PA_Theme_Noticias_Install.php:150
+#: core/PA_Theme_Noticias_Install.php:42 core/PA_Theme_Noticias_Install.php:80
+#: core/PA_Theme_Noticias_Install.php:148
 msgid "Edit item"
 msgstr "Editar ítem"
 
-#: core/PA_Theme_Noticias_Install.php:39
+#: core/PA_Theme_Noticias_Install.php:43
 msgid "View item"
 msgstr "Ver ítem"
 
-#: core/PA_Theme_Noticias_Install.php:40 core/PA_Theme_Noticias_Install.php:75
-#: core/PA_Theme_Noticias_Install.php:115
-#: core/PA_Theme_Noticias_Install.php:149
+#: core/PA_Theme_Noticias_Install.php:44 core/PA_Theme_Noticias_Install.php:79
+#: core/PA_Theme_Noticias_Install.php:113
+#: core/PA_Theme_Noticias_Install.php:147
 msgid "All items"
 msgstr "Todos os itens"
 
-#: core/PA_Theme_Noticias_Install.php:41 core/PA_Theme_Noticias_Install.php:74
-#: core/PA_Theme_Noticias_Install.php:148
+#: core/PA_Theme_Noticias_Install.php:45 core/PA_Theme_Noticias_Install.php:78
+#: core/PA_Theme_Noticias_Install.php:146
 msgid "Search item"
 msgstr "Búsqueda"
 
-#: core/PA_Theme_Noticias_Install.php:42
+#: core/PA_Theme_Noticias_Install.php:46
 msgid "No press found."
 msgstr "No se encontró prensa."
 
-#: core/PA_Theme_Noticias_Install.php:43
+#: core/PA_Theme_Noticias_Install.php:47
 msgid "No press found in Trash."
 msgstr "No se encontró prensa en la Papelera."
 
-#: core/PA_Theme_Noticias_Install.php:72 core/PA_Theme_Noticias_Install.php:73
-#: core/PA_Theme_Noticias_Install.php:80
+#: core/PA_Theme_Noticias_Install.php:76 core/PA_Theme_Noticias_Install.php:77
+#: core/PA_Theme_Noticias_Install.php:84
 msgid "Post format"
 msgstr "Formato de publicación"
 
-#: core/PA_Theme_Noticias_Install.php:77 core/PA_Theme_Noticias_Install.php:117
-#: core/PA_Theme_Noticias_Install.php:151
+#: core/PA_Theme_Noticias_Install.php:81 core/PA_Theme_Noticias_Install.php:115
+#: core/PA_Theme_Noticias_Install.php:149
 msgid "Update item"
 msgstr "Actualizar ítem"
 
-#: core/PA_Theme_Noticias_Install.php:78 core/PA_Theme_Noticias_Install.php:118
-#: core/PA_Theme_Noticias_Install.php:152
+#: core/PA_Theme_Noticias_Install.php:82 core/PA_Theme_Noticias_Install.php:116
+#: core/PA_Theme_Noticias_Install.php:150
 msgid "Add new item"
 msgstr "Agregar ítem nuevo"
 
-#: core/PA_Theme_Noticias_Install.php:90
+#: core/PA_Theme_Noticias_Install.php:94
 msgid "xtt-pa-format-slug"
 msgstr "formato"
 
-#: core/PA_Theme_Noticias_Install.php:112
-#: core/PA_Theme_Noticias_Install.php:113
-#: core/PA_Theme_Noticias_Install.php:120
+#: core/PA_Theme_Noticias_Install.php:110
+#: core/PA_Theme_Noticias_Install.php:111
+#: core/PA_Theme_Noticias_Install.php:118
 msgid "Press type"
 msgstr "Tipo de contenido"
 
-#: core/PA_Theme_Noticias_Install.php:114
+#: core/PA_Theme_Noticias_Install.php:112
 msgid "Search items"
 msgstr "Búsqueda"
 
-#: core/PA_Theme_Noticias_Install.php:116
+#: core/PA_Theme_Noticias_Install.php:114
 msgid "Edit items"
 msgstr "Editar ítem"
 
-#: core/PA_Theme_Noticias_Install.php:130
+#: core/PA_Theme_Noticias_Install.php:128
 msgid "xtt-pa-press-type-slug"
 msgstr "press-type"
 
-#: core/PA_Theme_Noticias_Install.php:146
-#: core/PA_Theme_Noticias_Install.php:147
+#: core/PA_Theme_Noticias_Install.php:144
+#: core/PA_Theme_Noticias_Install.php:145
 msgid "Region"
 msgstr "Región"
 
-#: core/PA_Theme_Noticias_Install.php:154
+#: core/PA_Theme_Noticias_Install.php:152
 msgid "Regions"
 msgstr "Regiones"
 
-#: core/PA_Theme_Noticias_Install.php:165
+#: core/PA_Theme_Noticias_Install.php:163
 msgid "xtt-pa-regiao-slug"
 msgstr "region"
 
-#: core/PA_Theme_Noticias_Install.php:211
-#: core/PA_Theme_Noticias_Install.php:228
+#: core/PA_Theme_Noticias_Install.php:213
+#: core/PA_Theme_Noticias_Install.php:231
 msgid "Columnist"
 msgstr "Columnista"
 
-#: core/PA_Theme_Noticias_Install.php:221
+#: core/PA_Theme_Noticias_Install.php:224
 msgid "Archive columnists"
 msgstr "Archive - Columnista"
 
-#: core/PA_Theme_Noticias_Install.php:235
+#: core/PA_Theme_Noticias_Install.php:238
 msgid "Archive press"
 msgstr "Archive - Prensa"
 
-#: core/PA_Theme_Noticias_Install.php:256
-#: core/PA_Theme_Noticias_Install.php:265
-#: core/PA_Theme_Noticias_Install.php:266
+#: core/PA_Theme_Noticias_Install.php:261
+#: core/PA_Theme_Noticias_Install.php:271
+#: core/PA_Theme_Noticias_Install.php:272
 msgid "Add news"
 msgstr "Nueva noticia"
 
-#: core/PA_Theme_Noticias_Install.php:267
+#: core/PA_Theme_Noticias_Install.php:273
 msgid "Edit"
 msgstr "Editar noticia"
 
-#: core/PA_Theme_Noticias_Install.php:269
+#: core/PA_Theme_Noticias_Install.php:275
 msgid "View news"
 msgstr "Ver noticia"
 
-#: core/PA_Theme_Noticias_Install.php:270
+#: core/PA_Theme_Noticias_Install.php:276
 msgid "Search news"
 msgstr "Buscar noticias"
 
-#: core/PA_Theme_Noticias_Install.php:271
+#: core/PA_Theme_Noticias_Install.php:277
 msgid "No news found"
 msgstr "No se encontraron noticias"
 
-#: core/PA_Theme_Noticias_Install.php:272
+#: core/PA_Theme_Noticias_Install.php:278
 msgid "No news in the trash"
 msgstr "No hay noticias en la basura"
 

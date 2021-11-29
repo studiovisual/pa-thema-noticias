@@ -126,8 +126,8 @@ function getRelatedPosts($post_id, $limit = 6): array
 
 function getHeaderTitle($post_id = NULL)
 {
-    if (is_author() || is_singular('post') && !empty($format = getPostFormat($post_id)) && $format->slug == 'artigo')
-        return __('Columna', 'iasd') . ' | ' . (is_author() ? get_queried_object()->display_name : get_the_author_meta('display_name'));
+    if (is_author() || is_singular('post') && !empty($format = getPostFormat($post_id)) && $format->slug == 'coluna' || $format->slug == 'columna')
+        return __('Column', 'iasd') . ' | ' . (is_author() ? get_queried_object()->display_name : get_the_author_meta('display_name'));
     elseif (is_tax('xtt-pa-press-type'))
         return __('Press room', 'iasd') . ' | ' . get_queried_object()->name;
     elseif (is_archive()) //is archive
