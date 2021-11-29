@@ -9,6 +9,8 @@ define('THEME_DIR', get_stylesheet_directory() . '/');
 define('THEME_CSS', THEME_URI . 'assets/css/');
 define('THEME_JS', THEME_URI . 'assets/js/');
 define('THEME_IMGS', THEME_URI . 'assets/images/');
+define('ACF_TO_REST_API_REQUEST_VERSION', 2 );
+
 
 $ChildBlocks = new \Blocks\ChildBlocks;
 
@@ -20,6 +22,9 @@ require_once(dirname(__FILE__) . '/classes/controllers/PA_RewriteRules.class.php
 require_once(dirname(__FILE__) . '/classes/controllers/PA_Util.class.php');
 require_once(dirname(__FILE__) . '/classes/controllers/PA_wp_rest_columnists_controller.class.php');
 require_once(dirname(__FILE__) . '/classes/PA_Helpers.php');
+
+add_action('after_setup_theme', array( 'ACF_To_REST_API', 'init' ) );
+
 
 // CORE INSTALL
 require_once(dirname(__FILE__) . '/core/PA_Theme_Noticias_Install.php');
