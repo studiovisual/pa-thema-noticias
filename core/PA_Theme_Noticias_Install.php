@@ -87,7 +87,7 @@ class PAThemeNoticiasInstall
 			'hierarchical'       => true, // make it hierarchical (like categories)
 			'labels'             => $labels,
 			'show_ui'            => checkRole('adminiStrator'),
-			'show_admin_column'  => false,
+			'show_admin_column'  => true,
 			'show_in_quick_edit' => false,
 			'query_var'          => true,
 			'show_in_rest'       => true, // add support for Gutenberg editor
