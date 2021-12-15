@@ -194,3 +194,14 @@ function prefix_title_entity_decode($response)
     $response->set_data($data);
     return $response;
 }
+
+function clear_cf_cache()
+{
+
+  //RESET CF CACHE
+  $url = "https://" . API_PA . "/clear-cache?zone=adventistas.dev";
+  $json = file_get_contents($url);
+  $obj = json_decode($json);
+  unset($json, $obj);
+}
+add_action('acf/save_post', 'clear_cf_cache');
