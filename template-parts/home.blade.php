@@ -10,7 +10,7 @@
         ])
 
         <div class="row">
-            <div class="col-12{{ is_active_sidebar($sidebar) ? ' col-md-8' : '' }}">
+            <div class="pa-news-content col-12{{ is_active_sidebar($sidebar) ? ' col-md-8' : '' }}">
                 @php 
                     global $exclude; 
                     $args = '_fields=featured_media_url.pa-block-render,title,excerpt,link,terms&exclude=' . implode(',', $exclude);
