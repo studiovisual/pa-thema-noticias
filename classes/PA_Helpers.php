@@ -211,3 +211,26 @@ function checkRole($user_role = "")
 
     return false;
 }
+
+
+/**
+ * Get current post author and make some normalizations.
+ *
+ * @param string $post_id The post ID
+ * @return string
+ */
+function getCurrentAuthor($post_id)
+{
+    if(!empty($custom_author = get_field('custom_author'))){
+        $author = $custom_author;
+    } else { 
+        $author = get_the_author();
+    }
+
+    if (str_contains($author, '.')){
+        $author = explode('.', $author);
+        return ucfirst($author[0]) .' '. ucfirst($author[1]);
+    } else {
+        return $author;
+    }    
+}

@@ -5,7 +5,11 @@
 
     @if(!empty($format = getPostFormat(get_the_ID())) && $format->slug != 'artigo' && is_singular('post'))        
         <div class="pa-post-meta mb-2">{{__('By', 'iasd')}} 
-            <span>{!! !empty($custom_author = get_field('custom_author')) ? $custom_author : get_the_author() !!}</span>@if($region = getPostRegion(get_the_ID()))<em class="pa-pipe">|</em><span class="ms-2"><i class="fas fa-map-marker-alt me-2" aria-hidden="true"></i> {{ $region->name }}</span>@endif
+            <span>{{ getCurrentAuthor(get_the_ID()) }}</span>
+            @if($region = getPostRegion(get_the_ID()))
+                <em class="pa-pipe">|</em>
+                <span><i class="fas fa-map-marker-alt me-2" aria-hidden="true"></i> {{ $region->name }}</span>
+            @endif
         </div>
     @endif
 

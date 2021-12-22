@@ -29,7 +29,8 @@
 }
 
 .pa-content-container header .pa-post-meta span {
-  color: var(--pa-color-default-light);
+  color: var(--pa-color-gray01);
+  font-weight: bold;
 }
 
 .pa-content-container header hr,
@@ -197,5 +198,13 @@ card-post {
         display: -webkit-box !important;
       }
     }
+  }
+}
+
+.pa-content {
+  p {
+    font-size: 1.2rem;
+    line-height: 2.5rem;
+    margin-bottom: 1.5rem;
   }
 }
