@@ -18,12 +18,10 @@
     <hr class="my-45">
 
     <div class="d-flex justify-content-between">
-        <div class="pa-share d-none d-xl-block">
-            @php require(get_template_directory() . '/components/parts/share.php') @endphp
-        </div>
+        @php require(get_template_directory() . '/components/parts/share.php') @endphp
 
-        <div class="">
-            <ul class="pa-accessibility list-inline">
+        <div class="pa-accessibility">
+            <ul class="list-inline">
                 <li class="pa-text-dec list-inline-item"><a href="#" class="rounded p-2" onclick="window.TextSize.pa_diminui_texto(event)">-A</a></li>
                 <li class="pa-text-inc list-inline-item"><a href="#" class="rounded p-2" onclick="window.TextSize.pa_aumenta_texto(event)">+A</a></li>
 
