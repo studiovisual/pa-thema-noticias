@@ -12,6 +12,7 @@ class PaAcfPostFields {
     }
 
     function createACFFields() {
+        // ACF fields pra formato de video
         register_extended_field_group([
             'title' => __('Video info','iasd'),
             'style' => 'default',
@@ -36,6 +37,22 @@ class PaAcfPostFields {
             ],
             'location'   => [
                 Location::if('post_type', 'post'),
+            ]
+        ]);
+
+        // ACF Fields pra formato de áudio
+        register_extended_field_group([
+            'title' => __('Áudio info','iasd'),
+            'style' => 'default',
+            'fields' => [
+                Oembed::make(__('Áudio','iasd'), 'audio_url')
+                    ->required(),
+                Number::make(__('Lenght','iasd'), 'audio_length')
+                    ->instructions(__('It will be obtained when saving the post.','iasd'))
+                    ->readOnly(),
+            ],
+            'location' => [
+                Location::if('post_taxonomy', 'xtt-pa-format:audio'),
             ]
         ]);
     }

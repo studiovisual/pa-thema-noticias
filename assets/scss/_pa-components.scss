@@ -34,7 +34,7 @@
 }
 
 .pa-content-container header hr,
-.pa-content-container footer hr, 
+.pa-content-container footer hr,
 .pa-content header hr {
   color: var(--pa-color-default-light) !important;
   opacity: 0.2;
@@ -209,10 +209,29 @@ card-post {
       color: #717171 !important;
       display: none !important;
       font-size: 0.875rem; // 14px
-  
+
       @media (min-width: 1200px) {
         display: -webkit-box !important;
       }
+    }
+
+    .pa-tag-icon{
+      color: var(--pa-color-default);
+      background-color: var(--pa-color-default-aux);
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    .pag-tag-icon-video{
+      font-size: 0.45rem;
+      padding: 3px 5px 3px 6px;
+      border-radius: 50%;
+    }
+
+    .pag-tag-icon-audio{
+      padding: 1px 4px 1px 4px;
+      border-radius: 50%;
+      font-size: 0.65rem;
     }
   }
 }
