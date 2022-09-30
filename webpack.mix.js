@@ -1,11 +1,17 @@
 const mix = require('laravel-mix');
 
-mix
-    .setPublicPath('./')
-    .browserSync('localhost');
+mix.webpackConfig({
+    output: {
+        publicPath: '/wp-content/themes/pa-thema-noticias/assets/js/', // but this is a browser path for compiled files
+    },
+});
 
 mix
-    .sass('assets/scss/style.scss', 'style.css');
+    .sass('assets/scss/style.scss', '../../style.css');
+
+mix
+    .setPublicPath('./assets/js')
+    .browserSync('localhost');
 
 mix
     .js('assets/scripts/script.js', './assets/js')
