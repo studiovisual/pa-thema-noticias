@@ -4,6 +4,7 @@ use WordPlate\Acf\Fields\Number;
 use WordPlate\Acf\Fields\Oembed;
 use WordPlate\Acf\Fields\Text;
 use WordPlate\Acf\Location;
+use WordPlate\Acf\Fields\File;
 
 class PaAcfPostFields {
 
@@ -45,11 +46,9 @@ class PaAcfPostFields {
             'title' => __('Áudio info','iasd'),
             'style' => 'default',
             'fields' => [
-                Oembed::make(__('Áudio','iasd'), 'audio_url')
+                File::make(__('Áudio','iasd'), 'audio_url')
+                    ->instructions('Faça upload do arquivo de <strong>audio</strong> aqui.')
                     ->required(),
-                Number::make(__('Lenght','iasd'), 'audio_length')
-                    ->instructions(__('It will be obtained when saving the post.','iasd'))
-                    ->readOnly(),
             ],
             'location' => [
                 Location::if('post_taxonomy', 'xtt-pa-format:audio'),

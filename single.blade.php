@@ -25,7 +25,7 @@
                                     @break
 
                                 @case('audio')
-                                    @include('template-parts.single.video-format')
+                                    @include('template-parts.single.audio-format')
                                     @break
 
                                 @default
