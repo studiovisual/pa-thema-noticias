@@ -12,7 +12,6 @@ class PA_Enqueue_Files
 	{
 		wp_enqueue_style('pa-child-style', get_stylesheet_uri());
 		wp_enqueue_script('pa-child-script', get_stylesheet_directory_uri() . '/assets/js/script.js', array(), false, false);
-
 		wp_localize_script(
 			'pa-child-script',
 			'pa',

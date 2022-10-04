@@ -3,9 +3,9 @@
 use Log1x\AcfPhoneNumber\PhoneNumberField;
 
 /**
- * 
+ *
  * Bootloader Install
- * 
+ *
  */
 
 class PAThemeNoticiasInstall
@@ -27,9 +27,9 @@ class PAThemeNoticiasInstall
 	function installRoutines()
 	{
 		/**
-		 * 
+		 *
 		 * SALA DE IMPRENSA
-		 * 
+		 *
 		 */
 		$labels = array(
 			'name'                  => __('Press', 'iasd'),
@@ -67,9 +67,9 @@ class PAThemeNoticiasInstall
 		register_post_type('press', $args);
 
 		/**
-		 * 
+		 *
 		 * FORMATO DE POST
-		 * 
+		 *
 		 */
 
 		$labels = array(
@@ -86,7 +86,7 @@ class PAThemeNoticiasInstall
 		$args   = array(
 			'hierarchical'       => true, // make it hierarchical (like categories)
 			'labels'             => $labels,
-			'show_ui'            => checkRole('adminiStrator'),
+			'show_ui'            => checkRole('administrator'),
 			'show_admin_column'  => true,
 			'show_in_quick_edit' => false,
 			'query_var'          => true,
@@ -101,9 +101,9 @@ class PAThemeNoticiasInstall
 		register_taxonomy('xtt-pa-format', ['post'], $args);
 
 		/**
-		 * 
+		 *
 		 * FORMATO DE POST
-		 * 
+		 *
 		 */
 
 		$labels = array(
@@ -135,9 +135,9 @@ class PAThemeNoticiasInstall
 		register_taxonomy('xtt-pa-press-type', ['press'], $args);
 
 		/**
-		 * 
+		 *
 		 * REGIÃO
-		 * 
+		 *
 		 */
 
 		$labels = array(

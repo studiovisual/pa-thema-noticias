@@ -46,8 +46,7 @@ class PaAcfPostFields {
             'title' => __('Áudio info','iasd'),
             'style' => 'default',
             'fields' => [
-                File::make(__('Áudio','iasd'), 'audio_url')
-                    ->instructions('Faça upload do arquivo de <strong>audio</strong> aqui.')
+                Oembed::make(__('Áudio','iasd'), 'audio_url')
                     ->required(),
             ],
             'location' => [

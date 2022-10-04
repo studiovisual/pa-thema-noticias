@@ -4,7 +4,7 @@
 
 {{-- Se o ACF audio_url não estiver vazio executa --}}
 @if (!empty($audio_url))
-    <figure class="wp-block-audio">
-        <audio controls="" src="{{$audio_url['url']}}"></audio>
-    </figure>
+    <div class="audio-container">
+        {!! $audio_url !!}
+    </div>
 @endif

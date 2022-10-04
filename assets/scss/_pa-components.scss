@@ -28,6 +28,10 @@
   margin: 40px 0;
 }
 
+.pa-content-container{
+  overflow: hidden;
+}
+
 .pa-content-container header .pa-post-meta span {
   color: var(--pa-color-gray01);
   font-weight: bold;
@@ -239,13 +243,31 @@ card-post {
 .floating-video {
   $this: &;
 
+  &::after, &::before{
+    height: 100%;
+    z-index: 100;
+    top: 0;
+    content: '';
+    background: var(--pa-color-default-light);
+    width: 100%;
+    position: absolute;
+  }
+
+  &::before {
+    left: -100%;
+  }
+
+  &::after {
+    right: -100%;
+  }
+
   z-index: 4;
   border-radius: 0;
-  cursor: pointer;
   padding-bottom: 56.25%;
   padding-top: 30px;
   margin-top: -30px;
-  overflow: hidden;
+  margin-bottom: 15px;
+  overflow: visible;
   height: 0;
   background-color: var(--pa-color-default-light);
 
@@ -272,6 +294,7 @@ card-post {
       position: absolute;
       top: 0;
       height: 100%;
+      cursor: pointer;
     }
   }
 
@@ -327,5 +350,34 @@ card-post {
     content: "\f04b";
     font-family: "Font Awesome 5 Free", sans-serif;
     font-weight: 900;
+  }
+}
+
+.audio-container {
+  background: var(--pa-color-default-light);
+  position: relative;
+  padding: 20px 0px;
+  margin-top: -30px;
+
+  &::before, &::after {
+    content: '';
+    background: var(--pa-color-default-light);
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    top: 0;
+  }
+
+  &::before {
+    left: -100%;
+  }
+
+  &::after {
+    right: -100%;
+  }
+
+  iframe{
+    width: 100%;
+    vertical-align: middle;
   }
 }
