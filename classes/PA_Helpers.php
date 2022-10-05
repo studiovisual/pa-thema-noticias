@@ -124,20 +124,26 @@ function getRelatedPosts($post_id, $limit = 6): array
     return array();
 }
 
+
 function getHeaderTitle($post_id = NULL)
 {
-    if (is_author() || is_singular('post') && !empty($format = getPostFormat($post_id)) && $format->slug == 'artigo')
-        return __('Columna', 'iasd') . ' | ' . (is_author() ? get_queried_object()->display_name : get_the_author_meta('display_name'));
-    elseif (is_tax('xtt-pa-press-type'))
-        return __('Press room', 'iasd') . ' | ' . get_queried_object()->name;
-    elseif (is_archive()) //is archive
-        return get_taxonomy(get_queried_object()->taxonomy)->label . ' | ' . get_queried_object()->name;
-    elseif (is_singular('post')) //is single
-        return getPostEditorial($post_id)->name;
-    elseif (is_singular('press')) //is single
-        return __('Press room', 'iasd') . ' | ' . get_the_terms(get_the_ID(), 'xtt-pa-press-type')[0]->name;
 
-    return the_title(); //default
+    if (is_page())
+        return the_title();
+
+    if (is_archive() && is_author() || getPostFormat(get_the_ID())->slug == 'coluna') //is archive
+        return __('Column', 'iasd') . ' | ' . (is_author() ? get_queried_object()->display_name : get_the_author_meta('display_name'));
+
+    if (is_tax('xtt-pa-press-type'))
+        return __('Press room', 'iasd') . ' | ' . get_queried_object()->name;
+
+    if (is_singular('post')) //is single
+        return getPostEditorial($post_id)->name;
+
+    if (is_archive()) //is archive
+        return get_taxonomy(get_queried_object()->taxonomy)->label . ' | ' . get_queried_object()->name;
+
+    return the_title();
 }
 
 /**
@@ -210,4 +216,27 @@ function checkRole($user_role = "")
         return true;
 
     return false;
+}
+
+
+/**
+ * Get current post author and make some normalizations.
+ *
+ * @param string $post_id The post ID
+ * @return string
+ */
+function getCurrentAuthor($post_id)
+{
+    if (!empty($custom_author = get_field('custom_author'))) {
+        $author = $custom_author;
+    } else {
+        $author = get_the_author();
+    }
+
+    if (str_contains($author, '.')) {
+        $author = explode('.', $author);
+        return ucfirst($author[0]) . ' ' . ucfirst($author[1]);
+    } else {
+        return $author;
+    }
 }

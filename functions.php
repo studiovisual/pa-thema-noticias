@@ -9,6 +9,8 @@ define('THEME_DIR', get_stylesheet_directory() . '/');
 define('THEME_CSS', THEME_URI . 'assets/css/');
 define('THEME_JS', THEME_URI . 'assets/js/');
 define('THEME_IMGS', THEME_URI . 'assets/images/');
+define('ACF_TO_REST_API_REQUEST_VERSION', 2 );
+
 
 $ChildBlocks = new \Blocks\ChildBlocks;
 
@@ -20,6 +22,9 @@ require_once(dirname(__FILE__) . '/classes/controllers/PA_RewriteRules.class.php
 require_once(dirname(__FILE__) . '/classes/controllers/PA_Util.class.php');
 require_once(dirname(__FILE__) . '/classes/controllers/PA_wp_rest_columnists_controller.class.php');
 require_once(dirname(__FILE__) . '/classes/PA_Helpers.php');
+
+add_action('after_setup_theme', array( 'ACF_To_REST_API', 'init' ) );
+
 
 // CORE INSTALL
 require_once(dirname(__FILE__) . '/core/PA_Theme_Noticias_Install.php');
@@ -34,6 +39,7 @@ add_action('after_setup_theme', function () {
  */
 add_action('wp_loaded', function () {
     unregister_taxonomy_for_object_type('xtt-pa-colecoes', 'post');
+    unregister_taxonomy_for_object_type('xtt-pa-kits', 'post');
     unregister_taxonomy_for_object_type('post_tag', 'post');
     unregister_taxonomy_for_object_type('category', 'post');
 });
@@ -108,16 +114,6 @@ add_filter('script_loader_tag', function ($tag, $handle) {
 add_action('rest_api_init', function () {
     register_rest_field(
         array('post', 'press'),
-        'featured_media_url',
-        array(
-            'get_callback'    => 'featured_media_url_callback',
-            'update_callback' => null,
-            'schema'          => null,
-        )
-    );
-
-    register_rest_field(
-        array('post', 'press'),
         'terms',
         array(
             'get_callback'    => 'terms_callback',
@@ -147,21 +143,6 @@ add_action('rest_api_init', function () {
     );
 });
 
-function featured_media_url_callback($post)
-{
-    $img_id = get_post_thumbnail_id($post['id']);
-
-    $img_scr = array(
-        'full'             => !empty($full    = wp_get_attachment_image_src($img_id, ''))             ? $full[0]    : '',
-        'medium'           => !empty($medium  = wp_get_attachment_image_src($img_id, 'medium_large')) ? $medium[0]  : '',
-        'small'            => !empty($small   = wp_get_attachment_image_src($img_id, 'thumbnail'))    ? $small[0]   : '',
-        'pa-block-preview' => !empty($preview = wp_get_attachment_image_src($img_id, 'medium_large')) ? $preview[0] : '',
-        'pa-block-render'  => !empty($render  = wp_get_attachment_image_src($img_id, 'medium_large')) ? $render[0]  : '',
-    );
-
-    return $img_scr;
-}
-
 function terms_callback($post)
 {
     return [
@@ -178,8 +159,8 @@ function avatar_callback($user)
         'full'             => !empty($full    = wp_get_attachment_image_src($img_id, ''))             ? $full[0]    : '',
         'medium'           => !empty($medium  = wp_get_attachment_image_src($img_id, 'medium_large')) ? $medium[0]  : '',
         'small'            => !empty($small   = wp_get_attachment_image_src($img_id, 'thumbnail'))    ? $small[0]   : '',
-        'pa-block-preview' => !empty($preview = wp_get_attachment_image_src($img_id, 'medium_large')) ? $preview[0] : '',
-        'pa-block-render'  => !empty($render  = wp_get_attachment_image_src($img_id, 'medium_large')) ? $render[0]  : '',
+        'pa-block-preview' => !empty($preview = wp_get_attachment_image_src($img_id, 'thumbnail')) ? $preview[0] : '',
+        'pa-block-render'  => !empty($render  = wp_get_attachment_image_src($img_id, 'medium')) ? $render[0]  : '',
     );
 
     return $img_scr;
@@ -213,3 +194,14 @@ function prefix_title_entity_decode($response)
     $response->set_data($data);
     return $response;
 }
+
+function clear_cf_cache()
+{
+
+  //RESET CF CACHE
+  $url = "https://" . API_PA . "/clear-cache?zone=adventistas.dev";
+  $json = file_get_contents($url);
+  $obj = json_decode($json);
+  unset($json, $obj);
+}
+add_action('acf/save_post', 'clear_cf_cache');

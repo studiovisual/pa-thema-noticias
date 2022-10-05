@@ -87,7 +87,7 @@ class PAThemeNoticiasInstall
 			'hierarchical'       => true, // make it hierarchical (like categories)
 			'labels'             => $labels,
 			'show_ui'            => checkRole('adminiStrator'),
-			'show_admin_column'  => false,
+			'show_admin_column'  => true,
 			'show_in_quick_edit' => false,
 			'query_var'          => true,
 			'show_in_rest'       => true, // add support for Gutenberg editor
@@ -170,6 +170,7 @@ class PAThemeNoticiasInstall
 		// register_taxonomy('xtt-pa-regiao', ['post'], $args);
 
 		register_taxonomy_for_object_type('xtt-pa-editorias', 'press');
+		register_taxonomy_for_object_type('xtt-pa-owner', 'press');
 
 		foreach (['acf/include_field_types', 'acf/register_fields'] as $hook) {
 			add_filter($hook, function () {

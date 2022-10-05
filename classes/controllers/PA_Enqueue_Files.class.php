@@ -37,6 +37,13 @@ class PA_Enqueue_Files
 							'xtt-pa-owner',
 							'xtt-pa-sedes'
 						],
+					],
+					[
+						'post_type'    => 'press',
+						'taxonomies'   => [
+							'xtt-pa-editorias',
+							'xtt-pa-owner'
+						],
 					]
 				],
 				'unregisterBlocks' => [
@@ -49,7 +56,7 @@ class PA_Enqueue_Files
 					'acf/p-a-list-items',
 					'acf/p-a-list-icons',
 					'acf/p-a-carousel-feature',
-					'acf/p-a-list-videos'
+					// 'acf/p-a-list-videos'
 				],
 			)
 		);

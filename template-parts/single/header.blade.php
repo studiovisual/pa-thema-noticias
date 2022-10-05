@@ -5,7 +5,11 @@
 
     @if(!empty($format = getPostFormat(get_the_ID())) && $format->slug != 'artigo' && is_singular('post'))        
         <div class="pa-post-meta mb-2">{{__('By', 'iasd')}} 
-            <span>{!! !empty($custom_author = get_field('custom_author')) ? $custom_author : get_the_author() !!}</span>@if($region = getPostRegion(get_the_ID()))<em class="pa-pipe">|</em><span class="ms-2"><i class="fas fa-map-marker-alt me-2" aria-hidden="true"></i> {{ $region->name }}</span>@endif
+            <span>{{ getCurrentAuthor(get_the_ID()) }}</span>
+            @if($region = getPostRegion(get_the_ID()))
+                <em class="pa-pipe">|</em>
+                <span><i class="fas fa-map-marker-alt me-2" aria-hidden="true"></i> {{ $region->name }}</span>
+            @endif
         </div>
     @endif
 
@@ -14,12 +18,10 @@
     <hr class="my-45">
 
     <div class="d-flex justify-content-between">
-        <div class="pa-share d-none d-xl-block">
-            @php require(get_template_directory() . '/components/parts/share.php') @endphp
-        </div>
+        @php require(get_template_directory() . '/components/parts/share.php') @endphp
 
-        <div class="">
-            <ul class="pa-accessibility list-inline">
+        <div class="pa-accessibility">
+            <ul class="list-inline">
                 <li class="pa-text-dec list-inline-item"><a href="#" class="rounded p-2" onclick="window.TextSize.pa_diminui_texto(event)">-A</a></li>
                 <li class="pa-text-inc list-inline-item"><a href="#" class="rounded p-2" onclick="window.TextSize.pa_aumenta_texto(event)">+A</a></li>
 

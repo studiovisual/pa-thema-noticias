@@ -29,7 +29,8 @@
 }
 
 .pa-content-container header .pa-post-meta span {
-  color: var(--pa-color-default-light);
+  color: var(--pa-color-gray01);
+  font-weight: bold;
 }
 
 .pa-content-container header hr,
@@ -41,6 +42,14 @@
 
 .pa-author-item {
   margin-bottom: 1.5rem; // 24px
+
+  .card-body {
+    p {
+      font-size: 1rem;
+      line-height: normal;
+      margin-bottom: 1rem;
+    }
+  }
 
   @media (min-width: 576px) {
     margin-bottom: 3.75rem; // 60px
@@ -164,6 +173,14 @@
 
 card-post {
   .pa-blog-item {
+    .card-body {
+      p {
+        font-size: 1rem;
+        line-height: normal;
+        margin-bottom: 1rem;
+      }
+    }
+
     .img-container {
       width: 45.6%;
 

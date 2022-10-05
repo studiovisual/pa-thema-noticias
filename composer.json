@@ -22,6 +22,23 @@
                     ]
                 }
             }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "airesvsg/acf-to-rest-api",
+                "type": "wordpress-plugin",
+                "version": "dev-master",
+                "dist": {
+                    "url": "https://github.com/airesvsg/acf-to-rest-api/archive/refs/heads/master.zip",
+                    "type": "zip"
+                },
+                "autoload": {
+                    "files": [
+                        "class-acf-to-rest-api.php"
+                    ]
+                }
+            }
         }
     ],
     "autoload": {
@@ -32,6 +49,7 @@
     },
     "require": {
         "log1x/acf-phone-number": "^1.1",
-        "10up/convert-to-blocks": "dev-master"
+        "10up/convert-to-blocks": "dev-master",
+        "airesvsg/acf-to-rest-api": "dev-master"
     }
 }
