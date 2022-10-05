@@ -175,6 +175,15 @@
   margin: 0 !important;
 }
 
+.pa-w-featured-post.pa-widget{
+  .pag-tag-icon-video{
+    padding: 2px 8px 1px 10px; //Featured post icon
+  }
+  .pag-tag-icon-audio {
+    padding: 0px 6px 1px 6px; //Featured post icon
+  }
+}
+
 card-post {
   .pa-blog-item {
     .card-body {
