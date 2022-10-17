@@ -3,17 +3,19 @@
 
     <h2 class="mb-3 pb-3">{!! \Illuminate\Support\Str::of(get_the_excerpt())->limit(250) !!}</h3>
 
-    @if(!empty($format = getPostFormat(get_the_ID())) && $format->slug != 'artigo' && is_singular('post'))        
-        <div class="pa-post-meta mb-2">{{__('By', 'iasd')}} 
-            <span>{{ getCurrentAuthor(get_the_ID()) }}</span>
-            @if($region = getPostRegion(get_the_ID()))
-                <em class="pa-pipe">|</em>
-                <span><i class="fas fa-map-marker-alt me-2" aria-hidden="true"></i> {{ $region->name }}</span>
-            @endif
-        </div>
-    @endif
+    <div class="d-md-flex justify-content-between">
+        @if(is_singular('post'))    
+            <div class="pa-post-meta mb-2">{{__('By', 'iasd')}} 
+                <span>{{ getCurrentAuthor(get_the_ID()) }}</span>
+                @if($region = getPostRegion(get_the_ID()))
+                    <em class="pa-pipe">|</em>
+                    <span><i class="fas fa-map-marker-alt me-2" aria-hidden="true"></i> {{ $region->name }}</span>
+                @endif
+            </div>
+        @endif
 
-    <div class="pa-post-meta">{!! the_date() !!}</div>
+        <div class="pa-post-meta">{!! the_date() !!}</div>
+    </div>
 
     <hr class="my-45">
 
