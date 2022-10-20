@@ -16,8 +16,9 @@ class PA_Enqueue_Files
 			'pa-child-script',
 			'pa',
 			array(
-				'url'   => get_rest_url(null, 'wp/v2/'),
-				'nonce' => wp_create_nonce('wp_rest'),
+				'url'   	=> get_rest_url(null, 'wp/v2/'),
+				'nonce' 	=> wp_create_nonce('wp_rest'),
+				'site_path' => get_current_site()->path,
 			)
 		);
 	}
