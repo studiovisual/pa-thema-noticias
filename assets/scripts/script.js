@@ -13,3 +13,10 @@ function embedVideo() {
         new EmbedVideo.default(element);
     });
 }
+
+window.replaceSrc = function(originalSrc) {
+    if(window.pa.site_path == '/')
+        return originalSrc;
+    
+    return `${window.pa.site_path}${originalSrc}`;
+};
