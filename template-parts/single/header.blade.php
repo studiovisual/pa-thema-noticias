@@ -2,7 +2,7 @@
     $format_slug = !empty($format = getPostFormat(get_the_ID())) ? $format->slug : 'noticia';
 @endphp
 
-<header class="{{ $format_slug == 'audio' || $format_slug == 'video' ? 'post-header pt-5 mb-4 post-header-'.$format_slug : 'post-header mb-4' }}">
+<header class="{{ $format_slug == 'audio' || $format_slug == 'video' ? 'post-header pt-5 pb-4 post-header-'.$format_slug : 'post-header mb-4' }}">
 
     <h1 class="fw-bold mb-3 {{ $format_slug ? 'title-'.$format_slug : '' }}">{!! single_post_title() !!}</h1>
 
