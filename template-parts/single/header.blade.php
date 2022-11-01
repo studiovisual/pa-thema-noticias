@@ -10,11 +10,11 @@
 
         <h2 class="mb-3 pb-3">{!! \Illuminate\Support\Str::of(get_the_excerpt())->limit(250) !!}</h3>
 
-        @include('components.metas.author', get_the_ID())
+            @include('components.metas.author', get_the_ID())
 
-        @include('components.metas.meta')
+            @include('components.metas.meta')
 
-        <hr class="my-45">
+            <hr class="my-45">
 
         @include('components.metas.share')
 
