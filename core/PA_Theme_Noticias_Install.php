@@ -199,6 +199,14 @@ class PAThemeNoticiasInstall
 			null,
 			false
 		);
+
+		wp_enqueue_script(
+		    'adventistas-noticias-admin-metabox',
+            get_stylesheet_directory_uri() . '/assets/scripts/admin-metabox.js',
+            '',
+            '',
+            true
+        );
 	}
 
 	function removePostFormats()
