@@ -1,5 +1,5 @@
 @php
-    $audio_url = get_field('audio_url');
+    $audio_url = get_field('embed_url');
 @endphp
 
 {{-- Se o ACF audio_url não estiver vazio executa --}}
