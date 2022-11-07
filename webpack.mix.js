@@ -17,6 +17,9 @@ mix
     .sass('assets/scss/style.scss', '../../style.css');
 
 mix
+    .sass('assets/scss/admin-metabox.scss', '../css/admin-metabox.css');
+
+mix
     .setPublicPath('./assets/js')
     .browserSync('localhost');
 

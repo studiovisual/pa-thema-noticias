@@ -15,6 +15,7 @@ class PAThemeNoticiasInstall
 	{
 		add_action('after_setup_theme', array($this, 'installRoutines'), 11);
 		add_action('admin_enqueue_scripts', array($this, 'enqueueAssets'));
+        add_action('enqueue_block_editor_assets', array($this, 'gutenbergCustomAssets') );
 		add_action('after_setup_theme', array($this, 'removePostFormats'), 100);
 		add_filter('manage_edit-press_columns', array($this, 'removeFakeColumn'));
 		add_action('init', array($this, 'addCustomRoles'));
@@ -199,15 +200,21 @@ class PAThemeNoticiasInstall
 			null,
 			false
 		);
+	}
 
-		wp_enqueue_script(
-		    'adventistas-noticias-admin-metabox',
+	function gutenbergCustomAssets() {
+        wp_enqueue_script(
+            'adventistas-noticias-admin-metabox',
             get_stylesheet_directory_uri() . '/assets/scripts/admin-metabox.js',
-            '',
-            '',
+            null,
             true
         );
-	}
+
+        wp_enqueue_style(
+            'adventistas-noticias-admin-metabox',
+            get_stylesheet_directory_uri() . '/assets/css/admin-metabox.css'
+        );
+    }
 
 	function removePostFormats()
 	{
