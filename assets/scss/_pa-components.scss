@@ -1,4 +1,4 @@
-  /** Title */
+/** Title */
 .single-title {
   font: normal bold 20px/26px "Noto Sans", Arial, Verdana, Tahoma, sans-serif;
   color: var(--pa-color-default);
@@ -254,11 +254,11 @@ card-post {
 
   &::after, &::before{
     height: 100%;
-    z-index: 100;
+    z-index: 2;
     top: 0;
     content: '';
     background: #252525;
-    width: 100%;
+    width: 1000%;
     position: absolute;
   }
 
@@ -274,7 +274,7 @@ card-post {
   border-radius: 0;
   padding-bottom: 56.25%;
   padding-top: 30px;
-  margin-top: -24px;
+  margin-top: -6px;
   overflow: visible;
   height: 0;
   background-color: #252525;
@@ -370,7 +370,7 @@ card-post {
   &::before, &::after {
     content: '';
     background: #252525;
-    width: 100%;
+    width: 1000%;
     position: absolute;
     height: 100%;
     top: 0;
