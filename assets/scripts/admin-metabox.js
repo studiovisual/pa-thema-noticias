@@ -7,7 +7,7 @@ class AdminMetabox {
     constructor() {
         window.onload=()=> {
             this.metaBox            = document.querySelector('.postbox.acf-postbox');
-            this.visibility         = {'hidden': 'none', 'visible':'block'};
+            this.visibility         = {'hidden': 'postbox acf-postbox hidden', 'visible':'postbox acf-postbox show'};
             this.termLabel          = {'audio': 'Áudio', 'video': 'Vídeo'};
             this.ariaLabel          = '[aria-label="Formato do post"]';
             this.needsValidation    = false;
@@ -32,7 +32,7 @@ class AdminMetabox {
         visibility[0] === 'hidden' ? this.needsValidation = false : this.needsValidation = true;
 
         // Set visiblity on Metabox DOM element
-        this.metaBox.style.display = this.visibility[visibility];
+        this.metaBox.className = this.visibility[visibility];
     }
 
     /**
@@ -189,7 +189,8 @@ class AdminMetabox {
      */
     beforeSubmit() {
         // Get submit button
-        const btnSubmit = document.querySelector('button.editor-post-publish-button');
+        const btnSubmit = document.querySelector('.edit-post-header__settings')
+            .querySelector('button.is-primary');
 
         // Add a Listener
         btnSubmit.addEventListener('click', (e) => {
