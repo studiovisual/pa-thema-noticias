@@ -8,8 +8,8 @@ class AdminMetabox {
         window.onload=()=> {
             this.metaBox            = document.querySelector('.postbox.acf-postbox');
             this.visibility         = {'hidden': 'postbox acf-postbox hidden', 'visible':'postbox acf-postbox show'};
-            this.termLabel          = {'audio': 'Áudio', 'video': 'Vídeo'};
-            this.ariaLabel          = '[aria-label="Formato do post"]';
+            this.terms              = ['Áudio', 'Vídeo'];
+            this.taxonomyName       = 'xtt-pa-format';
             this.needsValidation    = false;
 
             this.init();
@@ -22,6 +22,7 @@ class AdminMetabox {
     init() {
         this.firstIteration();
         this.beforeSubmit();
+        this.getCurrentTerm();
     }
 
     /**
@@ -44,29 +45,29 @@ class AdminMetabox {
         this.toggleMetaBox(['hidden']);
 
         setTimeout(() => {
-            this.getTermElm().then(elm => {
+            this.getCurrentTerm().then(elem => {
                 // If it's video and audio type, so, show it.
-                if(elm.text === this.termLabel.audio ||  elm.text === this.termLabel.video) {
+                if(this.terms.includes(elem.name)) {
                     this.toggleMetaBox(['visible']);
                 }
+            });
 
-                // Trigger the watches
-                this.watchChanges();
-                this.watchUrlChange();
-            })
-        }, 1000);
+            // Trigger the watches
+            this.watchChanges();
+            this.watchUrlChange();
+        }, 3000);
     }
 
     /**
-     * Get current value of taxonomy term "Formato do post"
+     * Get current selected term of taxonomy
      * Async function
      */
-    async getTermElm() {
-        while ( document.querySelector(this.ariaLabel) === null) {
+    async getCurrentTerm(){
+        let Termid = wp.data.select("core/editor").getCurrentPostAttribute(this.taxonomyName);
+        while ( !wp.data.select('core').getEntityRecord('taxonomy', 'xtt-pa-format', Termid) ) {
             await new Promise(r => setTimeout(r, 100));
         }
-        // When the DOM finishes loading then return this element
-        return document.querySelector(this.ariaLabel).querySelector('select option:checked');
+        return wp.data.select('core').getEntityRecord('taxonomy', 'xtt-pa-format', Termid);
     }
 
     /**
@@ -74,22 +75,21 @@ class AdminMetabox {
      * This is the most important function to be called
      */
     watchChanges() {
-        // Get Select DOM element
-        let select = document.querySelector(this.ariaLabel)
-            .querySelector('select');
+        // Add a listener on document changes
+        document.addEventListener('click', (e) => {
+            // If the user clicked on a select and changed its value
+            if(e.target.nodeName === 'SELECT'){
+                let newValue = e.target.querySelector('option:checked').text;
 
-        // Add a listener
-        select.addEventListener('change', (e) => {
-            let value = select[e.target.selectedIndex].text;
-            this.clearFields();
-
-            // When the new value is selected and that value is audio or video then...
-            if(value === this.termLabel.video || value === this.termLabel.audio){
-                this.toggleMetaBox(['visible']);
-            } else {
-                this.toggleMetaBox(['hidden']);
+                // When the new value is selected and that value is audio or video then...
+                if(this.terms.includes(newValue)){
+                    this.toggleMetaBox(['visible']);
+                } else {
+                    this.toggleMetaBox(['hidden']);
+                    this.clearFields();
+                }
             }
-        });
+        }, false);
     }
 
     /**
