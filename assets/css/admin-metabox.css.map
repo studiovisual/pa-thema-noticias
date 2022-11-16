@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./assets/scss/admin-metabox.scss"],"names":[],"mappings":"AAAA;EACE;CACF;;AACA;EACE","file":"../css/admin-metabox.css","sourcesContent":["#editor .postbox.acf-postbox.show{\n  display: block !important;\n}\n#editor .postbox.acf-postbox{\n  display: none !important;\n}\n"],"sourceRoot":""}
