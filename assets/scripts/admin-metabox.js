@@ -42,7 +42,7 @@ class AdminMetabox {
      */
     firstIteration() {
         // Hidden default
-        this.toggleMetaBox(['hidden']);
+        this.toggleMetaBox(['visible']);
 
         setTimeout(() => {
             this.getCurrentTerm().then(elem => {
@@ -53,7 +53,7 @@ class AdminMetabox {
             });
 
             // Trigger the watches
-            this.watchChanges();
+            //this.watchChanges();
             this.watchUrlChange();
             this.beforeSubmit();
         }, 3000);
