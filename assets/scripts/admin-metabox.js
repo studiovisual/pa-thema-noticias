@@ -6,7 +6,7 @@ class AdminMetabox {
      */
     constructor() {
         window.onload=()=> {
-            this.metaBox            = document.querySelector('.postbox.acf-postbox');
+            this.metaBox            = document.querySelector('[data-name="embed_url"]').parentElement.parentElement;
             this.visibility         = {'hidden': 'postbox acf-postbox hidden', 'visible':'postbox acf-postbox show'};
             this.terms              = ['Áudio', 'Vídeo'];
             this.taxonomyName       = 'xtt-pa-format';
@@ -21,7 +21,6 @@ class AdminMetabox {
      */
     init() {
         this.firstIteration();
-        this.beforeSubmit();
         this.getCurrentTerm();
     }
 
@@ -55,6 +54,7 @@ class AdminMetabox {
             // Trigger the watches
             this.watchChanges();
             this.watchUrlChange();
+            this.beforeSubmit();
         }, 3000);
     }
 
@@ -76,7 +76,7 @@ class AdminMetabox {
      */
     watchChanges() {
         // Add a listener on document changes
-        document.addEventListener('click', (e) => {
+        document.addEventListener('change', (e) => {
             // If the user clicked on a select and changed its value
             if(e.target.nodeName === 'SELECT'){
                 let newValue = e.target.querySelector('option:checked').text;
