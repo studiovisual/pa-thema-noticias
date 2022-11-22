@@ -2,7 +2,7 @@
     $format_slug = !empty($format = getPostFormat($id)) ? $format->slug : 'noticia';
 @endphp
 
-@if($format_slug != 'artigo' && is_singular('post'))
+@if(is_singular('post'))
     <div class="pa-post-meta mb-2">{{__('By', 'iasd')}}
         <span>{{ getCurrentAuthor($id) }}</span>
         @if($region = getPostRegion($id))
