@@ -9,6 +9,7 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 COPY --chown=www-data:www-data . /var/www/build
 
 RUN composer clearcache
+RUN export NODE_OPTIONS=--openssl-legacy-provider
 
 RUN cd /var/www/build \
   && composer install --no-dev \
