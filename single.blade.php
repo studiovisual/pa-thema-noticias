@@ -18,7 +18,7 @@
                 {{-- Main --}}
                 <article class="col-12 col-md-8">
                     {{-- Post header --}}
-                    @include('template-parts.single.header', $format_slug)
+                    @include('template-parts.single.header', array('format_slug' => $format_slug))
 
                     {{-- Conteúdo do post --}}
                     <div class="pa-content">
