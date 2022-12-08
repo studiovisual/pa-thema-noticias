@@ -5,10 +5,10 @@
   "license": "MIT",
   "scripts": {
     "build": "cross-env NODE_ENV=development run-s mix",
-    "build:production": "mix --production",
+    "build:production": "cross-env NODE_ENV=production run-s clean mix",
     "start": "cross-env NODE_ENV=development run-s \"mix -- --watch\"",
     "hot": "cross-env NODE_ENV=development run-s build mix:hot",
-    "mix": "webpack --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "mix": "webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "mix:hot": "webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
     "clean": "run-p clean:*",
     "clean:dist": "rimraf dist",
@@ -28,9 +28,8 @@
     "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
     "eslint-plugin-import": "^2.20.2",
-    "laravel-mix": "^6.0.49",
+    "laravel-mix": "^5.0.4",
     "npm-run-all": "^4.1",
-    "postcss": "^8.4.19",
     "resolve-url-loader": "3.1.0",
     "rimraf": "^3.0.2",
     "sass": "^1.26.3",
@@ -41,7 +40,7 @@
     "webpack-require-from": "^1.8.6"
   },
   "dependencies": {
-    "slim-js": "^5.0.10",
+    "slim-js": "5.0.9",
     "yt-player": "git+https://81664fad6241aaa07201f36a990000ef4baa6807:x-oauth-basic@github.com/studiovisual/yt-player.git"
   },
   "browserslist": [
