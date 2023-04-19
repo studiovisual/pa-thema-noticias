@@ -206,3 +206,17 @@ function clear_cf_cache()
   unset($json, $obj);
 }
 add_action('acf/save_post', 'clear_cf_cache');
+
+
+// Remover privilégio dos editores para adicionar termos
+function restringir_adicionar_termos_editores( $caps, $cap, $user_id ) {
+    if ( 'manage_categories' === $cap ) {
+        $user = get_userdata( $user_id );
+        if ( in_array( 'editor', (array) $user->roles ) ) {
+            $caps = array( 'do_not_allow' );
+        }
+    }
+
+    return $caps;
+}
+add_filter( 'map_meta_cap', 'restringir_adicionar_termos_editores', 10, 3 );
