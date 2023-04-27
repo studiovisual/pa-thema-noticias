@@ -34,11 +34,12 @@
 					<div class="pa-blog-itens my-5">
 						@php
 							foreach($wp_query->posts as $post):
-							get_template_part('template-parts/global/card-post', 'card-post', [
-								'post'     => $post,
-								'category' => $categories = get_the_category($post->ID) ? $categories[0]->name : '',
-								'format'   => get_post_format($post) ? : __('News', 'iasd'),
-							]); 
+								$categories = get_the_category($post->ID);
+								get_template_part('template-parts/global/card-post', 'card-post', [
+									'post'     => $post,
+									'category' => !empty($categories) ? $categories[0]->name : '',
+									'format'   => get_post_format($post) ? : __('News', 'iasd'),
+								]); 
 							endforeach; 
 						@endphp
 					</div>

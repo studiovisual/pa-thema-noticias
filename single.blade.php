@@ -3,10 +3,10 @@
 @php setup_postdata(get_post()); @endphp
 
 @php
-    $terms = get_the_terms( $post->ID, 'xtt-pa-format' );
+    $terms = get_the_terms(get_the_ID(), 'xtt-pa-format' );
     $format_slug = null;
-    if( !empty($terms) ) {
-        $term = array_shift( $terms );
+    if(!empty($terms) ) {
+        $term = array_shift($terms);
         $format_slug = $term->slug;
     }
 @endphp

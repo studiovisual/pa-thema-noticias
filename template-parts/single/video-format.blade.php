@@ -1,5 +1,5 @@
 @php
-    $video_url = get_field('embed_url', $post_id, true);
+    $video_url = get_field('embed_url', get_the_ID(), true);
 @endphp
 
 {{-- Se o ACF audio_url não estiver vazio executa --}}

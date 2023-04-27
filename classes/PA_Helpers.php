@@ -137,8 +137,13 @@ function getHeaderTitle($post_id = NULL)
     if (is_tax('xtt-pa-press-type'))
         return __('Press room', 'iasd') . ' | ' . get_queried_object()->name;
 
-    if (is_singular('post')) //is single
-        return getPostEditorial($post_id)->name;
+    if (is_singular('post')){ //is single
+            $nameEditorial = getPostEditorial($post_id);
+            // Caso a editoria retorna vazio, útil para noticias antigas onde não era obrigatório marcar uma editória.
+            if(!empty($nameEditorial)){
+                return getPostEditorial($post_id)->name;
+            }
+        }    
 
     if (is_archive()) //is archive
         return get_taxonomy(get_queried_object()->taxonomy)->label . ' | ' . get_queried_object()->name;
