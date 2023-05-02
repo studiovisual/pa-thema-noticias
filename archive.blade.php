@@ -13,11 +13,13 @@
 				<section class="col-12 col-md-8">
 
 					@php
-						if(get_query_var('paged') < 1 && $queryFeatured->found_posts > 0):
-						get_template_part('template-parts/global/feature', 'feature', [
-							'post' => $queryFeatured->posts[0],
-							'tag'  => $format = get_post_format($queryFeatured->posts[0]) ? : __('News', 'iasd'),
-						]); 
+						if(!empty($queryFeatured->found_posts)):
+							if(get_query_var('paged') < 1 && $queryFeatured->found_posts > 0):
+							get_template_part('template-parts/global/feature', 'feature', [
+								'post' => $queryFeatured->posts[0],
+								'tag'  => $format = get_post_format($queryFeatured->posts[0]) ? : __('News', 'iasd'),
+							]); 
+							endif;
 						endif;
 					@endphp
 					
