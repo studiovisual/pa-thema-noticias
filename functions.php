@@ -71,8 +71,16 @@ add_filter('template_include', function ($template) {
  * Filter save post to get video length
  */
 add_action('acf/save_post', function ($post_id) {
-    if (get_post_type($post_id) != 'post')
+
+    $terms = get_the_terms(get_the_ID(), 'xtt-pa-format' );
+
+    if(empty($terms))
         return;
+
+    if (get_post_type($post_id) != 'post' || $terms[0]->slug != 'video')
+        return;
+
+        error_log('Bem aqui');
 
     $url = parse_url(get_field('video_url', $post_id, false));
     $host = '';
@@ -97,6 +105,7 @@ add_action('acf/save_post', function ($post_id) {
 
     if (!empty($host) && !empty($id))
         getVideoLength($post_id, $host, $id);
+
 });
 
 // Make JavaScript Asynchronous in Wordpress

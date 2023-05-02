@@ -131,9 +131,11 @@ function getHeaderTitle($post_id = NULL)
     if (is_page())
         return the_title();
 
-    if (is_archive() && is_author() || getPostFormat(get_the_ID())->slug == 'coluna') //is archive
-        return __('Column', 'iasd') . ' | ' . (is_author() ? get_queried_object()->display_name : get_the_author_meta('display_name'));
-
+    $format = getPostFormat(get_the_ID());
+    if(!empty($format)){
+        if (is_archive() && is_author() || $format->slug == 'coluna') //is archive
+            return __('Column', 'iasd') . ' | ' . (is_author() ? get_queried_object()->display_name : get_the_author_meta('display_name'));
+    }
     if (is_tax('xtt-pa-press-type'))
         return __('Press room', 'iasd') . ' | ' . get_queried_object()->name;
 
