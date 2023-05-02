@@ -33,7 +33,7 @@ function getVideoLength(int $post_id, string $video_host, string $video_id): voi
     $obj = json_decode($json);
 
     if (!empty($obj))
-        update_field('video_length', $obj->time, $post_id);
+        update_field('embed_length', $obj->time, $post_id);
 }
 
 /**

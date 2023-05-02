@@ -80,9 +80,7 @@ add_action('acf/save_post', function ($post_id) {
     if (get_post_type($post_id) != 'post' || $terms[0]->slug != 'video')
         return;
 
-        error_log('Bem aqui');
-
-    $url = parse_url(get_field('video_url', $post_id, false));
+    $url = parse_url(get_field('embed_url', $post_id, false));
     $host = '';
     $id = '';
 
