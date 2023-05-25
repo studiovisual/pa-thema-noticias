@@ -25,7 +25,7 @@ class PaAcfUserFields {
                 Url::make('Instagram URL', 'instagram'),
             ],
             'location' => [
-                Location::if('user_form', 'edit')->and('user_role', 'colunista'),
+                Location::where('user_form', 'edit')->and('user_role', 'colunista'),
             ]
         ]);
 
@@ -39,7 +39,7 @@ class PaAcfUserFields {
                     ->required(),
             ],
             'location' => [
-                Location::if('user_form', 'edit')->and('user_role', 'colunista')->and('user_role', '!=', 'administrator'),
+                Location::where('user_form', 'edit')->and('user_role', 'colunista')->and('user_role', '!=', 'administrator'),
             ]
         ]);
     }

@@ -24,7 +24,7 @@ class PaAcfPostFields {
                     ->readOnly(),
             ],
             'location' => [
-                Location::if('post_type', 'post'),
+                Location::where('post_type','==', 'post'),
             ]
         ]);
 
@@ -36,7 +36,7 @@ class PaAcfPostFields {
                 Text::make(__('Author', 'iasd'), 'custom_author'),
             ],
             'location'   => [
-                Location::if('post_type', 'post'),
+                Location::where('post_type', '==', 'post'),
             ]
         ]);
     }

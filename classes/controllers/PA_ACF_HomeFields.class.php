@@ -45,7 +45,7 @@ class PaAcfHomeFields
                     ->limitFilter(false)
             ],
             'location' => [
-                Location::if('page_template', $template),
+                Location::where('page_template', '==', $template),
             ]
         ]);
     }
@@ -64,7 +64,7 @@ class PaAcfHomeFields
                     ->returnFormat('object')
             ],
             'location' => [
-                Location::if('page_template', 'page-front-page.blade.php'),
+                Location::where('page_template', '==', 'page-front-page.blade.php'),
             ]
         ]);
     }
