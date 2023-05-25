@@ -1,6 +1,6 @@
 <?php
 
-use Extended\LocalData;
+use ExtendedLocal\LocalData;
 use WordPlate\Acf\Location;
 use WordPlate\Acf\ConditionalLogic;
 use WordPlate\Acf\Fields\ButtonGroup;

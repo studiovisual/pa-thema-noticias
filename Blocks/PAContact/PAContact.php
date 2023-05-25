@@ -3,7 +3,7 @@
 namespace Blocks\PAContact;
 
 use Blocks\Block;
-use Extended\PhoneNumber;
+use ExtendedLocal\PhoneNumber;
 use WordPlate\Acf\Fields\Email;
 use WordPlate\Acf\Fields\Text;
 
