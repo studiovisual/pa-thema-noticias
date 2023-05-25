@@ -4,8 +4,8 @@ namespace Blocks\PAContact;
 
 use Blocks\Block;
 use ExtendedLocal\PhoneNumber;
-use WordPlate\Acf\Fields\Email;
-use WordPlate\Acf\Fields\Text;
+use Extended\ACF\Fields\Email;
+use Extended\ACF\Fields\Text;
 
 /**
  * Class PAContact

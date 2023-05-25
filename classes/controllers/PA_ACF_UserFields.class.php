@@ -1,10 +1,10 @@
 <?php
 
-use WordPlate\Acf\Location;
-use WordPlate\Acf\Fields\Image;
-use WordPlate\Acf\Fields\Text;
-use WordPlate\Acf\Fields\Textarea;
-use WordPlate\Acf\Fields\Url;
+use Extended\ACF\Location;
+use Extended\ACF\Fields\Image;
+use Extended\ACF\Fields\Text;
+use Extended\ACF\Fields\Textarea;
+use Extended\ACF\Fields\Url;
 
 class PaAcfUserFields {
 

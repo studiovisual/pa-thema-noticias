@@ -5,7 +5,7 @@ namespace Blocks\PAListPosts;
 use Blocks\Block;
 use ExtendedLocal\LocalData;
 use Fields\MoreContent;
-use WordPlate\Acf\Fields\Text;
+use Extended\ACF\Fields\Text;
 
 /**
  * Class PAListPress
