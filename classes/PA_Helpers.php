@@ -62,7 +62,7 @@ function getPostFormat($post_id)
  */
 function getPostEditorial($post_id)
 {
-    if ($term = get_the_terms($post_id, 'xtt-pa-editorias'))
+    if (!is_wp_error($term = get_the_terms($post_id, 'xtt-pa-editorias')))
         return $term[0];
 
     return null;
