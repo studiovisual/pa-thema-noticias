@@ -76,7 +76,7 @@ function getPostEditorial($post_id)
  */
 function getPostRegion($post_id)
 {
-    if ($term = get_the_terms($post_id, 'xtt-pa-regiao'))
+    if (!is_wp_error($term = get_the_terms($post_id, 'xtt-pa-regiao')))
         return $term[0];
 
     return null;
