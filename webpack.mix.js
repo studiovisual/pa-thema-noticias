@@ -1,13 +1,23 @@
 const mix = require('laravel-mix');
+const WebpackRequireFrom = require('webpack-require-from');
 
 mix.webpackConfig({
     output: {
-        publicPath: '/wp-content/themes/pa-thema-noticias/assets/js/', // but this is a browser path for compiled files
+        publicPath: '/wp-content/themes/pa-theme-noticias/assets/js/', // but this is a browser path for compiled files
     },
+    plugins: [
+        new WebpackRequireFrom({
+          // see configuration options below
+          replaceSrcMethodName: 'replaceSrc',
+        }),
+    ],
 });
 
 mix
     .sass('assets/scss/style.scss', '../../style.css');
+
+mix
+    .sass('assets/scss/admin-metabox.scss', '../css/admin-metabox.css');
 
 mix
     .setPublicPath('./assets/js')

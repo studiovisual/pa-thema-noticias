@@ -1,10 +1,10 @@
 <?php
 
-use WordPlate\Acf\Fields\Number;
-use WordPlate\Acf\Fields\Oembed;
-use WordPlate\Acf\Fields\Text;
-use WordPlate\Acf\Location;
-use WordPlate\Acf\Fields\File;
+use Extended\ACF\Fields\Number;
+use Extended\ACF\Fields\Oembed;
+use Extended\ACF\Fields\Text;
+use Extended\ACF\Location;
+use Extended\ACF\Fields\File;
 
 class PaAcfPostFields {
 
@@ -13,19 +13,18 @@ class PaAcfPostFields {
     }
 
     function createACFFields() {
-        // ACF fields pra formato de video
+        // ACF fields pra formato de áudio e video
         register_extended_field_group([
-            'title' => __('Video info','iasd'),
+            'title' => __('Áudio ou Video info','iasd'),
             'style' => 'default',
             'fields' => [
-                Oembed::make(__('Video','iasd'), 'video_url')
-                    ->required(),
-                Number::make(__('Lenght','iasd'), 'video_length')
+                Oembed::make(__('Áudio ou video','iasd'), 'embed_url'),
+                Number::make(__('Lenght','iasd'), 'embed_length')
                     ->instructions(__('It will be obtained when saving the post.','iasd'))
                     ->readOnly(),
             ],
             'location' => [
-                Location::if('post_taxonomy', 'xtt-pa-format:video'),
+                Location::where('post_type','==', 'post'),
             ]
         ]);
 
@@ -37,20 +36,7 @@ class PaAcfPostFields {
                 Text::make(__('Author', 'iasd'), 'custom_author'),
             ],
             'location'   => [
-                Location::if('post_type', 'post'),
-            ]
-        ]);
-
-        // ACF Fields pra formato de áudio
-        register_extended_field_group([
-            'title' => __('Áudio info','iasd'),
-            'style' => 'default',
-            'fields' => [
-                Oembed::make(__('Áudio','iasd'), 'audio_url')
-                    ->required(),
-            ],
-            'location' => [
-                Location::if('post_taxonomy', 'xtt-pa-format:audio'),
+                Location::where('post_type', '==', 'post'),
             ]
         ]);
     }

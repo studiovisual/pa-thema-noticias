@@ -1,4 +1,4 @@
-  /** Title */
+/** Title */
 .single-title {
   font: normal bold 20px/26px "Noto Sans", Arial, Verdana, Tahoma, sans-serif;
   color: var(--pa-color-default);
@@ -254,31 +254,30 @@ card-post {
 
   &::after, &::before{
     height: 100%;
-    z-index: 100;
+    z-index: 2;
     top: 0;
     content: '';
-    background: var(--pa-color-default-light);
-    width: 100%;
+    background: #252525;
+    width: 1000%;
     position: absolute;
   }
 
   &::before {
-    left: -100%;
+    left: -99%;
   }
 
   &::after {
-    right: -100%;
+    right: -99%;
   }
 
   z-index: 4;
   border-radius: 0;
   padding-bottom: 56.25%;
   padding-top: 30px;
-  margin-top: -30px;
-  margin-bottom: 15px;
+  margin-top: -6px;
   overflow: visible;
   height: 0;
-  background-color: var(--pa-color-default-light);
+  background-color: #252525;
 
   &.is-sticky {
     z-index: 1031;
@@ -291,7 +290,7 @@ card-post {
   }
 
   picture {
-    background-color: var(--pa-color-default-light);
+    background-color: #252525;
 
     .thumb-video {
       margin: auto;
@@ -310,7 +309,7 @@ card-post {
   figure {
     &::before {
       aspect-ratio: 16 / 9;
-      background-color: var(--gray-900);
+      background-color: #252525;
       border-radius: rem-calc(24);
       content: "";
       display: block;
@@ -363,26 +362,27 @@ card-post {
 }
 
 .audio-container {
-  background: var(--pa-color-default-light);
+  background: #252525;
   position: relative;
   padding: 20px 0px;
   margin-top: -30px;
 
   &::before, &::after {
     content: '';
-    background: var(--pa-color-default-light);
-    width: 100%;
+    background: #252525;
+    width: 1000%;
     position: absolute;
     height: 100%;
     top: 0;
+    z-index: -2;
   }
 
   &::before {
-    left: -100%;
+    left: -99%;
   }
 
   &::after {
-    right: -100%;
+    right: -99%;
   }
 
   iframe{
