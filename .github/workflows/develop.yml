@@ -49,14 +49,14 @@ jobs:
           key: ${{ secrets.SSH_DEV_DEPLOY_KEY}}
           port: 22
           script: |
-            echo "${{ secrets.SUDO }}" | sudo -S chmod -R 777  /var/www/noticias/pt/wp-content/themes/pa-thema-noticias
+            echo "${{ secrets.SUDO }}" | sudo -S chmod -R 777  /var/www/noticias/pt/wp-content/themes/pa-theme-noticias
         
       - name: Copiando theme videos
         uses: burnett01/rsync-deployments@4.1
         with:
           switches: --no-perms -O --filter="merge rsync-filter.txt" --delete -Prltvz
           path: ./
-          remote_path: /var/www/noticias/pt/wp-content/themes/pa-thema-noticias
+          remote_path: /var/www/noticias/pt/wp-content/themes/pa-theme-noticias
           remote_host: ${{ secrets.SSH_DEV_DEPLOY_HOST }}
           remote_port: 22
           remote_user: root
